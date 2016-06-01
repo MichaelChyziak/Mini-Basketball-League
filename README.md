@@ -15,8 +15,5 @@ $ heroku open
 ### Just a Test
 - Janet
 
-## testing again...
-- Arsh
-
-##Testing 123, testing 123!!
+##Back to just 1 line of test for me...
 - Arsh
