@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
-
-ruby '2.2.2', :engine => 'jruby', :engine_version => '9.0.0.0'
+ruby '2.2.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
-gem 'activerecord-jdbcpostgresql-adapter'
+gem 'pg'
 gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -31,8 +30,6 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :jruby]
-
 gem 'puma'
 
 # Use Capistrano for deployment
@@ -40,3 +37,4 @@ gem 'puma'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
