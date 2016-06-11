@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
+<div class = "container">
+<h1>Accepted Teams</h1>
 
-<h1>Listing Teams</h1>
-
-<table>
+<table class = "table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Team Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,9 +14,10 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= team.team_name %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Show", team %></td>
+        <td><%= link_to "Edit", edit_team_path(team) %></td>
+        <td><%= link_to "Destroy", team, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= "Join" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,32 @@
 
 <br>
 
-<%= link_to 'New Team', new_team_path %>
+<h1>Pending Teams</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Team Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.team_name %></td>
+        <td><%= link_to "Details", team %></td>
+        <td><%= link_to "Edit", edit_team_path(team) %></td>
+        <td><%= link_to "Delete", team, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= "Approve" %></td>
+        <td><%= "Decline" %></td>
+        <td><%= "Join" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Create Team", new_team_path %>
+ </div>
