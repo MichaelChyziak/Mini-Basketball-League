@@ -15,6 +15,10 @@
     <%= f.label :team_name %><br>
     <%= f.text_field :team_name, :maxlength => 30, :required => true %>
   </div>
+  <div class="field">
+    <%= f.label :league %><br>
+    <%= f.select(:league, %w[Gold Silver Bronze]) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
