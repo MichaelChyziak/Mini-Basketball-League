@@ -10,5 +10,18 @@
   <%= @team.league %>
 </p>
 
+<p>
+  <strong>Number of Users:</strong>
+  <%= @team.users.count %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <% @team.users.each do |user| %>
+    <%= user %><br>
+  <% end %>
+</p>
+
+
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
