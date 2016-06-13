@@ -1,6 +1,20 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
+  # Used to approve a team and return back to the teams index page
+  def approve
+    @team = Team.find(params[:id])
+    @team.update_attributes(:status => "approved")
+    redirect_to "/teams"
+  end
+
+  #Used to decline a team and return back to the teams index page
+  def decline
+    @team = Team.find(params[:id])
+    @team.update_attributes(:status => "declined")
+    redirect_to "/teams"
+  end
+
   # GET /teams
   # GET /teams.json
   def index
@@ -69,6 +83,6 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:team_name, :league, :users)
+      params.require(:team).permit(:team_name, :league, :users, :status)
     end
 end

@@ -9,6 +9,19 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  # Used to approve or decline a team into a league
+  resources :teams do
+    member do
+      get "approve"
+      put "approve"
+      get "decline"
+      put "decline"
+    end
+  end
+  match "teams/:id/approve" => "teams#approve", via: [:get, :post]
+  match "teams/:id/decline" => "teams#decline", via: [:get, :post]
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

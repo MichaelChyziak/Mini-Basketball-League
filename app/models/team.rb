@@ -9,4 +9,7 @@ class Team < ActiveRecord::Base
     self[:users] = users_input
   end
 
+  #Enum for a teams approval into actually entering a league
+  enum status: [:pending, :approved, :declined]
+
 end
