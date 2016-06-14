@@ -39,3 +39,6 @@ gem 'puma'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Used for ease of storing images and attachments into database
+# See https://github.com/thoughtbot/paperclip#quick-start for more information
+gem 'paperclip', '~> 4.3.6'

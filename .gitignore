@@ -17,3 +17,6 @@
 
 # Ignore ruby-version
 /.ruby-version
+
+# Ignore any images that are stored from the team's logos
+public/system/*
