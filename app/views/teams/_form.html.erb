@@ -1,3 +1,5 @@
+
+
 <%= form_for @team, url: teams_path, html: { multipart: true } do |f| %>
   <% if @team.errors.any? %>
     <div id="error_explanation">
@@ -11,6 +13,9 @@
     </div>
   <% end %>
 
+
+ 
+  
   <div class="field">
     <%= f.label :team_name %><br>
     <%= f.text_field :team_name, :maxlength => 30, :required => true %>
@@ -31,7 +36,8 @@
     <%= f.file_field :logo %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions"><br><br>
+    <%= f.submit %><br><br>
   </div>
 <% end %>
+

@@ -21,9 +21,12 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
+  
+
 development:
   <<: *default
   database: ruby_getting_started_development
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,3 +86,5 @@ production:
   database: ruby-getting-started_production
   username: ruby-getting-started
   password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
+
+

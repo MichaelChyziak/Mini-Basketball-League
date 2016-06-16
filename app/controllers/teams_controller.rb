@@ -85,4 +85,16 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(:team_name, :league, :users, :status, :logo)
     end
+    
+    def home
+        
+    end
+    
+    def profile
+        
+    end
+  
+    def about
+    
+    end
 end
