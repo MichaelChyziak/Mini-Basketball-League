@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get 'teams/:id/home' , to:'welcome#home'
   get 'teams/:id/profile' , to:'welcome#profile'
   get 'teams/:id/about' , to:'welcome#about'
+  get 'teams/join', to:'teams#join'
 
-  
+
   resources :teams
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
