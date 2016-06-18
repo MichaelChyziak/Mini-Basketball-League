@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   get '/about' , to: 'welcome#about'
   get 'teams/join', to:'teams#join'
 
-
+  get 'signup'  => 'users#new'
+  
+  # Login
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
 
   resources :teams
   resources :users

@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Team.create!(team_name: "3 Person Team", league: "Gold", status: "pending", players_id: [1, 2, 3])
+User.create(name: "user1", email: "user1@example.com", password: "useruser1", password_confirmation: "useruser1")

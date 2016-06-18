@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Log In Succesful</h1>
+  <h3>Welcome back <%= @user.name %>!<h3>
+</div>
+<script>
+$(window).load(function () {
+    window.setTimeout(function () {
+        window.location.href = "/teams";
+    }, 5000)
+});
+</script>
