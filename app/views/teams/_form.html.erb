@@ -15,8 +15,8 @@
   <% end %>
 
 
- 
-  
+
+
   <div class="field">
     <%= f.label :team_name %><br>
     <%= f.text_field :team_name, :maxlength => 30, :required => true %>
@@ -32,13 +32,15 @@
     <%= f.text_field :users %>
   </div>
 
+<!-- Uploading images will be included into iteration 2 with AWS.
+Ignore in frontend for iteration 1.
   <div class="field">
     <%= f.label "Team Logo" %><br>
     <%= f.file_field :logo %>
   </div>
+-->
 
   <div class="actions"><br><br>
     <%= f.submit %><br><br>
   </div>
 <% end %>
-

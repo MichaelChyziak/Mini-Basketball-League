@@ -5,8 +5,11 @@
 
 <p id="notice"><%= notice %></p>
 
+<!-- Images will be included into iteration 2 with AWS.
+Ignore in frontend for iteration 1.
 <%= image_tag @team.logo.url(:medium) %>
 <br/>
+-->
 
 <p>
   <strong>Team Name:</strong>
@@ -22,16 +25,17 @@
   <strong>Number of Users:</strong>
   <%= @team.users.count %>
 </p>
-
+<!-- Uploading/viewing images will be included into iteration 2 with AWS.
+Ignore in frontend for iteration 1.
 <p>
   <strong>Users:</strong>
   <% @team.users.each do |user| %>
     <%= user %><br>
   <% end %>
 </p>
-
+-->
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<%= link_to 'Back', :back %>
 
 </div>

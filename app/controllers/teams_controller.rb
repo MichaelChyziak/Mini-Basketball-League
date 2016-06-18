@@ -15,8 +15,15 @@ class TeamsController < ApplicationController
     redirect_to "/teams"
   end
 
+  # GET /teams/join
+  # Used for all users if they wish to join a team
+  def join
+    @teams = Team.all
+  end
+
   # GET /teams
   # GET /teams.json
+  # Only admin can go to this page
   def index
     @teams = Team.all
   end
@@ -85,16 +92,16 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(:team_name, :league, :users, :status, :logo)
     end
-    
+
     def home
-        
+
     end
-    
+
     def profile
-        
+
     end
-  
+
     def about
-    
+
     end
 end
