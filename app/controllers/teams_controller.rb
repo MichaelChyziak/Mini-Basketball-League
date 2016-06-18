@@ -17,8 +17,10 @@ class TeamsController < ApplicationController
 
   # Used for a user wishing to join a specific team
   def join_team
-    #Need some variable to store the current user also and then add them to the team
+    @user = User.find(current_user)
     @team = Team.find(params[:id])
+    @team.players_id << @user.id unless @team.players_id.include?(@user.id)
+    @team.save
     redirect_to action: "show"
   end
 
