@@ -2,18 +2,9 @@ Rails.application.routes.draw do
   get 'sessions/new' , to: 'sessions#new'
 
   get 'users/new'
-  get 'welcome/home' , to: 'welcome#home'
-  get 'welcome/profile', to: 'welcome#profile'
-  get 'welcome/about' , to: 'welcome#about'
-  get 'teams/home' , to: 'welcome#home'
-  get 'teams/profile', to: 'welcome#profile'
-  get 'teams/about' , to: 'welcome#about'
   get '/home' , to: 'welcome#home'
   get '/profile', to: 'welcome#profile'
   get '/about' , to: 'welcome#about'
-  get 'teams/:id/home' , to:'welcome#home'
-  get 'teams/:id/profile' , to:'welcome#profile'
-  get 'teams/:id/about' , to:'welcome#about'
   get 'teams/join', to:'teams#join'
 
 
