@@ -18,7 +18,7 @@
         <tr>
           <td><%= team.team_name %></td>
           <td><%= team.league %></td>
-          <td><%= team.users.count %></td>
+          <td><%= team.players_id.count %></td>
           <td><%= link_to "Details", team %></td>
           <td><%= link_to "Join", :controller => "teams", :id => team.id, :action => "join_team", :method => :put, :status => true  %></td>
         </tr>
@@ -47,7 +47,7 @@
         <tr>
           <td><%= team.team_name %></td>
           <td><%= team.league %></td>
-          <td><%= team.users.count %></td>
+          <td><%= team.players_id.count %></td>
           <td><%= link_to "Details", team %></td>
           <td><%= link_to "Join", :controller => "teams", :id => team.id, :action => "join_team", :method => :put, :status => true  %></td>
         </tr>
@@ -76,7 +76,7 @@
         <tr>
           <td><%= team.team_name %></td>
           <td><%= team.league %></td>
-          <td><%= team.users.count %></td>
+          <td><%= team.players_id.count %></td>
           <td><%= link_to "Details", team %></td>
           <td><%= link_to "Join", :controller => "teams", :id => team.id, :action => "join_team", :method => :put, :status => true  %></td>
         </tr>

@@ -7,12 +7,6 @@ class Team < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>"}, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
-  #Makes it so that each user added by string is properly converted to an array
-  def users=(value)
-    users_input = "{" + value + "}"
-    self[:users] = users_input
-  end
-
   #Enum for a teams approval into actually entering a league
   enum status: [:pending, :approved, :declined]
 

@@ -23,14 +23,15 @@ Ignore in frontend for iteration 1.
 
 <p>
   <strong>Number of Users:</strong>
-  <%= @team.users.count %>
+  <%= @team.players_id.count %>
 </p>
+
 <!-- Uploading/viewing images will be included into iteration 2 with AWS.
 Ignore in frontend for iteration 1.
 <p>
   <strong>Users:</strong>
-  <% @team.users.each do |user| %>
-    <%= user %><br>
+  <% @team.players_id.each do |players| %>
+    <%= players %><br>
   <% end %>
 </p>
 -->

@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Team.create!(team_name: "3 Person Team", league: "Gold", status: "pending", players_id: [1, 2, 3])
