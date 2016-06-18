@@ -15,6 +15,13 @@ class TeamsController < ApplicationController
     redirect_to "/teams"
   end
 
+  # Used for a user wishing to join a specific team
+  def join_team
+    #Need some variable to store the current user also and then add them to the team
+    @team = Team.find(params[:id])
+    redirect_to action: "show"
+  end
+
   # GET /teams/join
   # Used for all users if they wish to join a team
   def join

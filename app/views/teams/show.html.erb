@@ -35,6 +35,11 @@ Ignore in frontend for iteration 1.
 </p>
 -->
 
-<%= link_to 'Back', :back %>
+<% previous_url = url_for(:back) %>
+<% if previous_url.include? "/teams/new" %>
+  <%= link_to 'Continue', home_path %>
+<% else %>
+  <%= link_to 'Back', :back %>
+<% end %>
 
 </div>

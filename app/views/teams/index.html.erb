@@ -52,7 +52,7 @@
           <td><%= link_to "Details", team %></td>
           <td><%= link_to "Edit", edit_team_path(team) %></td>
           <td><%= link_to "Delete", team, method: :delete, data: { confirm: "Are you sure?" } %></td>
-          <td><%= link_to "Approve", :controller => "teams", :id => team.id, :action => "approve", :method => :put, :status => true %>
+          <td><%= link_to "Approve", :controller => "teams", :id => team.id, :action => "approve", :method => :put, :status => true %></td>
           <td><%= link_to "Decline", :controller => "teams", :id => team.id, :action => "decline", :method => :put, :status => true  %></td>
         </tr>
       <% end %>

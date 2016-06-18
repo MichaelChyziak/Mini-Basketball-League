@@ -26,10 +26,13 @@ Rails.application.routes.draw do
       put "approve"
       get "decline"
       put "decline"
+      get "join_team"
+      put "join_team"
     end
   end
   match "teams/:id/approve" => "teams#approve", via: [:get, :post]
   match "teams/:id/decline" => "teams#decline", via: [:get, :post]
+  match "teams/:id/join_team" => "teams#join_team", via: [:get, :post]
 
 
   # Example of regular route:
