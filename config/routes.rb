@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new' , to: 'sessions#new'
+
   get 'users/new'
   get 'welcome/home' , to: 'welcome#home'
   get 'welcome/profile', to: 'welcome#profile'
@@ -13,9 +15,11 @@ Rails.application.routes.draw do
   get 'teams/:id/profile' , to:'welcome#profile'
   get 'teams/:id/about' , to:'welcome#about'
 
-  
+
+
   resources :teams
   resources :users
+  resources :sessions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

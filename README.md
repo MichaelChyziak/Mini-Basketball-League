@@ -27,3 +27,13 @@ $ rake db:migrate
 ```
 
 Now running "heroku local web" should work properly
+
+## Users for testing:
+
+Regular Users:
+Note: Replace <i> with a number. 1 <= i <= 10
+
+Name: user<i>
+Email: user<i>@example.com
+Password: useruser<i>
+Id: <i>
