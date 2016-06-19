@@ -52,7 +52,9 @@
 	    <div class="row">
 	    	<button type="button" class="btn btn-primary btn-lg box"  onclick="location.href='/teams/new'" >Create Team</button></br></br>
 	    	<button type="button" class="btn btn-primary btn-lg box" onclick="location.href='/teams/join'" >Join Team</button></br></br>
-        <button type="button" class="btn btn-primary btn-lg box" onclick="location.href='/teams'" >Manage Teams</button>
+        <% if current_user.admin? %>
+          <button type="button" class="btn btn-primary btn-lg box" onclick="location.href='/teams'" >Manage Teams</button>
+        <% end %>
 
 	    </div>
 	</div>
