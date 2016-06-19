@@ -16,4 +16,4 @@ User.create(name: "user6", email: "user6@example.com", password: "useruser6", pa
 User.create(name: "user7", email: "user7@example.com", password: "useruser7", password_confirmation: "useruser7")
 User.create(name: "user8", email: "user8@example.com", password: "useruser8", password_confirmation: "useruser8")
 User.create(name: "user9", email: "user9@example.com", password: "useruser9", password_confirmation: "useruser9")
-User.create(name: "Janet", email: "janet@xyz.com", password: "notjanet", password_confirmation: "notjanet")
+User.create(name: "daAdmin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notjanet", admin: true)
