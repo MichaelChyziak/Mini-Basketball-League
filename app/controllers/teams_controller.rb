@@ -18,25 +18,25 @@ class TeamsController < ApplicationController
 
   # Used to approve a team and return back to the teams index page
   def approve
-    if current_user.admin? #allow only admin to do this
-      @team = Team.find(params[:id])
+    @team = Team.find(params[:id])
+    if current_user.admin? && @team.status == "pending" #allow only admin to do this and if the team is pending
       @team.update_attributes(:status => "approved")
       redirect_to "/teams"
     else
       redirect_to "/home"
-      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+      flash[:warning] = "That action cannot be done."
     end
   end
 
   #Used to decline a team and return back to the teams index page
   def decline
-    if current_user.admin? #allow only admin to do this
-      @team = Team.find(params[:id])
+    @team = Team.find(params[:id])
+    if current_user.admin? && @team.status == "pending" #allow only admin to do this and if the team is pending
       @team.update_attributes(:status => "declined")
       redirect_to "/teams"
     else
       redirect_to "/home"
-      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+      flash[:warning] = "That action cannot be done."
     end
   end
 
@@ -76,7 +76,7 @@ class TeamsController < ApplicationController
       @teams = Team.all
     else
       redirect_to "/home"
-      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+      flash[:warning] = "Only admins can access that page."
     end
   end
 
@@ -96,7 +96,7 @@ class TeamsController < ApplicationController
       #continue as normal if admin
     else
       redirect_to "/home"
-      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+      flash[:warning] = "Only admins can access that page."
     end
   end
 
@@ -155,7 +155,7 @@ class TeamsController < ApplicationController
       end
     else
       redirect_to "/home"
-      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+      flash[:warning] = "Only admins can access that page." 
     end
   end
 
