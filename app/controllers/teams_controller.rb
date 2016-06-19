@@ -97,6 +97,12 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+    #Remove the team from each user who was a part of it
+    @team.players_id.each do |player_id|
+      user = User.find(player_id)
+      user.update_attribute(:team_id, -1)
+    end
+
     @team.destroy
     respond_to do |format|
       format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
