@@ -47,7 +47,12 @@ class TeamsController < ApplicationController
   # GET /teams.json
   # Only admin can go to this page
   def index
-    @teams = Team.all
+    if current_user.admin?
+      @teams = Team.all
+    else
+      redirect_to "/home"
+      #flash[:notice] = "Only admins could access that page." #Notices don't show up currently on the home page. Add later.
+    end
   end
 
   # GET /teams/1
