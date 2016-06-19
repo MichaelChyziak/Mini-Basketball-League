@@ -11,8 +11,12 @@ class ApplicationController < ActionController::Base
   private
     #For forcing users to require to login
     def require_login
-      unless current_user
-        redirect_to "/sessions/new" #change to "root_url"
+      if request.fullpath == "/about"
+        #Let everybody (even not logged in users) see the about page
+      else
+        unless current_user
+          redirect_to root_url
+        end
       end
     end
 end
