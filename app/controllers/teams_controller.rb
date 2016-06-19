@@ -51,7 +51,7 @@ class TeamsController < ApplicationController
       @teams = Team.all
     else
       redirect_to "/home"
-      #flash[:notice] = "Only admins could access that page." #Notices don't show up currently on the home page. Add later.
+      flash[:notice] = "Only admins could access that page." #Notices don't show clearly on the home page. Fix later.
     end
   end
 
@@ -72,16 +72,25 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(team_params)
-
-    respond_to do |format|
-      if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render :show, status: :created, location: @team }
-      else
-        format.html { render :new }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+    #Creating a team only if you aren't on one already and you join it automatically
+    if current_user.team_id == -1
+      @team = Team.new(team_params)
+      @team.players_id << current_user.id
+      @team.save
+      current_user.update_attribute(:team_id, @team.id)
+      current_user.save
+      respond_to do |format|
+        if @team.save
+          format.html { redirect_to @team, notice: "You have successfully created and joined this team." }
+          format.json { render :show, status: :created, location: @team }
+        else
+          format.html { render :new }
+          format.json { render json: @team.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to home_path
+      flash[:notice] = "You could not create a team since you are currently in a team."
     end
   end
 
