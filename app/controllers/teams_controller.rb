@@ -1,6 +1,21 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
 
+
+  #Allows users to leave their team
+  def leave_team
+    if current_user.team_id != -1
+      @team = Team.find(current_user.team_id)
+      @team.players_id.delete(current_user.id)
+      current_user.update_attribute(:team_id, -1)
+      @team.save
+      current_user.save
+      flash[:warning] = "You have left this team."
+    end
+    redirect_to action: "show"
+  end
+
+
   # Used to approve a team and return back to the teams index page
   def approve
     if current_user.admin? #allow only admin to do this

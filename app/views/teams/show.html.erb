@@ -42,7 +42,10 @@ Ignore in frontend for iteration 1.
   <%= link_to 'Continue', home_path %>
 <% else %>
 
-  <%= link_to 'Back', :back %>
+  <%= link_to 'Back', :back %><br>
+  <% if @team.players_id.include? current_user.id %>
+    <%= link_to "Leave Team", leave_team_team_path %>
+  <% end %>
 
   </div>
 <% end %>
