@@ -26,6 +26,15 @@ Ignore in frontend for iteration 1.
   <%= @team.players_id.count %>
 </p>
 
+<% if @team.players_id.count > 0 %>
+  <p>
+    <strong style="color:#9e0c0c">Users:</strong>
+    <% @team.players_id.each do |player_id| %>
+      <%= User.find(player_id).name %><br>
+    <% end %>
+  </p>
+<% end %>
+
 <!-- Uploading/viewing images will be included into iteration 2 with AWS.
 Ignore in frontend for iteration 1.
 <p>
