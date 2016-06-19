@@ -1,8 +1,37 @@
 <div class= "container">
-
-<h1 class="page-header">Editing Team</h1>
+  <div class="col-md-4 col-md-offset-7">
+        <div class="panel-heading">
+            <h1 class="page-header" style="color:white">Editing Team</h1>
+        </div>
+<div class="panel-body">
 
 <%= render 'form' %>
 
+<div style= "font-size:17px">
 <%= link_to 'Show', @team %> |
 <%= link_to 'Back', teams_path %>
+
+</div>
+</div>
+
+
+
+<style>
+
+body { 
+  background: url("/assets/kobe2.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+.panel-default {
+opacity: 0.9;
+margin-top:30px;
+}
+.form-group.last { margin-bottom:0px; }
+    
+</style>
+

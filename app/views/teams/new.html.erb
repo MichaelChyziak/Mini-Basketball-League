@@ -1,8 +1,34 @@
 <div class= "container">
-<h1 class="page-header">New Team</h1>
-
+  <div class="col-md-4 col-md-offset-7">
+        <div class="panel-heading">
+            <h1 class="page-header" style="color:white">New Team</h1>
+        </div>
+        
+<div class="panel-body">        
 <%= render 'form' %>
 
 <%= link_to 'Back', :back %>
 
 </div>
+</div>
+</div>
+
+
+<style>
+    
+body { 
+  background: url("/assets/lebron.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+
+.panel-default {
+opacity: 0.9;
+margin-top:30px;
+}
+.form-group.last { margin-bottom:0px; }
+    
+</style>
