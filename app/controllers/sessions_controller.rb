@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+#Skips having to login before going to the root url
+skip_before_filter :require_login
 
   def new
   end
