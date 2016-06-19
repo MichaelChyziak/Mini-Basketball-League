@@ -12,7 +12,7 @@ skip_before_filter :require_login
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to user
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Incorrect email/password. Please try again.'
       render 'new'
     end
   end
