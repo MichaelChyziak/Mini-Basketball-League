@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'teams/join', to:'teams#join'
 
   get 'signup'  => 'users#new'
-  
+
   # Login
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'welcome#index'
+  root 'sessions#new'
 
   # Used to approve or decline a team into a league
   resources :teams do

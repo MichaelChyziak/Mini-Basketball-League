@@ -1,7 +1,6 @@
 <div class= "container">
-  <div class="col-md-4 col-md-offset-7">
+  <div class="col-md-5 col-md-offset-7">
         <div class="panel-heading">
-
           <h1 class="page-header">About This Team</h1>
          </div>
 
@@ -15,17 +14,17 @@ Ignore in frontend for iteration 1.
 
 <div class="panel-body">
 <p>
-  <strong>Team Name:</strong>
+  <strong style="color:#9e0c0c">Team Name:</strong>
   <%= @team.team_name %>
 </p>
 
 <p>
-  <strong>League:</strong>
+  <strong style="color:#9e0c0c">League:</strong>
   <%= @team.league %>
 </p>
 
 <p>
-  <strong>Number of Users:</strong>
+  <strong style="color:#9e0c0c">Number of Users:</strong>
   <%= @team.players_id.count %>
 </p>
 
@@ -40,7 +39,7 @@ Ignore in frontend for iteration 1.
 -->
 
 <% previous_url = url_for(:back) %>
-<div style= "font-size:17px">
+<div style= "font-size:18px">
 <% if previous_url.include? "/teams/new" %>
   <%= link_to 'Continue', home_path %>
 <% else %>
@@ -58,12 +57,12 @@ Ignore in frontend for iteration 1.
 <style>
 
 body { 
-  background: url("/assets/curry11.jpg") no-repeat center center fixed; 
+  background: url("/assets/jordan6.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+  color:white;
 }
 
 .panel-default {

@@ -23,24 +23,25 @@
       <%= f.password_field :password,placeholder: "Password", class: 'form-control' %>
 
     </div>
-    </br></br>    
+   </br></br>
+<!-- Remember me function left for iteration 2
     <div class="input-group" >
-   
       <%= f.label :remember_me, class: "checkbox inline" do %>
       <div style="margin-left:25px">   
         <%= f.check_box :remember_me %>
         <span>Remember me on this computer</span>
       </div>
+-->      
       <% end %>
     
-    </div>
+   
     
       <center>
       <%= f.submit "Log in", class: "btn btn-primary  btn-lg box" %>
       </center>
     <% end %>
     
-  
+  </div> 
   
   </div>
 
@@ -57,21 +58,13 @@ body {
 
 #loginbox {
     margin-top: 30px;
+    
 }
 
 #loginbox > div:first-child {        
     padding-bottom: 10px;    
 }
 
-
-#form > div {
-    margin-bottom: 25px;
-}
-
-#form > div:last-child {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
 
 .panel {    
     background-color: transparent;
@@ -81,39 +74,9 @@ body {
 .panel-body {
     padding-top: 30px;
     background-color: rgba(2555,255,255,.3);
-    
+    height:300px;
 }
 
-#particles {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    top: 0;                        
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    z-index: -2;
-}
-
-.iconmelon,
-.im {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  display: block;
-  fill: #525151;
-}
-
-.iconmelon:after,
-.im:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
 
 
 .box{
