@@ -35,7 +35,10 @@
                   My Account<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Profile", current_user %></li>
+                  <li><%= link_to "My Profile", current_user %></li>
+                  <% if current_user.team_id != -1 %>
+                    <li><%= link_to "My Team", team_path(current_user.team_id) %></li>
+                  <% end %>
                   <li class="divider"></li>
                   <li>
                     <%= link_to "Log out", logout_path, method: "delete" %>
@@ -46,13 +49,12 @@
               <li><%= link_to "Log in", login_path %></li>
             <% end %>
             <!-- Ray already created a "dummy" profile. We can probably use the work
-            ~~~~ he already did to for the users profile page frontend. 
+            ~~~~ he already did to for the users profile page frontend.
     				<li><a href="/profile" id="profile" >My Profile</a></li>
           -->
     				<li><a href="" id="schedule">Schedule</a></li>
     				<li><a href="" id="ranking">Ranking</a></li>
     				<li><a href="" id="map">Map</a></li>
-    				<li><a href="" id="myteam">My Team</a></li>
             <li><a href="/about"  id="about">About Us</a></li>
     			</ul>
     		</div>

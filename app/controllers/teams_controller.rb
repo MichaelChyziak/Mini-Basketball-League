@@ -17,12 +17,25 @@ class TeamsController < ApplicationController
 
   # Used for a user wishing to join a specific team
   def join_team
-    @user = User.find(current_user)
     @team = Team.find(params[:id])
-    @team.players_id << @user.id unless @team.players_id.include?(@user.id)
-    @team.save
-    redirect_to action: "show"
+    if current_user.team_id == -1
+      @team.players_id << current_user.id
+      @team.save
+      current_user.update_attribute(:team_id, @team.id)
+      current_user.save
+      redirect_to action: "show"
+      flash[:notice] = "You have successfully joined this team."
+    else
+      redirect_to action: "show"
+      flash[:notice] = "You could not join this team since you are currently in a team."
+    end
   end
+
+  def find_users_team
+    @team = Team.find(params[team_id])
+    redirect_to @team
+  end
+
 
   # GET /teams/join
   # Used for all users if they wish to join a team
