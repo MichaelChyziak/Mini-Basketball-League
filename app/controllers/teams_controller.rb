@@ -3,16 +3,26 @@ class TeamsController < ApplicationController
 
   # Used to approve a team and return back to the teams index page
   def approve
-    @team = Team.find(params[:id])
-    @team.update_attributes(:status => "approved")
-    redirect_to "/teams"
+    if current_user.admin? #allow only admin to do this
+      @team = Team.find(params[:id])
+      @team.update_attributes(:status => "approved")
+      redirect_to "/teams"
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+    end
   end
 
   #Used to decline a team and return back to the teams index page
   def decline
-    @team = Team.find(params[:id])
-    @team.update_attributes(:status => "declined")
-    redirect_to "/teams"
+    if current_user.admin? #allow only admin to do this
+      @team = Team.find(params[:id])
+      @team.update_attributes(:status => "declined")
+      redirect_to "/teams"
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+    end
   end
 
   # Used for a user wishing to join a specific team
@@ -24,10 +34,10 @@ class TeamsController < ApplicationController
       current_user.update_attribute(:team_id, @team.id)
       current_user.save
       redirect_to action: "show"
-      flash[:notice] = "You have successfully joined this team."
+      flash[:warning] = "You have successfully joined this team."
     else
       redirect_to action: "show"
-      flash[:notice] = "You could not join this team since you are currently in a team."
+      flash[:warning] = "You could not join this team since you are currently in a team."
     end
   end
 
@@ -51,7 +61,7 @@ class TeamsController < ApplicationController
       @teams = Team.all
     else
       redirect_to "/home"
-      flash[:notice] = "Only admins could access that page." #Notices don't show clearly on the home page. Fix later.
+      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
     end
   end
 
@@ -67,6 +77,12 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+    if current_user.admin?
+      #continue as normal if admin
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
+    end
   end
 
   # POST /teams
@@ -81,7 +97,7 @@ class TeamsController < ApplicationController
       current_user.save
       respond_to do |format|
         if @team.save
-          format.html { redirect_to @team, notice: "You have successfully created and joined this team." }
+          format.html { redirect_to @team, warning: "You have successfully created and joined this team." }
           format.json { render :show, status: :created, location: @team }
         else
           format.html { render :new }
@@ -90,7 +106,7 @@ class TeamsController < ApplicationController
       end
     else
       redirect_to home_path
-      flash[:notice] = "You could not create a team since you are currently in a team."
+      flash[:warning] = "You could not create a team since you are currently in a team."
     end
   end
 
@@ -99,7 +115,7 @@ class TeamsController < ApplicationController
   def update
     respond_to do |format|
       if @team.update(team_params)
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to @team, warning: 'Team was successfully updated.' }
         format.json { render :show, status: :ok, location: @team }
       else
         format.html { render :edit }
@@ -112,15 +128,19 @@ class TeamsController < ApplicationController
   # DELETE /teams/1.json
   def destroy
     #Remove the team from each user who was a part of it
-    @team.players_id.each do |player_id|
-      user = User.find(player_id)
-      user.update_attribute(:team_id, -1)
-    end
-
-    @team.destroy
-    respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.admin?
+      @team.players_id.each do |player_id|
+        user = User.find(player_id)
+        user.update_attribute(:team_id, -1)
+      end
+      @team.destroy
+      respond_to do |format|
+        format.html { redirect_to teams_url, warning: 'Team was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only admins can access that page." #Notices don't show clearly on the home page. Fix later.
     end
   end
 
