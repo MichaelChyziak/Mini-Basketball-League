@@ -10,7 +10,7 @@ skip_before_filter :require_login
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      redirect_to home_path
     else
       flash.now[:danger] = 'Incorrect email/password. Please try again.'
       render 'new'
