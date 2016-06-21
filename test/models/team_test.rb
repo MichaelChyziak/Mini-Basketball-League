@@ -1,8 +1,45 @@
 require 'test_helper'
 
 class TeamTest < ActiveSupport::TestCase
-   test "Should not save team without a team name" do
-     team = Team.new
-     assert_not team.save, "Saved the team without a team name"
+
+  def setup
+    @team = Team.new(team_name: "Mavericks", league: "Gold")
   end
+
+  test "should be valid" do
+    assert @team.valid?
+  end
+
+  test "should initalize as pending" do
+    assert @team.status == "pending"
+  end
+
+  test "team should have no players" do
+    assert @team.players_id.count == 0
+  end
+
+  test "name should be present" do
+    @team.team_name = ""
+    assert_not @team.valid?
+  end
+
+  test "name should not be blank" do
+    @team.team_name = "     "
+    assert_not @team.valid?
+  end
+
+  test "team should be in a league" do
+    assert (@team.league == "Gold" || @team.league == "Silver" || @team.league == "Bronze")
+  end
+
+  test "name should not be too long" do
+    @team.team_name = "a" * 51
+    assert_not @team.valid?
+  end
+
+  test "team should notice new user added" do
+    @team.players_id = [1]
+    assert @team.players_id[0] == 1
+  end
+
 end
