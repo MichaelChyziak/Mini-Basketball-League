@@ -48,10 +48,10 @@ Ignore in frontend for iteration 1.
 <% previous_url = url_for(:back) %>
 <div style= "font-size:18px">
 <% if previous_url.include? "/teams/new" %>
-  <%= link_to 'Continue', home_path %>
+  <%= link_to 'Continue', home_path, {:style=>"color:#fff;"} %>
 <% else %>
 
-  <%= link_to 'Back', :back %><br>
+  <%= link_to 'Back', :back, {:style=>"color:#fff;"} %><br>
   
   <% if @team.players_id.include? current_user.id %>
 
