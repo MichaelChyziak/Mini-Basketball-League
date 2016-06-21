@@ -28,12 +28,20 @@ $ rake db:migrate
 
 Now running "heroku local web" should work properly
 
-## Users for testing:
+## Users for Login
 
-Regular Users:
-Note: Replace <i> with a number. 1 <= i <= 10
+Regular users:
 
-Name: user<i>
-Email: user<i>@example.com
-Password: useruser<i>
-Id: <i>
+email: "user1@example.com", password: "useruser1"
+email: "user2@example.com", password: "useruser2"
+email: "user3@example.com", password: "useruser3"
+email: "user4@example.com", password: "useruser4"
+email: "user5@example.com", password: "useruser5"
+email: "user6@example.com", password: "useruser6"
+email: "user7@example.com", password: "useruser7"
+email: "user8@example.com", password: "useruser8"
+email: "user9@example.com", password: "useruser9"
+
+Admin:
+
+email: "admin@xyz.com", password: "notadmin"
