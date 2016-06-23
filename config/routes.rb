@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get 'sessions/new' , to: 'sessions#new'
 
+  #For the manage users page (admin access only)
+  controller :users do
+    get '/users'     => :index
+  end
+
   get 'users/new'
   get '/home' , to: 'welcome#home'
   get '/profile', to: 'welcome#profile'

@@ -19,6 +19,17 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /teams
+  # Only admin can go to this page
+  def index
+    if current_user.admin?
+      @users = User.all
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only admins can access that page."
+    end
+  end
+
   private
 
     def user_params
