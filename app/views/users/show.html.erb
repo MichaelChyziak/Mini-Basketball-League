@@ -4,7 +4,7 @@
   <div class="panel-heading">
   <h1 class="page-header" style="color:#ffffff">User Profile</h1>
   </div>
-  
+
   <div class="panel-body">
 
       <div class="form-group" style= "margin-top:-20px ">
@@ -13,8 +13,9 @@
       <div class="form-group">
           <h3><strong style="color:#c45907">Email:</strong> <%= @user.email %><h3>
       </div>
-
-  
+      <div>
+        <%= link_to "Edit", edit_user_path(current_user) %>
+      </div>
 
   </div>
 </div>
@@ -25,5 +26,5 @@
     color:white;
     background-size:100%;
   }
-  
+
 </style>
