@@ -92,8 +92,8 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
-    if current_user.admin?
-      #continue as normal if admin
+    if current_user.admin? || @team.captain_id == current_user.id
+      #continue as normal if admin or captain of the team
     else
       redirect_to "/home"
       flash[:warning] = "Only admins can access that page."
@@ -103,10 +103,11 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    #Creating a team only if you aren't on one already and you join it automatically
+    #Creating a team only if you aren't on one already and you join it automatically, also make person captain of the team
     if current_user.team_id == -1
       @team = Team.new(team_params)
       @team.players_id << current_user.id
+      @team.captain_id = current_user.id
       @team.save
       current_user.update_attribute(:team_id, @team.id)
       current_user.save
@@ -155,7 +156,7 @@ class TeamsController < ApplicationController
       end
     else
       redirect_to "/home"
-      flash[:warning] = "Only admins can access that page." 
+      flash[:warning] = "Only admins can access that page."
     end
   end
 

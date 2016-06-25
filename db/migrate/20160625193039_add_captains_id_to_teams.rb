@@ -1,0 +1,5 @@
+class AddCaptainsIdToTeams < ActiveRecord::Migration
+  def change
+    add_column :teams, :captain_id, :integer, :default => -1
+  end
+end

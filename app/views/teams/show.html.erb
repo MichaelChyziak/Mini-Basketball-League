@@ -52,13 +52,16 @@ Ignore in frontend for iteration 1.
 <% else %>
 
   <%= link_to 'Back', :back, {:style=>"color:#fff;"} %><br>
-  
-  <% if @team.players_id.include? current_user.id %>
 
-    <%= link_to "Leave Team" , leave_team_team_path, {:style=>"color:#fff;"} %>
-  
+  <% if @team.players_id.include? current_user.id %>
+    <%= link_to "Leave Team" , leave_team_team_path, {:style=>"color:#fff;"} %><br>
   <% end %>
-  
+
+  <% if @team.captain_id == current_user.id %>
+    <%= link_to "Edit Team" , edit_team_path(@team), {:style=>"color:#fff;"} %><br>
+  <% end %>
+
+
   </div>
 <% end %>
 </div>
