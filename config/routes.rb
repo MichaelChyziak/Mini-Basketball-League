@@ -43,6 +43,18 @@ Rails.application.routes.draw do
   match "teams/:id/leave_team" => "teams#leave_team", via: [:get, :post]
 
 
+  # Used for admins to edit users admin status
+  resources :users do
+    member do
+      get "enable_admin"
+      put "enable_admin"
+      get "disable_admin"
+      put "disable_admin"
+    end
+  end
+  match "users/:id/enable_admin" => "teams#enable_admin", via: [:get, :post]
+  match "users/:id/disable_admin" => "teams#disable_admin", via: [:get, :post]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

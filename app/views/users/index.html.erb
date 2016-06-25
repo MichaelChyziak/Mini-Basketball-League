@@ -6,7 +6,6 @@
     <tr>
       <th>User Name</th>
       <th>Date Created</th>
-      <th>Last Login Date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +15,9 @@
       <% if(!user.admin) %>
         <tr>
           <td><%= user.name %></td>
-          <td></td>
-          <td></td>
+          <td><%= user.created_at %></td>
           <td><%= link_to "View", user %></td>
+          <td><%= link_to "Admin", :controller => "users", :id => user.id, :action => "enable_admin", :method => :put, :status => true %></td>
         </tr>
       <% end %>
     <% end %>
@@ -34,7 +33,6 @@
     <tr>
       <th>User Name</th>
       <th>Date Created</th>
-      <th>Last Login Date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -44,9 +42,9 @@
       <% if(user.admin) %>
         <tr>
           <td><%= user.name %></td>
-          <td></td>
-          <td></td>
+          <td><%= user.created_at %></td>
           <td><%= link_to "View", user %></td>
+          <td><%= link_to "Un-Admin", :controller => "users", :id => user.id, :action => "disable_admin", :method => :put, :status => true %></td>
         </tr>
       <% end %>
     <% end %>

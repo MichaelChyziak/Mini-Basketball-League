@@ -3,6 +3,30 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
+  # Make the user an admin
+  def enable_admin
+    if current_user.admin?
+      user = User.find(params[:id])
+      user.update_attribute("admin", true)
+      redirect_to "/users"
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only admins can perform that action."
+    end
+  end
+
+  # Make the user not an admin
+  def disable_admin
+    if current_user.admin?
+      user = User.find(params[:id])
+      user.update_attribute("admin", false)
+      redirect_to "/users"
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only admins can perform that action."
+    end
+  end
+
   def index
     if current_user.admin?
       @users = User.all
