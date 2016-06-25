@@ -24,7 +24,12 @@
 
   <div class="field">
     <div style="color:white; font-size:25px" > <%= f.label :league %></div><br>
-    <%= f.select(:league, %w[Gold Silver Bronze]) %>
+    <% if @team.status == "approved" %>
+      <%= f.select(:league, %w[Gold Silver Bronze], {}, :disabled => true) %>
+      <p style="color:white">Cannot edit the team's league once the team is approved</p>
+    <% else %>
+      <%= f.select(:league, %w[Gold Silver Bronze]) %>
+    <% end %>
   </div>
 
 <!-- Uploading images will be included into iteration 2 with AWS.
