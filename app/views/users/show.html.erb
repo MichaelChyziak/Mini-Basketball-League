@@ -14,7 +14,11 @@
           <h3><strong style="color:#c45907">Email:</strong> <%= @user.email %><h3>
       </div>
       <div>
-        <%= link_to "Edit", edit_user_path(current_user) %>
+        <%=
+          if current_user.id == @user.id
+            link_to "Edit", edit_user_path(current_user)
+          end
+        %>
       </div>
 
   </div>
