@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  #skip_before_filter :require_login, only: [:new]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  skip_before_filter :require_login, only: [:new]
 
   # Make the user an admin
   def enable_admin
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to Mini Basketball League!"
       redirect_to @user
     else
       render 'new'
