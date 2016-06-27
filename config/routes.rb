@@ -35,12 +35,21 @@ Rails.application.routes.draw do
       put "join_team"
       get "leave_team"
       put "leave_team"
+      get "captain_team"
+      put "captain_team"
+      get "accept_user"
+      put "accept_user"
+      get "decline_user"
+      put "decline_user"
     end
   end
   match "teams/:id/approve" => "teams#approve", via: [:get, :post]
   match "teams/:id/decline" => "teams#decline", via: [:get, :post]
   match "teams/:id/join_team" => "teams#join_team", via: [:get, :post]
   match "teams/:id/leave_team" => "teams#leave_team", via: [:get, :post]
+  match 'teams/:id/manage_team' => 'teams#captain_team', via: [:get, :post]
+  match "teams/:id/accept_user" => "teams#accept_user", via: [:get, :post]
+  match 'teams/:id/decline_user' => 'teams#decline_user', via: [:get, :post]
 
 
   # Used for admins to edit users admin status

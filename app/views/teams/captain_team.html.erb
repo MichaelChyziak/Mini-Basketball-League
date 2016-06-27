@@ -1,0 +1,25 @@
+<div class = "container">
+<h1>Applied Users</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team.applied_user_ids.each do |applied_user_id| %>
+      <tr>
+        <td><%= User.find(applied_user_id).name %></td>
+        <td><%= link_to "Details", User.find(applied_user_id)%></td>
+        <td><%= link_to "Approve", :controller => "teams", :id => @team.id, :player_id => applied_user_id, :action => "accept_user", :method => :put, :status => true %></td>
+        <td><%= link_to "Decline", :controller => "teams", :id => @team.id, :player_id => applied_user_id, :action => "decline_user", :method => :put, :status => true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+</div>

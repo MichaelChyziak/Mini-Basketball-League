@@ -5,15 +5,15 @@ class WelcomeController < ApplicationController
 
   end
   def home
-        
+
   end
-    
+
   def profile
-        
+
   end
-  
+
   def about
-    
+
   end
 
 end

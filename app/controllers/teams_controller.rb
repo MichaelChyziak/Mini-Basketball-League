@@ -40,21 +40,78 @@ class TeamsController < ApplicationController
     end
   end
 
-  # Used for a user wishing to join a specific team
+  # Used for a user wishing to join a specific team. Must be approved by team captain later to actually join team
   def join_team
     @team = Team.find(params[:id])
-    if current_user.team_id == -1
-      @team.players_id << current_user.id
+    if current_user.team_id == -1 && @team.applied_user_ids.exclude?(current_user.id)
+      @team.applied_user_ids << current_user.id
       @team.save
-      current_user.update_attribute(:team_id, @team.id)
+      current_user.pending_team_ids << @team.id
       current_user.save
       redirect_to action: "show"
-      flash[:warning] = "You have successfully joined this team."
+      flash[:warning] = "You have successfully applied for this team."
+    elsif current_user.team_id != -1
+      redirect_to action: "show"
+      flash[:warning] = "You could not apply for this team since you are currently on a team."
     else
       redirect_to action: "show"
-      flash[:warning] = "You could not join this team since you are currently in a team."
+      flash[:warning] = "You have already applied to this team."
     end
   end
+
+  #For the captains_view page (only for the captain of the team)
+  def captain_team
+    @team = Team.find(params[:id])
+    if @team.captain_id == current_user.id
+      #TODO
+    else
+      redirect_to action: "home"
+      flash[:warning] = "Only team captains can access that page."
+    end
+  end
+
+
+  #Used by the team captain to accept users wanting to join the team
+  def accept_user
+    @team = Team.find(params[:id])
+    if @team.captain_id == current_user.id
+      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
+      if new_applied_user_ids.nil?
+        @team.update_attribute(:applied_user_ids, [])
+      else
+        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
+      end
+      @team.players_id << params[:player_id]
+      @team.save
+      User.find(params[:player_id]).update_attribute(:team_id, @team.id)
+      User.find(params[:player_id]).save
+      redirect_to action: "show"
+      flash[:warning] = "Accepted user to team."
+    else
+      redirect_to action: "home"
+      flash[:warning] = "Only team captains can do that."
+    end
+  end
+
+  #Used by the team captain to decline users wanting to join the team
+  def decline_user
+    @team = Team.find(params[:id])
+    if @team.captain_id == current_user.id
+      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
+      if new_applied_user_ids.nil?
+        @team.update_attribute(:applied_user_ids, [])
+      else
+        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
+      end
+      @team.save
+      redirect_to action: "show"
+      flash[:warning] = "Declined user from team."
+    else
+      redirect_to action: "home"
+      flash[:warning] = "Only team captains can do that."
+    end
+  end
+
 
   def find_users_team
     @team = Team.find(params[team_id])
