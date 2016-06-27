@@ -74,7 +74,8 @@ class TeamsController < ApplicationController
   #Used by the team captain to accept users wanting to join the team
   def accept_user
     @team = Team.find(params[:id])
-    if @team.captain_id == current_user.id
+    user = User.find(params[:player_id])
+    if @team.captain_id == current_user.id && user.team_id == -1
       new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
       if new_applied_user_ids.nil?
         @team.update_attribute(:applied_user_ids, [])
@@ -83,10 +84,19 @@ class TeamsController < ApplicationController
       end
       @team.players_id << params[:player_id]
       @team.save
-      User.find(params[:player_id]).update_attribute(:team_id, @team.id)
-      User.find(params[:player_id]).save
+      user.update_attribute(:team_id, @team.id)
+      user.save
       redirect_to action: "show"
       flash[:warning] = "Accepted user to team."
+    elsif user.team_id != -1
+      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
+      if new_applied_user_ids.nil?
+        @team.update_attribute(:applied_user_ids, [])
+      else
+        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
+      end
+      redirect_to action: "show"
+      flash[:warning] = "User has already joined a team. Could not add user to team."
     else
       redirect_to action: "home"
       flash[:warning] = "Only team captains can do that."
