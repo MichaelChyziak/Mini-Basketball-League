@@ -2,47 +2,48 @@
    <div class="col-md-7 col-md-offset-5">
 <div class="panel panel-default" >
     <div class="panel-heading">
-      <div class="panel-title text-center"> 
+      <div class="panel-title text-center">
           <% provide(:title, "Log in") %>
           <h1>Mini Basketball</h1>
       </div>
     </div>
   <div class="panel-body" >
-   
+
     <%= form_for(:session, url: sessions_path) do |f| %>
-    
+
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    
+
       <%= f.email_field :email, placeholder: "Email Address", class: 'form-control' %>
-    
+
     </div>
     </br></br>
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
       <%= f.password_field :password,placeholder: "Password", class: 'form-control' %>
-
     </div>
+  </br>
+    <div id="sign_up"><p style="color: white; font-size: 15px;">Not a member? <%= link_to "Sign up", users_new_path %></p></div>
    </br></br>
 <!-- Remember me function left for iteration 2
     <div class="input-group" >
       <%= f.label :remember_me, class: "checkbox inline" do %>
-      <div style="margin-left:25px">   
+      <div style="margin-left:25px">
         <%= f.check_box :remember_me %>
         <span>Remember me on this computer</span>
       </div>
--->      
+-->
       <% end %>
-    
-   
-    
+
+
+
       <center>
       <%= f.submit "Log in", class: "btn btn-primary  btn-lg box" %>
       </center>
     <% end %>
-    
-  </div> 
-  
+
+  </div>
+
   </div>
 
 </div>
@@ -58,15 +59,15 @@ body {
 
 #loginbox {
     margin-top: 30px;
-    
+
 }
 
-#loginbox > div:first-child {        
-    padding-bottom: 10px;    
+#loginbox > div:first-child {
+    padding-bottom: 10px;
 }
 
 
-.panel {    
+.panel {
     background-color: transparent;
     margin-top: 80px;
 }
@@ -81,5 +82,10 @@ body {
 
 .box{
     width:20%;
+}
+
+#sign_up a {
+  color:#80dfff;
+  font-weight: bold;
 }
 </style>
