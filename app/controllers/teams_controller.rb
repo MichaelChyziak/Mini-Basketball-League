@@ -249,4 +249,6 @@ class TeamsController < ApplicationController
     def about
 
     end
+    
+
 end
