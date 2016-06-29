@@ -235,7 +235,7 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:team_name, :league, :players_id, :status, :logo)
+      params.require(:team).permit(:team_name, :league, :players_id, :status, :logo, :team_message)
     end
 
     def home
@@ -249,6 +249,6 @@ class TeamsController < ApplicationController
     def about
 
     end
-    
+
 
 end
