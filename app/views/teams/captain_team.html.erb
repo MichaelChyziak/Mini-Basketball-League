@@ -22,4 +22,32 @@
 </table>
 
 <br>
+
+
+<h1>Current Users</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team.players_id.each do |player_id| %>
+      <tr>
+        <td><%= User.find(player_id).name %></td>
+        <td><%= link_to "Details", User.find(player_id)%></td>
+        <% if @team.captain_id != player_id %>
+          <td><%= link_to "Appoint Captain", :controller => "teams", :team_id => @team.id, :player_id => player_id, :action => "appoint_captain", :method => :put, :status => true %></td>
+        <% end %>
+        <td><%= link_to "Remove", :controller => "teams", :team_id => @team.id, :player_id => player_id, :action => "remove_user", :method => :put, :status => true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
 </div>

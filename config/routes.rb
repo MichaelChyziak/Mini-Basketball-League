@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/about' , to: 'welcome#about'
   get 'teams/join', to:'teams#join'
   get '/schedule' , to: 'welcome#schedule'
-  
+
   get 'signup'  => 'users#new'
 
   # Login
@@ -42,6 +42,10 @@ Rails.application.routes.draw do
       put "accept_user"
       get "decline_user"
       put "decline_user"
+      get "appoint_captain"
+      put "appoint_captain"
+      get "remove_user"
+      put "remove_user"
     end
   end
   match "teams/:id/approve" => "teams#approve", via: [:get, :post]
@@ -51,6 +55,8 @@ Rails.application.routes.draw do
   match 'teams/:id/manage_team' => 'teams#captain_team', via: [:get, :post]
   match "teams/:id/accept_user" => "teams#accept_user", via: [:get, :post]
   match 'teams/:id/decline_user' => 'teams#decline_user', via: [:get, :post]
+  match "teams/:id/appoint_captain" => "teams#appoint_captain", via: [:get, :post]
+  match 'teams/:id/remove_user' => 'teams#remove_user', via: [:get, :post]
 
 
   # Used for admins to edit users admin status

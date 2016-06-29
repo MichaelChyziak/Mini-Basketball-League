@@ -70,18 +70,41 @@ class TeamsController < ApplicationController
     end
   end
 
+  #Used to decline a team and return back to the teams index page
+  def appoint_captain
+    @team = Team.find(params[:team_id])
+    if current_user.id == @team.captain_id #only allow the captain to appoint another user as the captain
+      @team.update_attribute(:captain_id, params[:player_id].to_i)
+      redirect_to action: "show"
+      flash[:warning] = "Successfully appointed another user as the team captain. You are no longer the team captain."
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only the team's captain can do that action."
+    end
+  end
+
+  #Used to decline a team and return back to the teams index page
+  def remove_user
+    @team = Team.find(1)
+    if current_user.id == @team.captain_id #allow only captian to remove a user from the team
+      @team.players_id.delete(params[:player_id].to_i)
+      @team.save
+      User.find(params[:player_id]).update_attribute(:team_id, -1)
+      redirect_to action: "captain_team"
+      flash[:warning] = "Successfully removed user from team."
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only the team's captain can do that action."
+    end
+  end
+
 
   #Used by the team captain to accept users wanting to join the team
   def accept_user
     @team = Team.find(params[:id])
     user = User.find(params[:player_id])
     if @team.captain_id == current_user.id && user.team_id == -1
-      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
-      if new_applied_user_ids.nil?
-        @team.update_attribute(:applied_user_ids, [])
-      else
-        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
-      end
+      @team.applied_user_ids.delete(params[:player_id].to_i)
       @team.players_id << params[:player_id]
       @team.save
       user.update_attribute(:team_id, @team.id)
@@ -89,17 +112,13 @@ class TeamsController < ApplicationController
       redirect_to action: "show"
       flash[:warning] = "Accepted user to team."
     elsif user.team_id != -1
-      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
-      if new_applied_user_ids.nil?
-        @team.update_attribute(:applied_user_ids, [])
-      else
-        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
-      end
+      @team.applied_user_ids.delete(params[:player_id].to_i)
+      @team.save
       redirect_to action: "show"
       flash[:warning] = "User has already joined a team. Could not add user to team."
     else
       redirect_to action: "home"
-      flash[:warning] = "Only team captains can do that."
+      flash[:warning] = "Only the team captains can perform that action."
     end
   end
 
@@ -107,12 +126,7 @@ class TeamsController < ApplicationController
   def decline_user
     @team = Team.find(params[:id])
     if @team.captain_id == current_user.id
-      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
-      if new_applied_user_ids.nil?
-        @team.update_attribute(:applied_user_ids, [])
-      else
-        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
-      end
+      @team.applied_user_ids.delete(params[:player_id].to_i)
       @team.save
       redirect_to action: "show"
       flash[:warning] = "Declined user from team."

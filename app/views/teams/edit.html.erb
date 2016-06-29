@@ -9,7 +9,7 @@
 
 <div style= "font-size:17px">
 <%= link_to 'Show', @team , {:style=>"color:#fff;"} %> |
-<%= link_to 'Back', teams_path , {:style=>"color:#fff;"}%>
+<%= link_to 'Back', :back , {:style=>"color:#fff;"}%>
 
 </div>
 </div>
@@ -18,13 +18,13 @@
 
 <style>
 
-body { 
-  background: url("/assets/kobe2.jpg") no-repeat center center fixed; 
+body {
+  background: url("/assets/kobe2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+
 }
 
 .panel-default {
@@ -32,6 +32,5 @@ opacity: 0.9;
 margin-top:30px;
 }
 .form-group.last { margin-bottom:0px; }
-    
-</style>
 
+</style>
