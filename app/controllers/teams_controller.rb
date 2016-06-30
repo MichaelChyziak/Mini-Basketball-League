@@ -231,10 +231,16 @@ class TeamsController < ApplicationController
         user.update_attribute(:team_id, -1)
       end
       @team.destroy
-      respond_to do |format|
-        format.html { redirect_to teams_url, warning: 'Team was successfully destroyed.' }
-        format.json { head :no_content }
+      redirect_to teams_url
+      flash[:warning] = 'Team was successfully destroyed.'
+    elsif @team.captain_id == current_user.id
+      @team.players_id.each do |player_id|
+        user = User.find(player_id)
+        user.update_attribute(:team_id, -1)
       end
+      @team.destroy
+      redirect_to home_path
+      flash[:warning] = 'Team was successfully destroyed.'
     else
       redirect_to "/home"
       flash[:warning] = "Only admins can access that page."
