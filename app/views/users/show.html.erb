@@ -35,7 +35,11 @@
           <h3><strong style="color:#c45907">Weight:</strong> <%= @user.weight %><h3>
       </div>
       <div class="form-group">
-        <%=  link_to(image_tag("/logo/Twitter.png", :alt =>"twitterLogo", :style => "height:15%; width:15%"), "http://www.twitter.com/#{@user.twitter}", :target => "_blank") %>
+        <%=
+          if @user.twitter.present?
+            link_to(image_tag("/logo/Twitter.png", :alt =>"twitterLogo", :style => "height:15%; width:15%"), "http://www.twitter.com/#{@user.twitter}", :target => "_blank")
+          end
+        %>
       </div>
       <div>
         <%=
