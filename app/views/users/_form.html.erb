@@ -1,5 +1,6 @@
 <%= form_for(@user) do |f| %>
-  <!-- shared error messege -->
+  <%= render 'shared/error_messages', object: @user %>
+
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
 
@@ -11,6 +12,24 @@
 
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= f.label :about %>
+  <%= f.text_field :about, class: 'form-control' %>
+
+  <div class="field">
+    <%= f.label :height %><br>
+    <%= f.number_field :height , :class => 'text_field', :step => 0.01 , :min => 1 %> cm
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.number_field :weight , :class => 'text_field', :step => 0.01 , :min => 1  %> kg
+  </div>
+
+  <div class="field">
+    <%= f.label :twitter %><br>
+    <%= f.text_field :twitter , :class => 'text_field', placeholder: "@handle"  %>
+  </div>
+
   <br/>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
