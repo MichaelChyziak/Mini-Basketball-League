@@ -39,7 +39,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <% if(user.admin) %>
+      <% if(user.admin && !user.super_admin) %>
         <tr>
           <td><%= user.name %></td>
           <td><%= user.created_at %></td>

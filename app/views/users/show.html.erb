@@ -47,7 +47,7 @@
             link_to "Edit", edit_user_path(current_user)
           end
         %>
-        <% if current_user.admin? && !current_user?(@user) %>
+        <% if current_user.admin? && !current_user?(@user) && !@user.super_admin %>
           <%= link_to "Delete", @user, method: :delete,
                                         data: { confirm: "You sure?" } %>
         <% end %>
