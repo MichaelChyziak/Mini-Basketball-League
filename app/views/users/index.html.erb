@@ -17,6 +17,8 @@
           <td><%= user.name %></td>
           <td><%= user.created_at %></td>
           <td><%= link_to "View", user %></td>
+          <td><%= link_to "Delete", user, method: :delete,
+                                            data: { confirm: "You sure?" } %></td>
           <td><%= link_to "Admin", :controller => "users", :id => user.id, :action => "enable_admin", :method => :put, :status => true %></td>
         </tr>
       <% end %>
