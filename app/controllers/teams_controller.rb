@@ -19,9 +19,18 @@ class TeamsController < ApplicationController
   # Used to approve a team and return back to the teams index page
   def approve
     @team = Team.find(params[:id])
-    if current_user.admin? && @team.status == "pending" #allow only admin to do this and if the team is pending
+    approved_count = 0
+    Team.find_each do |team|
+      if team.league == league_chosen && team.status == "approved"
+        approved_count = approved_count + 1
+      end
+    end
+    if current_user.admin? && @team.status == "pending" && approved_count < 8 #allow only admin to do this and if the team is pending and less than 8 teams are in the league
       @team.update_attributes(:status => "approved")
       redirect_to "/teams"
+    elsif approved_count >= 8
+      redirect_to "/teams"
+      flash[:warning] = "The maximum of 8 teams already exist in that league."
     else
       redirect_to "/home"
       flash[:warning] = "That action cannot be done."
@@ -70,18 +79,41 @@ class TeamsController < ApplicationController
     end
   end
 
+  #Used to decline a team and return back to the teams index page
+  def appoint_captain
+    @team = Team.find(params[:team_id])
+    if current_user.id == @team.captain_id #only allow the captain to appoint another user as the captain
+      @team.update_attribute(:captain_id, params[:player_id].to_i)
+      redirect_to action: "show"
+      flash[:warning] = "Successfully appointed another user as the team captain. You are no longer the team captain."
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only the team's captain can do that action."
+    end
+  end
+
+  #Used to decline a team and return back to the teams index page
+  def remove_user
+    @team = Team.find(1)
+    if current_user.id == @team.captain_id #allow only captian to remove a user from the team
+      @team.players_id.delete(params[:player_id].to_i)
+      @team.save
+      User.find(params[:player_id]).update_attribute(:team_id, -1)
+      redirect_to action: "captain_team"
+      flash[:warning] = "Successfully removed user from team."
+    else
+      redirect_to "/home"
+      flash[:warning] = "Only the team's captain can do that action."
+    end
+  end
+
 
   #Used by the team captain to accept users wanting to join the team
   def accept_user
     @team = Team.find(params[:id])
     user = User.find(params[:player_id])
     if @team.captain_id == current_user.id && user.team_id == -1
-      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
-      if new_applied_user_ids.nil?
-        @team.update_attribute(:applied_user_ids, [])
-      else
-        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
-      end
+      @team.applied_user_ids.delete(params[:player_id].to_i)
       @team.players_id << params[:player_id]
       @team.save
       user.update_attribute(:team_id, @team.id)
@@ -89,17 +121,13 @@ class TeamsController < ApplicationController
       redirect_to action: "show"
       flash[:warning] = "Accepted user to team."
     elsif user.team_id != -1
-      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
-      if new_applied_user_ids.nil?
-        @team.update_attribute(:applied_user_ids, [])
-      else
-        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
-      end
+      @team.applied_user_ids.delete(params[:player_id].to_i)
+      @team.save
       redirect_to action: "show"
       flash[:warning] = "User has already joined a team. Could not add user to team."
     else
       redirect_to action: "home"
-      flash[:warning] = "Only team captains can do that."
+      flash[:warning] = "Only the team captains can perform that action."
     end
   end
 
@@ -107,12 +135,7 @@ class TeamsController < ApplicationController
   def decline_user
     @team = Team.find(params[:id])
     if @team.captain_id == current_user.id
-      new_applied_user_ids = @team.applied_user_ids.delete(params[:player_id])
-      if new_applied_user_ids.nil?
-        @team.update_attribute(:applied_user_ids, [])
-      else
-        @team.update_attribute(:applied_user_ids, new_applied_user_ids)
-      end
+      @team.applied_user_ids.delete(params[:player_id].to_i)
       @team.save
       redirect_to action: "show"
       flash[:warning] = "Declined user from team."
@@ -217,10 +240,16 @@ class TeamsController < ApplicationController
         user.update_attribute(:team_id, -1)
       end
       @team.destroy
-      respond_to do |format|
-        format.html { redirect_to teams_url, warning: 'Team was successfully destroyed.' }
-        format.json { head :no_content }
+      redirect_to teams_url
+      flash[:warning] = 'Team was successfully destroyed.'
+    elsif @team.captain_id == current_user.id
+      @team.players_id.each do |player_id|
+        user = User.find(player_id)
+        user.update_attribute(:team_id, -1)
       end
+      @team.destroy
+      redirect_to home_path
+      flash[:warning] = 'Team was successfully destroyed.'
     else
       redirect_to "/home"
       flash[:warning] = "Only admins can access that page."
@@ -235,7 +264,7 @@ class TeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:team_name, :league, :players_id, :status, :logo)
+      params.require(:team).permit(:team_name, :league, :players_id, :status, :logo, :team_message)
     end
 
     def home
@@ -249,6 +278,6 @@ class TeamsController < ApplicationController
     def about
 
     end
-    
+
 
 end

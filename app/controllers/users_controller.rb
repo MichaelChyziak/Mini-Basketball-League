@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+  #skip_before_filter :require_login, only: [:new]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: [:destroy]
+  before_action :admin_user,     only: :destroy
   skip_before_filter :require_login, only: [:new, :create]
 
   # Make the user an admin
@@ -79,7 +80,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :about, :height,:weight,
+                                 :twitter)
   end
 
   # Confirms a logged-in user.
