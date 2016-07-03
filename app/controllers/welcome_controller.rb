@@ -15,10 +15,14 @@ class WelcomeController < ApplicationController
   def about
 
   end
-  
+
   def schedule
+    @teams = Team.all
+  end
+
+  def standings
      @teams = Team.all
-    
+
   end
 
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/about' , to: 'welcome#about'
   get 'teams/join', to:'teams#join'
   get '/schedule' , to: 'welcome#schedule'
+  get '/standings', to: 'welcome#standings'
 
   get 'signup'  => 'users#new'
 
