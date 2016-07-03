@@ -18,7 +18,7 @@ class WelcomeController < ApplicationController
   
   def schedule
      @teams = Team.all
-    
+     @teams_approved = Team.where(:status =>1) 
   end
 
 end

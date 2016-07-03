@@ -87,6 +87,7 @@
           <tr>
           <th>Date</th>
               <th>Time</th>
+              <th>Location</th>
               <th>Team A</th>
                   <th>Team B</th>
                       <th>Details</th>
@@ -96,24 +97,111 @@
 
  
               <tbody>
-               
-               <% @teams.each_with_index do |team,idx| %>
-                     <% if(team.status == "approved") %>          
+                
+            <%if @teams_approved.length ==8 %>
+               <%for i in 1..@teams_approved.length-1 %>
                 <tr>
-                    <td>2016/10/<%= idx*4+1 =%></td>
-                    <td>3:00 PM</td>
-                 
-                    <td><%= team.team_name %></td>
-                    
-                    <td><%= team.team_name %></td>
                    
-       
+                    <td>2016/10/<%=4*(i-1)+1%></td>
+                    <td>3:00 PM</td>
+                     <td>N/A</td>
+                    <td><%= @teams_approved[0].team_name  %></td>
+                    <td><%= @teams_approved[i].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                 
                     </td>                                       
                 </tr>
-                     <% end %>    
-                <% end %> 
+                <%end%>
+                
+                <%for i in 2..@teams_approved.length-1 %>
+                
+                <tr>
+                   
+                    <td>2016/10/<%=4*(i-2)+3%></td>
+                    <td>3:00 PM</td>
+                     <td>N/A</td>
+                    <td><%= @teams_approved[1].team_name  %></td>
+                    <td><%= @teams_approved[i].team_name  %></td>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
+                    </td>                                       
+                </tr>
+                
+                <%end%>
+                
+                <%for i in 3..@teams_approved.length-1 %>
+                
+                <tr>
+                   
+                    <td>2016/10/<%=4*(i-3)+2%></td>
+                    <td>3:00 PM</td>
+                     <td>N/A</td>
+                    <td><%= @teams_approved[2].team_name  %></td>
+                    <td><%= @teams_approved[i].team_name  %></td>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
+                    </td>                                       
+                </tr>
+                <%end%>
+        
+                <%for i in 4..@teams_approved.length-1 %>
+                
+                <tr>
+                   
+                    <td>2016/10/<%=4*(i-3)+3%></td>
+                    <td>3:00 PM</td>
+                     <td>N/A</td>
+                    <td><%= @teams_approved[3].team_name  %></td>
+                    <td><%= @teams_approved[i].team_name  %></td>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
+                    </td>                                       
+                </tr>
+                <%end%>
+                
+                <%for i in 5..@teams_approved.length-1 %>
+                
+                <tr>
+                   
+                    <td>2016/10/<%=4*(i-5)+3%></td>
+                    <td>3:00 PM</td>
+                     <td>N/A</td>
+                    <td><%= @teams_approved[4].team_name  %></td>
+                    <td><%= @teams_approved[i].team_name  %></td>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
+                    </td>                                       
+                </tr>
+                <%end%>
+
+                <%for i in 6..@teams_approved.length-1 %>
+                
+                <tr>
+                   
+                    <td>2016/10/<%=4*(i-6)+3%></td>
+                    <td>3:00 PM</td>
+                     <td>N/A</td>
+                    <td><%= @teams_approved[5].team_name  %></td>
+                    <td><%= @teams_approved[i].team_name  %></td>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
+                    </td>                                       
+                </tr>
+                <%end%>
+                
+                <%for i in 7..@teams_approved.length-1 %>
+                
+                <tr>
+                   
+                    <td>2016/10/<%=4*(i-7)+4%></td>
+                    <td>3:00 PM</td>
+                     <td>N/A</td>
+                    <td><%= @teams_approved[6].team_name  %></td>
+                    <td><%= @teams_approved[i].team_name  %></td>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
+                    </td>                                       
+                </tr>
+                <%end%>
+                
+            <%end%>
+            
+            <%if @teams_approved.length !=8 %>
+               <b style="color:red; font-size: 20px"> Schedule will be generated when there are exactly 8 approved teams.</b>
+            <%end%>
               </tbody>
             </div>
        </div>
