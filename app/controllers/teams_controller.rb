@@ -19,9 +19,18 @@ class TeamsController < ApplicationController
   # Used to approve a team and return back to the teams index page
   def approve
     @team = Team.find(params[:id])
-    if current_user.admin? && @team.status == "pending" #allow only admin to do this and if the team is pending
+    approved_count = 0
+    Team.find_each do |team|
+      if team.league == league_chosen && team.status == "approved"
+        approved_count = approved_count + 1
+      end
+    end
+    if current_user.admin? && @team.status == "pending" && approved_count < 8 #allow only admin to do this and if the team is pending and less than 8 teams are in the league
       @team.update_attributes(:status => "approved")
       redirect_to "/teams"
+    elsif approved_count >= 8
+      redirect_to "/teams"
+      flash[:warning] = "The maximum of 8 teams already exist in that league."
     else
       redirect_to "/home"
       flash[:warning] = "That action cannot be done."
