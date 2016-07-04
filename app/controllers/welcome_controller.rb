@@ -18,7 +18,9 @@ class WelcomeController < ApplicationController
 
   def schedule
     @teams = Team.all
-    @teams_approved = Team.where(:status =>1) 
+    @teams_approved_gold = Team.where(:status =>1, :league =>"Gold")
+    @teams_approved_silver = Team.where(:status =>1, :league =>"Silver")
+    @teams_approved_bronze = Team.where(:status =>1, :league =>"Bronze")
   end
 
   def standings
