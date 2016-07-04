@@ -17,3 +17,4 @@ User.create(name: "user7", email: "user7@example.com", password: "useruser7", pa
 User.create(name: "user8", email: "user8@example.com", password: "useruser8", password_confirmation: "useruser8")
 User.create(name: "user9", email: "user9@example.com", password: "useruser9", password_confirmation: "useruser9")
 User.create(name: "daAdmin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notadmin", admin: true, super_admin: true)
+

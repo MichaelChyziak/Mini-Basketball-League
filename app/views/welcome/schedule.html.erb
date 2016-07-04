@@ -55,7 +55,7 @@
 
 
 <div class="container">
-    <div class="row"style="position:absolute;margin: auto;width:60%">
+    <div class="row"style="width:90%">
         
         
         <div class="panel panel-primary" style="border-color:#c7c8c9">
@@ -73,11 +73,12 @@
               <th>Time</th>
               <th>Location</th>
               <th>Team A</th>
-                  <th>Team B</th>
-                      <th>Details</th>
-                     
-                  </tr>
-              </thead>
+              <th>Team B</th>
+              <th>Details</th>
+              <th>Score</th>
+              <th>Submit</th>
+           </tr>
+        </thead>
 
  
               <tbody>
@@ -91,7 +92,16 @@
                     <td><%= @teams_approved_gold[0].team_name  %></td>
                     <td><%= @teams_approved_gold[1].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[0].captain_id) || (current_user.id == @teams_approved_gold[1].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[0].captain_id) && (current_user.id != @teams_approved_gold[1].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -101,7 +111,18 @@
                     <td><%= @teams_approved_gold[2].team_name  %></td>
                     <td><%= @teams_approved_gold[7].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[2].captain_id) || (current_user.id == @teams_approved_gold[7].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[2].captain_id) && (current_user.id != @teams_approved_gold[7].captain_id) %>
+                    <td>--</td>
+                    <%end%>
+                    
+                    
                 </tr>
                 
                 <tr>
@@ -111,7 +132,16 @@
                     <td><%= @teams_approved_gold[3].team_name  %></td>
                     <td><%= @teams_approved_gold[6].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[3].captain_id) || (current_user.id == @teams_approved_gold[6].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[3].captain_id) && (current_user.id != @teams_approved_gold[6].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -121,7 +151,16 @@
                     <td><%= @teams_approved_gold[4].team_name  %></td>
                     <td><%= @teams_approved_gold[5].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[4].captain_id) || (current_user.id == @teams_approved_gold[5].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[4].captain_id) && (current_user.id != @teams_approved_gold[5].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
  
@@ -133,7 +172,16 @@
                     <td><%= @teams_approved_gold[2].team_name  %></td>
                     <td><%= @teams_approved_gold[3].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[2].captain_id) || (current_user.id == @teams_approved_gold[3].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[2].captain_id) && (current_user.id != @teams_approved_gold[3].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -143,7 +191,16 @@
                     <td><%= @teams_approved_gold[0].team_name  %></td>
                     <td><%= @teams_approved_gold[6].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[0].captain_id) || (current_user.id == @teams_approved_gold[6].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[6].captain_id) && (current_user.id != @teams_approved_gold[6].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -153,7 +210,16 @@
                     <td><%= @teams_approved_gold[5].team_name  %></td>
                     <td><%= @teams_approved_gold[7].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[5].captain_id) || (current_user.id == @teams_approved_gold[7].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[5].captain_id) && (current_user.id != @teams_approved_gold[7].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -163,7 +229,16 @@
                     <td><%= @teams_approved_gold[1].team_name  %></td>
                     <td><%= @teams_approved_gold[4].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[1].captain_id) || (current_user.id == @teams_approved_gold[4].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[1].captain_id) && (current_user.id != @teams_approved_gold[4].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
  
                  <tr>
@@ -173,7 +248,16 @@
                     <td><%= @teams_approved_gold[1].team_name  %></td>
                     <td><%= @teams_approved_gold[5].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[1].captain_id) || (current_user.id == @teams_approved_gold[5].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[1].captain_id) && (current_user.id != @teams_approved_gold[5].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -183,7 +267,16 @@
                     <td><%= @teams_approved_gold[6].team_name  %></td>
                     <td><%= @teams_approved_gold[7].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[6].captain_id) || (current_user.id == @teams_approved_gold[7].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[6].captain_id) && (current_user.id != @teams_approved_gold[7].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -193,7 +286,16 @@
                     <td><%= @teams_approved_gold[3].team_name  %></td>
                     <td><%= @teams_approved_gold[0].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[3].captain_id) || (current_user.id == @teams_approved_gold[0].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[3].captain_id) && (current_user.id != @teams_approved_gold[0].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -203,7 +305,16 @@
                     <td><%= @teams_approved_gold[4].team_name  %></td>
                     <td><%= @teams_approved_gold[2].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[4].captain_id) || (current_user.id == @teams_approved_gold[2].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[4].captain_id) && (current_user.id != @teams_approved_gold[2].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                  <tr>
@@ -213,7 +324,15 @@
                     <td><%= @teams_approved_gold[6].team_name  %></td>
                     <td><%= @teams_approved_gold[4].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[6].captain_id) || (current_user.id == @teams_approved_gold[4].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[6].captain_id) && (current_user.id != @teams_approved_gold[4].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -223,7 +342,16 @@
                     <td><%= @teams_approved_gold[7].team_name  %></td>
                     <td><%= @teams_approved_gold[3].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[7].captain_id) || (current_user.id == @teams_approved_gold[3].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[7].captain_id) && (current_user.id != @teams_approved_gold[3].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -233,7 +361,16 @@
                     <td><%= @teams_approved_gold[1].team_name  %></td>
                     <td><%= @teams_approved_gold[2].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[1].captain_id) || (current_user.id == @teams_approved_gold[2].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[1].captain_id) && (current_user.id != @teams_approved_gold[2].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -243,7 +380,16 @@
                     <td><%= @teams_approved_gold[5].team_name  %></td>
                     <td><%= @teams_approved_gold[0].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[5].captain_id) || (current_user.id == @teams_approved_gold[0].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[5].captain_id) && (current_user.id != @teams_approved_gold[0].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 
@@ -254,7 +400,16 @@
                     <td><%= @teams_approved_gold[0].team_name  %></td>
                     <td><%= @teams_approved_gold[2].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[0].captain_id) || (current_user.id == @teams_approved_gold[2].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[0].captain_id) && (current_user.id != @teams_approved_gold[2].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -264,7 +419,16 @@
                     <td><%= @teams_approved_gold[3].team_name  %></td>
                     <td><%= @teams_approved_gold[1].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[3].captain_id) || (current_user.id == @teams_approved_gold[1].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[3].captain_id) && (current_user.id != @teams_approved_gold[1].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -274,7 +438,16 @@
                     <td><%= @teams_approved_gold[4].team_name  %></td>
                     <td><%= @teams_approved_gold[7].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[4].captain_id) || (current_user.id == @teams_approved_gold[7].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[4].captain_id) && (current_user.id != @teams_approved_gold[7].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -284,7 +457,16 @@
                     <td><%= @teams_approved_gold[5].team_name  %></td>
                     <td><%= @teams_approved_gold[6].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[5].captain_id) || (current_user.id == @teams_approved_gold[6].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[5].captain_id) && (current_user.id != @teams_approved_gold[6].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 
@@ -295,7 +477,16 @@
                     <td><%= @teams_approved_gold[3].team_name  %></td>
                     <td><%= @teams_approved_gold[4].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[3].captain_id) || (current_user.id == @teams_approved_gold[4].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[3].captain_id) && (current_user.id != @teams_approved_gold[4].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -305,7 +496,16 @@
                     <td><%= @teams_approved_gold[7].team_name  %></td>
                     <td><%= @teams_approved_gold[0].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[7].captain_id) || (current_user.id == @teams_approved_gold[0].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[7].captain_id) && (current_user.id != @teams_approved_gold[0].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -315,7 +515,16 @@
                     <td><%= @teams_approved_gold[1].team_name  %></td>
                     <td><%= @teams_approved_gold[6].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[1].captain_id) || (current_user.id == @teams_approved_gold[6].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[1].captain_id) && (current_user.id != @teams_approved_gold[6].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -325,7 +534,16 @@
                     <td><%= @teams_approved_gold[2].team_name  %></td>
                     <td><%= @teams_approved_gold[5].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[2].captain_id) || (current_user.id == @teams_approved_gold[5].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[2].captain_id) && (current_user.id != @teams_approved_gold[5].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 
@@ -336,7 +554,16 @@
                     <td><%= @teams_approved_gold[6].team_name  %></td>
                     <td><%= @teams_approved_gold[2].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[6].captain_id) || (current_user.id == @teams_approved_gold[2].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[6].captain_id) && (current_user.id != @teams_approved_gold[2].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -346,7 +573,16 @@
                     <td><%= @teams_approved_gold[7].team_name  %></td>
                     <td><%= @teams_approved_gold[1].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[7].captain_id) || (current_user.id == @teams_approved_gold[1].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[7].captain_id) && (current_user.id != @teams_approved_gold[1].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -356,7 +592,16 @@
                     <td><%= @teams_approved_gold[0].team_name  %></td>
                     <td><%= @teams_approved_gold[4].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[0].captain_id) || (current_user.id == @teams_approved_gold[4].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[0].captain_id) && (current_user.id != @teams_approved_gold[4].captain_id) %>
+                    <td>--</td>
+                    <%end%>
                 </tr>
                 
                 <tr>
@@ -366,8 +611,17 @@
                     <td><%= @teams_approved_gold[5].team_name  %></td>
                     <td><%= @teams_approved_gold[3].team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Details</a></td>
-                    </td>                                       
-                </tr>                
+                    </td>
+                    
+                    <td></td>
+                    <%if (current_user.id == @teams_approved_gold[5].captain_id) || (current_user.id == @teams_approved_gold[3].captain_id)%>
+                    <td><a href="" class="btn btn-sm btn-primary btn-block" role="button">Submit Score</a></td>
+                    <%end%>
+                    
+                    <%if (current_user.id != @teams_approved_gold[5].captain_id) && (current_user.id != @teams_approved_gold[3].captain_id) %>
+                    <td>--</td>
+                    <%end%>
+                </tr>
                 
                 
             <%end%>
@@ -377,6 +631,8 @@
             <%end%>
               </tbody>
             </div>
+       </div>
+       </div>
        </div>
         
     
