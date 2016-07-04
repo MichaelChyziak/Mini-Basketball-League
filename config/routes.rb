@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'signup'  => 'users#new'
 
+  get '/league/start', to: 'league#start'
+
   # Login
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
