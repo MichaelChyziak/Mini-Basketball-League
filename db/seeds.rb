@@ -23,7 +23,7 @@ User.create(username: "user6", email: "user6@example.com", password: "useruser6"
 User.create(username: "user7", email: "user7@example.com", password: "useruser7", password_confirmation: "useruser7")
 User.create(username: "user8", email: "user8@example.com", password: "useruser8", password_confirmation: "useruser8")
 User.create(username: "user9", email: "user9@example.com", password: "useruser9", password_confirmation: "useruser9")
-User.create(username: "daAdmin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notadmin", admin: true, super_admin: true)
+User.create(username: "admin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notadmin", admin: true, super_admin: true)
 League.create(name: "Gold")
 League.create(name: "Silver")
 League.create(name: "Bronze")
