@@ -6,13 +6,13 @@ skip_before_filter :require_login
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(username: params[:session][:username].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to home_path
     else
-      flash.now[:danger] = 'Incorrect email/password. Please try again.'
+      flash.now[:danger] = 'Incorrect username/password. Please try again.'
       render 'new'
     end
   end
