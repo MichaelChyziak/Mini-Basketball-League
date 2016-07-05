@@ -14,83 +14,83 @@ class LeagueController < ApplicationController
     temp_score.save
     @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[3].id, team_2_id: teams[6].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[4].id, team_2_id: teams[5].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[2].id, team_2_id: teams[3].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[0].id, team_2_id: teams[6].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[5].id, team_2_id: teams[7].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[1].id, team_2_id: teams[4].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[1].id, team_2_id: teams[5].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[6].id, team_2_id: teams[7].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[3].id, team_2_id: teams[0].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[4].id, team_2_id: teams[2].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[6].id, team_2_id: teams[4].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[7].id, team_2_id: teams[3].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[1].id, team_2_id: teams[2].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[5].id, team_2_id: teams[0].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[0].id, team_2_id: teams[2].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[3].id, team_2_id: teams[1].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[4].id, team_2_id: teams[7].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[5].id, team_2_id: teams[6].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[3].id, team_2_id: teams[4].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[7].id, team_2_id: teams[0].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[1].id, team_2_id: teams[6].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[2].id, team_2_id: teams[5].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[6].id, team_2_id: teams[2].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[7].id, team_2_id: teams[1].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[0].id, team_2_id: teams[4].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
     temp_score = Score.new(team_1_id: teams[5].id, team_2_id: teams[3].id, league: params[:league_name])
-    @league.score_ids << temp_score.id
     temp_score.save
+    @league.score_ids << temp_score.id
 
     @league.save
 
