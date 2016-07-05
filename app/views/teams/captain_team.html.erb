@@ -12,7 +12,7 @@
   <tbody>
     <% @team.applied_user_ids.each do |applied_user_id| %>
       <tr>
-        <td><%= User.find(applied_user_id).name %></td>
+        <td><%= User.find(applied_user_id).username %></td>
         <td><%= link_to "Details", User.find(applied_user_id)%></td>
         <td><%= link_to "Approve", :controller => "teams", :id => @team.id, :player_id => applied_user_id, :action => "accept_user", :method => :put, :status => true %></td>
         <td><%= link_to "Decline", :controller => "teams", :id => @team.id, :player_id => applied_user_id, :action => "decline_user", :method => :put, :status => true %></td>
@@ -37,7 +37,7 @@
   <tbody>
     <% @team.players_id.each do |player_id| %>
       <tr>
-        <td><%= User.find(player_id).name %></td>
+        <td><%= User.find(player_id).username %></td>
         <td><%= link_to "Details", User.find(player_id)%></td>
         <% if @team.captain_id != player_id %>
           <td><%= link_to "Appoint Captain", :controller => "teams", :team_id => @team.id, :player_id => player_id, :action => "appoint_captain", :method => :put, :status => true %></td>

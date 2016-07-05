@@ -35,7 +35,7 @@ Ignore in frontend for iteration 1.
   <p>
     <strong style="color:#9e0c0c">Users:</strong>
     <% @team.players_id.each do |player_id| %>
-      <%= User.find(player_id).name %><br>
+      <%= User.find(player_id).username %><br>
     <% end %>
   </p>
 <% end %>
