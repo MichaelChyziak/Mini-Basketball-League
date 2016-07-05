@@ -14,7 +14,7 @@
     <% @users.each do |user| %>
       <% if(!user.admin) %>
         <tr>
-          <td><%= user.name %></td>
+          <td><%= user.username %></td>
           <td><%= user.created_at %></td>
           <td><%= link_to "View", user %></td>
           <td><%= link_to "Delete", user, method: :delete,
@@ -43,7 +43,7 @@
     <% @users.each do |user| %>
       <% if(user.admin && !user.super_admin) %>
         <tr>
-          <td><%= user.name %></td>
+          <td><%= user.username %></td>
           <td><%= user.created_at %></td>
           <td><%= link_to "View", user %></td>
           <td><%= link_to "Un-Admin", :controller => "users", :id => user.id, :action => "disable_admin", :method => :put, :status => true %></td>
