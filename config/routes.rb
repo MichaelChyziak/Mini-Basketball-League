@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'signup'  => 'users#new'
 
   get '/league/start', to: 'league#start'
+  get '/score/form', to: 'score#form'
+  patch '/score/submit', to: 'score#submit'
 
   # Login
   get    'login'   => 'sessions#new'
