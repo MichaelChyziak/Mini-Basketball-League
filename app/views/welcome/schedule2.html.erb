@@ -85,8 +85,24 @@
             <%if @league_silver.active? %>
               <% @scores.each do |score| %>
                 <tr>
-                    <td>XXXX/XX/XX</td>
-                    <td>XX:XX XM</td>
+                    <%if index < 4 %>
+                    <td>2016/10/<%=index+1%></td>
+                    <%elsif index < 8 %>
+                    <td>2016/10/<%=index+5%></td>
+                    <%elsif index < 12 %>
+                    <td>2016/10/<%=index+9%></td>
+                    <%elsif index < 16 %>
+                    <td>2016/10/<%=index+13%></td>
+                    <%elsif index < 20 %>
+                    <td>2016/11/<%=index-13%></td>
+                    <%elsif index < 24 %>
+                    <td>2016/11/<%=index-9%></td>
+                    <%else %>
+                    <td>2016/11/<%=index-5%></td>
+                    <%end%>
+                    
+
+                    <td>6:00 PM</td>
                     <td>N/A</td>
                     <% team1 = Team.find(score.team_1_id) %>
                     <% team2 = Team.find(score.team_2_id) %>
