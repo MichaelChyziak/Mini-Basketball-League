@@ -101,7 +101,7 @@
                     <%else %>
                     <td>2016/11/<%=index-5%></td>
                     <%end%>
-                    
+
 
                     <td>6:00 PM</td>
                     <td>N/A</td>
@@ -114,7 +114,7 @@
 
                     <td></td>
                     <%if (current_user.id == team1.captain_id) || (current_user.id == team2.captain_id)%>
-                      <td><a href="" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Submit Score</a></td>
+                      <td><%= link_to "Submit Score", score_form_path(score), :class => "btn btn-sm btn-primary btn-block", role: "button" %></td>
                     <%else%>
                       <td>--</td>
                     <%end%>
