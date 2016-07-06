@@ -101,11 +101,11 @@
                     <%else %>
                     <td>2016/11/<%=index-5%></td>
                     <%end%>
-                    
+
 
                     <td>6:00 PM</td>
 
-                
+
                     <td>N/A</td>
                     <% team1 = Team.find(score.team_1_id) %>
                     <% team2 = Team.find(score.team_2_id) %>
@@ -113,8 +113,11 @@
                     <td><%= team2.team_name  %></td>
                     <td><a href="" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Details</a></td>
                     </td>
-
-                    <td></td>
+                    <% if score.approved_score %>
+                      <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
+                    <% else %>
+                      <td></td>
+                    <% end %>
                     <%if (current_user.id == team1.captain_id) || (current_user.id == team2.captain_id)%>
                       <td><%= link_to "Submit Score", score_form_path(score), :class => "btn btn-sm btn-primary btn-block", role: "button" %></td>
                     <%else%>

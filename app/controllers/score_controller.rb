@@ -7,7 +7,6 @@ class ScoreController < ApplicationController
 
   def submit
     @score = Score.find_by_id(params[:id])
-    puts @score.id
     if @score.update_attributes(score_params)
       flash[:success] = "Score submitted"
       redirect_to '/schedule'
@@ -17,11 +16,33 @@ class ScoreController < ApplicationController
     end
   end
 
+  def index
+    @scores = Score.all
+  end
+
+  def team_1_score_accept
+    score = Score.find(params[:id])
+    score.update_attribute(:official_team_1_score, score.captain_1_team_1_score)
+    score.update_attribute(:official_team_2_score, score.captain_1_team_2_score)
+    score.update_attribute(:approved_score, true)
+    score.save
+    redirect_to '/scores'
+  end
+
+  def team_2_score_accept
+    score = Score.find(params[:id])
+    score.update_attribute(:official_team_1_score, score.captain_2_team_1_score)
+    score.update_attribute(:official_team_2_score, score.captain_2_team_2_score)
+    score.update_attribute(:approved_score, true)
+    score.save
+    redirect_to '/scores'
+  end
+
+
   private
 
   def set_score
     @score = Score.find(params[:id])
-    puts @score.id
   end
 
   def score_params
