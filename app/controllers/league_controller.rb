@@ -94,8 +94,16 @@ class LeagueController < ApplicationController
 
     @league.save
 
-
-    redirect_to "/schedule"
+    if request.referer.include? "/schedule"
+      redirect_to "/schedule"
+    elsif request.referer.include? "schedule2"
+      redirect_to "/schedule2"
+    elsif request.referer.include? "/schedule3"
+      redirect_to "/schedule3"
+    else
+      flash[:warning] = "Cannot perform that action."
+      redirect_to "/home"
+    end
   end
 
 end
