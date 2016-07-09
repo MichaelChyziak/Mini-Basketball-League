@@ -9,6 +9,6 @@ two:
   email: user2@example.com
 
 michael:
-  username: Michael Example
+  username: michael
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
