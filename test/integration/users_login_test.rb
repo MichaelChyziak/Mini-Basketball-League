@@ -19,7 +19,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "valid signup information" do
     get signup_path
     assert_difference 'User.count', 1 do
-      post_via_redirect users_path, user: { name:  "usertest",
+      post_via_redirect users_path, user: { username:  "usertest",
                                             email: "user@example.com",
                                             password:              "password",
                                             password_confirmation: "password" }
@@ -30,11 +30,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
     test "login with valid information followed by logout" do
     get login_path
-    post login_path, session: { email: @user.username, password: 'password' }
+    post login_path, session: { username: @user.username, password: 'password' }
     assert is_logged_in?
     assert_redirected_to "/home"
     follow_redirect!
-    # Somehow find a way to redirect to the user profile, all test should pass
+    #Try to redirect to user profile
+    get user_path(@user)
     assert_template 'users/show'
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
