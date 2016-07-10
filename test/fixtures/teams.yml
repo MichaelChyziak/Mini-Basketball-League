@@ -6,6 +6,10 @@ one:
 two:
   team_name: Thistextiswaytoolongtobeonly30charactersIhopeIgetdockedforthishahahahah
 
+mavericks:
+  team_name: Mavericks
+  league: Silver
+
 gold1:
   team_name: 1
   status: 1
