@@ -14,6 +14,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     get root_path
     assert flash.empty?
+    assert_not is_logged_in?
+    assert_template 'sessions/new'
   end
 
   test "valid signup information" do
@@ -51,6 +53,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user), count: 0
   end
 
+=begin
   test "login with remembering" do
     log_in_as(@user, remember_me: '1')
     assert_not_nil cookies['remember_token']
@@ -60,5 +63,5 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     log_in_as(@user, remember_me: '0')
     assert_nil cookies['remember_token']
   end
-
+=end
 end

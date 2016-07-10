@@ -3,7 +3,15 @@ require 'test_helper'
 class TeamTest < ActiveSupport::TestCase
 
   def setup
-    @team = Team.new(team_name: "Mavericks", league: "Gold")
+    @team = teams(:mavericks)
+  end
+
+  test "teams created_at cannot be null" do
+    assert(@team.created_at.present?)
+  end
+
+  test "teams updated_at cannot be null" do
+    assert(@team.updated_at.present?)
   end
 
   test "should be valid" do
@@ -41,5 +49,17 @@ class TeamTest < ActiveSupport::TestCase
     @team.players_id = [1]
     assert @team.players_id[0] == 1
   end
+
+  #test "team names should be unique" do
+  # => TODO
+  #end
+
+  #test "captain_id must be the same as players_id" do
+  # => TODO
+  #end
+
+  #test "players_id is limited to 20 players" do
+  # => TODO
+  #end
 
 end

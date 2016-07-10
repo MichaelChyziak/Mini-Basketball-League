@@ -5,3 +5,47 @@ one:
 
 two:
   team_name: Thistextiswaytoolongtobeonly30charactersIhopeIgetdockedforthishahahahah
+
+mavericks:
+  team_name: Mavericks
+  league: Silver
+
+gold1:
+  team_name: 1
+  status: 1
+  league: Gold
+
+gold2:
+  team_name: 2
+  status: 1
+  league: Gold
+
+gold3:
+  team_name: 3
+  status: 1
+  league: Gold
+
+gold4:
+  team_name: 4
+  status: 1
+  league: Gold
+
+gold5:
+  team_name: 5
+  status: 1
+  league: Gold
+
+gold6:
+  team_name: 6
+  status: 1
+  league: Gold
+
+gold7:
+  team_name: 7
+  status: 1
+  league: Gold
+
+gold8:
+  team_name: 8
+  status: 1
+  league: Gold
