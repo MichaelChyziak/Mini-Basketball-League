@@ -3,8 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = User.new(username: "usertest", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    @user = User.new(username: "user_test", email: "usertest@example.com",
+                     password: "usertest", password_confirmation: "usertest")
   end
 
   test "should be valid" do
@@ -43,6 +43,13 @@ class UserTest < ActiveSupport::TestCase
   test "email addresses should be unique" do
     duplicate_user = @user.dup
     duplicate_user.email = @user.email.upcase
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+
+  test "usernames should be unique" do
+    duplicate_user = @user.dup
+    duplicate_user.username = @user.username.upcase
     @user.save
     assert_not duplicate_user.valid?
   end
