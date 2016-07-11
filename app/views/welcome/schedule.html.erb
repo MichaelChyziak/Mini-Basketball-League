@@ -118,7 +118,7 @@
                     <% else %>
                       <td></td>
                     <% end %>
-                    <%if (current_user.id == team1.captain_id) || (current_user.id == team2.captain_id)%>
+                    <%if ((current_user.id == team1.captain_id) || (current_user.id == team2.captain_id)) && !score.approved_score%>
                       <td><%= link_to "Submit Score", score_form_path(score), :class => "btn btn-sm btn-primary btn-block", role: "button" %></td>
                     <%else%>
                       <td>--</td>
