@@ -9,3 +9,6 @@ gold:
 
 silver:
   name: "Silver"
+
+bronze:
+  name: "Bronze"
