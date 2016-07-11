@@ -12,6 +12,7 @@ class WelcomeControllerTest < ActionController::TestCase
   end
   
   test "should get about" do
+    session[:user_id] = @user.id
     get :about
     assert_response :success
   end
