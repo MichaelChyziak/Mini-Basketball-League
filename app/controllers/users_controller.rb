@@ -71,9 +71,30 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
+    found_team = false
+    Team.all.each do |team|
+      if (params[:id].to_i == team.captain_id)
+        found_team = true
+        if (team.status == "approved")
+          flash[:warning] = "Cannot delete user. This user is a captain of a team currenlty approved to play in a league."
+          redirect_to users_url
+        else
+          team.players_id.each do |player_id|
+            user = User.find(player_id)
+            user.update_attribute(:team_id, -1)
+          end
+          team.destroy
+          User.find(params[:id]).destroy
+          flash[:success] = "User and their team were deleted"
+          redirect_to users_url
+        end
+      end
+    end
+    if found_team == false
+      User.find(params[:id]).destroy
+      flash[:success] = "User deleted"
+      redirect_to users_url
+    end
   end
 
   private
