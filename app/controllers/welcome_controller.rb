@@ -1,9 +1,6 @@
 class WelcomeController < ApplicationController
 
   # GET /welcome
-  def index
-
-  end
   def home
 
   end
