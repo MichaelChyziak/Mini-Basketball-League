@@ -97,11 +97,16 @@ class TeamsController < ApplicationController
   def remove_user
     @team = Team.find(1)
     if current_user.id == @team.captain_id #allow only captian to remove a user from the team
-      @team.players_id.delete(params[:player_id].to_i)
-      @team.save
-      User.find(params[:player_id]).update_attribute(:team_id, -1)
-      redirect_to action: "captain_team"
-      flash[:warning] = "Successfully removed user from team."
+      if (params[:player_id] == current_user.id)
+        @team.players_id.delete(params[:player_id].to_i)
+        @team.save
+        User.find(params[:player_id]).update_attribute(:team_id, -1)
+        redirect_to action: "captain_team"
+        flash[:warning] = "Successfully removed user from team."
+      else
+        redirect_to action: "captain_team"
+        flash[:warning] = "Cannot remove yourself from the team."
+      end
     else
       redirect_to "/home"
       flash[:warning] = "Only the team's captain can do that action."
