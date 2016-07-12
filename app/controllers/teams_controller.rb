@@ -26,7 +26,6 @@ class TeamsController < ApplicationController
         approved_count = approved_count + 1
       end
     end
-    puts approved_count
     if current_user.admin? && @team.status == "pending" && approved_count < 8 #allow only admin to do this and if the team is pending and less than 8 teams are in the league
       @team.update_attributes(:status => "approved")
       redirect_to "/teams"
@@ -76,7 +75,7 @@ class TeamsController < ApplicationController
     if @team.captain_id == current_user.id
       #TODO
     else
-      redirect_to action: "home"
+      redirect_to "/home"
       flash[:warning] = "Only team captains can access that page."
     end
   end
@@ -147,7 +146,7 @@ class TeamsController < ApplicationController
     end
   end
 
-
+  #REMOVE? Seems to not be used
   def find_users_team
     @team = Team.find(params[team_id])
     redirect_to @team
