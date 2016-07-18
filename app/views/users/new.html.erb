@@ -1,71 +1,81 @@
 <body>
-<div class= "container">
+
   <%= form_for(@user) do |f| %>
   <%= render 'error_msg/error_messages' %>
-   <div class="col-md-6 col-md-offset-3">
-<div class="panel panel-default" >
-    <div class="panel-heading">
-      <% provide(:title, "Sign up") %>
-      <h1>Sign up</h1>
-      <div class="panel-title text-center">
-      </div>
-    </div>
-  <div class="panel-body" >
 
-  	<%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control' %>
+  <table>
+    <tr>
+      <td></td>
+      <td><div id="title"><p id="title">Join the Community!</p></div></td>
+    </tr>
+    <tr>
+      <td>
+        <div id="image"><img src="/assets/sign-up-picture.png"><div>
+      </td>
+      <td>
+          <div id="form">
+          	 <%= f.label :username %>
+              <%= f.text_field :username, class: 'form-control' %>
+              </br>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+              <%= f.label :email %>
+              <%= f.email_field :email, class: 'form-control' %>
+              </br>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+              <%= f.label :password %>
+              <%= f.password_field :password, class: 'form-control' %>
+              </br>
 
-      <%= f.label :password_confirmation, "Retype Password" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+              <%= f.label :password_confirmation, "Retype Password" %>
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+              </br>
 
-      <%= f.submit "Create account", class: "btn btn-primary" %>
+              <%= f.submit "Create account", class: "btn btn-primary" %>
 
-    <% end %>
-  </div>
-</div>
-</div>
+            <% end %>
+          </div>
+        </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+
+
 
 </body>
 
 
 <style>
 body {
-  background-color: white;
-  background: url("/assets/signup-court-bg.jpg") ;
-  background-size:117%;
+  background-color: #E3E7E8;
 }
 
-  input, textarea, select, .uneditable-input {
-    border: 1px solid #bbb;
+  table, td {
+    border: 0px solid black;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  img {
     width: 100%;
-    margin-bottom: 15px;
-    @include box_sizing;
+    height:100%;
   }
 
-  input {
-    height: auto !important;
+  #image {
+    width: 500px;
+    margin: 0px;
+    padding: 0px;
   }
 
-  h1 {
-    text-align: center;
+  #title {
+    font-size: 30px;
+    color: #6972be;
   }
 
-  .panel {
-    background-color: transparent;
-    margin-top: 80px;
-}
-.panel-body {
-    padding-top: 30px;
-    background-color: rgba(2555,255,255,.3);
-    height:400px;
-}
-.box{
-    width:20%;
-}
+  #form {
+    width: 700px;
+  }
+  
 </style>

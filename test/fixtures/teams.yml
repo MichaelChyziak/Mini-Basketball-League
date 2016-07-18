@@ -2,9 +2,11 @@
 
 one:
   team_name: MyText
+  league: Gold
 
 two:
   team_name: Thistextiswaytoolongtobeonly30charactersIhopeIgetdockedforthishahahahah
+  league: Silver
 
 mavericks:
   team_name: Mavericks
@@ -49,4 +51,3 @@ gold8:
   team_name: 8
   status: 1
   league: Gold
-
