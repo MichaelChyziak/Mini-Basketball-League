@@ -4,7 +4,7 @@ class LeagueController < ApplicationController
     @league = League.where(:name => params[:league_name]).first
     @league.active = true
     @league.save
-
+    
     # Create new scores (7 weeks with 4 games -> 7*4=28)
     teams = Team.where(:status =>1, :league =>params[:league_name])
     temp_score = Score.new(team_1_id: teams[0].id, team_2_id: teams[1].id, league: params[:league_name])
@@ -105,5 +105,23 @@ class LeagueController < ApplicationController
       redirect_to "/home"
     end
   end
+  
+  def back
+    @league = League.where(:name => params[:league_name]).first
+    @league.active = false
+    @league.save
+    teams = Team.where(:status =>1, :league =>params[:league_name])
+    teams.delete_all
 
+    if URI(request.referer).path == "/schedule"
+      redirect_to "/schedule"
+    elsif URI(request.referer).path == "/schedule2"
+      redirect_to "/schedule2"
+    elsif URI(request.referer).path == "/schedule3"
+      redirect_to "/schedule3"
+    else
+      flash[:warning] = "Cannot perform that action."
+      redirect_to "/home"
+    end
+  end
 end
