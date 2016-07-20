@@ -4,15 +4,14 @@ class WelcomeControllerTest < ActionController::TestCase
   def setup
     @user = User.create(username:"ray",email:"ray@example.com",password:'password',admin:true)
   end
-#when logged in  
+#when logged in
   test "should get home" do
     session[:user_id] = @user.id
     get :home
     assert_response :success
   end
-  
+
   test "should get about" do
-    session[:user_id] = @user.id
     get :about
     assert_response :success
   end
@@ -22,7 +21,7 @@ class WelcomeControllerTest < ActionController::TestCase
     get :schedule
     assert_response :success
   end
-  
+
   test "should get shedule2" do
     session[:user_id] = @user.id
     get :schedule2
@@ -40,14 +39,14 @@ class WelcomeControllerTest < ActionController::TestCase
     get :standings
     assert_response :success
   end
-  
-#not logged in  
+
+#not logged in
 
   test "should not get home" do
     get :home
     assert_redirected_to root_path
   end
-  
+
   test "should STILL get about" do
     get :about
     assert_response :success
@@ -57,7 +56,7 @@ class WelcomeControllerTest < ActionController::TestCase
     get :schedule
     assert_redirected_to root_path
   end
-  
+
   test "should not get shedule2" do
     get :schedule2
     assert_redirected_to root_path
@@ -72,6 +71,6 @@ class WelcomeControllerTest < ActionController::TestCase
     get :standings
     assert_redirected_to root_path
   end
-  
-  
+
+
 end

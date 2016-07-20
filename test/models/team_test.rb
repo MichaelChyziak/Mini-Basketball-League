@@ -37,7 +37,7 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   test "team should be in a league" do
-    assert (@team.league == "Gold" || @team.league == "Silver" || @team.league == "Bronze")
+    assert (@team.league == "Vancouver" || @team.league == "Surrey" || @team.league == "Richmond")
   end
 
   test "name should not be too long" do

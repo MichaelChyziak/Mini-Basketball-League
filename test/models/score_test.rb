@@ -31,7 +31,7 @@ class ScoreTest < ActiveSupport::TestCase
     # end
 
     test "should have a league" do
-      assert (@score.league == "Gold" || @score.league == "Silver" || @score.league == "Bronze")
+      assert (@score.league == "Vancouver" || @score.league == "Surrey" || @score.league == "Richmond")
     end
 
 end

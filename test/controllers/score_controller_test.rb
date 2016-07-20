@@ -20,25 +20,25 @@ class ScoreControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "Gold league redirects to proper schedule after submission" do
+  test "Vancouver league redirects to proper schedule after submission" do
     session[:user_id] = @user.id
     patch :submit, id: @score.id, score: {captain_1_team_1_score: 1, captain_1_team_2_score: 1}
     assert_redirected_to "/schedule"
     assert(flash[:success] == "Score submitted")
   end
 
-  test "Silver league redirects to proper schedule after submission" do
+  test "Surrey league redirects to proper schedule after submission" do
     session[:user_id] = @user.id
-    @score.league = "Silver"
+    @score.league = "Surrey"
     @score.save
     patch :submit, id: @score.id, score: {captain_1_team_1_score: 1, captain_1_team_2_score: 1}
     assert_redirected_to "/schedule2"
     assert(flash[:success] == "Score submitted")
   end
 
-  test "Bronze league redirects to proper schedule after submission" do
+  test "Richmond league redirects to proper schedule after submission" do
     session[:user_id] = @user.id
-    @score.league = "Bronze"
+    @score.league = "Richmond"
     @score.save
     patch :submit, id: @score.id, score: {captain_1_team_1_score: 1, captain_1_team_2_score: 1}
     assert_redirected_to "/schedule3"
