@@ -28,10 +28,10 @@
   <div class="field">
     <div style="color:white; font-size:25px" > <%= f.label :league %></div><br>
     <% if @team.status == "approved" %>
-      <%= f.select(:league, %w[Gold Silver Bronze], {}, :disabled => true) %>
+      <%= f.select(:league, %w[Vancouver Surrey Richmond], {}, :disabled => true) %>
       <p style="color:white">Cannot edit the team's league once the team is approved</p>
     <% else %>
-      <%= f.select(:league, %w[Gold Silver Bronze]) %>
+      <%= f.select(:league, %w[Vancouver Surrey Richmond]) %>
     <% end %>
   </div>
 

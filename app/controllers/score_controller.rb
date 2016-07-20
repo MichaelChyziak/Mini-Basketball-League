@@ -8,13 +8,13 @@ class ScoreController < ApplicationController
   def submit
     @score = Score.find_by_id(params[:id])
     if @score.update_attributes(score_params)
-      if @score.league == "Gold"
+      if @score.league == "Vancouver"
         redirect_to '/schedule'
         flash[:success] = "Score submitted"
-      elsif @score.league == "Silver"
+      elsif @score.league == "Surrey"
         redirect_to '/schedule2'
         flash[:success] = "Score submitted"
-      elsif @score.league == "Bronze"
+      elsif @score.league == "Richmond"
         redirect_to '/schedule3'
         flash[:success] = "Score submitted"
       else
@@ -22,13 +22,13 @@ class ScoreController < ApplicationController
         flash[:warning] = "A Problem occured"
       end
     else
-      if @score.league == "Gold"
+      if @score.league == "Vancouver"
         redirect_to '/schedule'
         flash[:warning] = "Score submittion failed"
-      elsif @score.league == "Silver"
+      elsif @score.league == "Surrey"
         redirect_to '/schedule2'
         flash[:warning] = "Score submittion failed"
-      elsif @score.league == "Bronze"
+      elsif @score.league == "Richmond"
         redirect_to '/schedule3'
         flash[:warning] = "Score submittion failed"
       else

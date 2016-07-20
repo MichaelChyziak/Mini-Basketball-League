@@ -82,11 +82,11 @@
 
               <tbody>
 
-            <%if @league_silver.active? %>
+            <%if @league.active? %>
               <% if current_user.admin? %>
-                <a href="/league/back?league_name=Silver" class="btn btn-sm btn-primary btn-block" role="button"  data-no-turbolink > Reset League</a>
-            
-              <% end %>              
+                <a href="/league/back?league_name=Surrey" class="btn btn-sm btn-primary btn-block" role="button"  data-no-turbolink > Reset League</a>
+
+              <% end %>
               <% @scores.each_with_index do |score,index| %>
                 <tr>
                     <%if index < 4 %>
@@ -119,15 +119,15 @@
                           <% else %>
                             <td></td>
                           <% end %>
-                        
+
                           <%if (current_user.id == team2.captain_id) && !score.approved_score%>
                             <td><%= link_to "Submit Score", score_form_path(score), :class => "btn btn-sm btn-primary btn-block", role: "button" %></td>
                           <%else%>
                             <td>--</td>
                           <%end%>
-                      
-                  
-                    
+
+
+
                     <%elsif  !(Team.where(:id => score.team_1_id).first==nil) && Team.where(:id => score.team_2_id).first==nil %>
                           <% team1 = Team.find(score.team_1_id) %>
                           <td><%= team1.team_name  %></td>
@@ -139,14 +139,14 @@
                           <% else %>
                             <td></td>
                           <% end %>
-                        
+
                           <%if (current_user.id == team1.captain_id) && !score.approved_score%>
                             <td><%= link_to "Submit Score", score_form_path(score), :class => "btn btn-sm btn-primary btn-block", role: "button" %></td>
                           <%else%>
                             <td>--</td>
                           <%end%>
-                    
-                    
+
+
                     <%elsif  Team.where(:id => score.team_1_id).first==nil && Team.where(:id => score.team_2_id).first==nil %>
                           <td>--</td>
                           <td>--</td>
@@ -157,20 +157,20 @@
                           <% else %>
                             <td></td>
                           <% end %>
-                          
+
                           <td>--</td>
-                  
-                    
-                    
-                    
+
+
+
+
                     <%else%>
                           <% team1 = Team.find(score.team_1_id) %>
                           <% team2 = Team.find(score.team_2_id) %>
-      
+
                           <td><%= team1.team_name %></td>
                           <td><%= team2.team_name  %></td>
-                          
-                          
+
+
                           <td><a href="" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Details</a></td>
                           </td>
                           <% if score.approved_score %>
@@ -178,22 +178,22 @@
                           <% else %>
                             <td></td>
                           <% end %>
-                          
+
                             <%if ((current_user.id == team1.captain_id) || (current_user.id == team2.captain_id)) && !score.approved_score%>
                               <td><%= link_to "Submit Score", score_form_path(score), :class => "btn btn-sm btn-primary btn-block", role: "button" %></td>
                             <%else%>
                               <td>--</td>
                             <%end%>
                     <%end%>
-                    
+
                 </tr>
                 <%end%>
 
-            <% elsif @teams_approved_silver.length != 8 %>
+            <% elsif @teams_approved.length != 8 %>
                <b style="color:red; font-size: 20px"> Schedule will be generated when there are exactly 8 approved teams.</b>
-            <% elsif @teams_approved_silver.length == 8 %>
+            <% elsif @teams_approved.length == 8 %>
                <% if current_user.admin? %>
-                 <a href="/league/start?league_name=Silver" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Start League</a>
+                 <a href="/league/start?league_name=Surrey" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Start League</a>
                <% else %>
                  <b style="color:red; font-size: 20px"> Waiting for an admin to start the league.</b>
                <% end %>

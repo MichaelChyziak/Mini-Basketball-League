@@ -6,14 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Team.create!(team_name: "User1's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [1], captain_id: 1)
-Team.create!(team_name: "User2's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [2], captain_id: 2)
-Team.create!(team_name: "User3's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [3], captain_id: 3)
-Team.create!(team_name: "User4's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [4], captain_id: 4)
-Team.create!(team_name: "User5's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [5], captain_id: 5)
-Team.create!(team_name: "User6's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [6], captain_id: 6)
-Team.create!(team_name: "User7's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [7], captain_id: 7)
-Team.create!(team_name: "User8's Gold Team", team_message: "Test", league: "Gold", status: "approved", players_id: [8], captain_id: 8)
+Team.create!(team_name: "User1's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [1], captain_id: 1)
+Team.create!(team_name: "User2's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [2], captain_id: 2)
+Team.create!(team_name: "User3's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [3], captain_id: 3)
+Team.create!(team_name: "User4's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [4], captain_id: 4)
+Team.create!(team_name: "User5's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [5], captain_id: 5)
+Team.create!(team_name: "User6's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [6], captain_id: 6)
+Team.create!(team_name: "User7's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [7], captain_id: 7)
+Team.create!(team_name: "User8's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [8], captain_id: 8)
 
 
 
@@ -27,6 +27,6 @@ User.create(username: "user7", email: "user7@example.com", password: "useruser7"
 User.create(username: "user8", email: "user8@example.com", password: "useruser8", password_confirmation: "useruser8", team_id: 8)
 User.create(username: "user9", email: "user9@example.com", password: "useruser9", password_confirmation: "useruser9", team_id: 9)
 User.create(username: "admin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notadmin", admin: true, super_admin: true)
-League.create(name: "Gold")
-League.create(name: "Silver")
-League.create(name: "Bronze")
+League.create(name: "Vancouver")
+League.create(name: "Surrey")
+League.create(name: "Richmond")

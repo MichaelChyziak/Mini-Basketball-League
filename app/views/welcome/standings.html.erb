@@ -73,7 +73,7 @@
               <div class="panel-body">
 
                 <table class="table table-striped table-condensed">
-                  <h4>Gold League</h4>
+                  <h4>Vancouver League</h4>
                   <thead>
                     <tr>
                       <th>Team</th>
@@ -86,15 +86,15 @@
                   </thead>
 
                   <tbody>
-                    <% if @league_gold.active? %>
-                      <% @teams_gold.each do |team| %>
+                    <% if @league_vancouver.active? %>
+                      <% @teams_vancouver.each do |team| %>
                         <% games_played = 0 %>
                         <% games_won = 0 %>
                         <% games_lost = 0 %>
                         <% games_tied = 0 %>
                         <tr>
                           <td><%= team.team_name %></td>
-                          <% @league_gold.score_ids.each do |score_id| %>
+                          <% @league_vancouver.score_ids.each do |score_id| %>
                             <% score = Score.find(score_id) %>
                             <% if score.approved_score? %>
                               <% if score.team_1_id == team.id %>
@@ -134,7 +134,7 @@
                 </table>
 
                 <table class="table table-striped table-condensed">
-                  <h4>Silver League</h4>
+                  <h4>Surrey League</h4>
                   <thead>
                     <tr>
                       <th>Team</th>
@@ -147,15 +147,15 @@
                   </thead>
 
                   <tbody>
-                    <% if @league_silver.active? %>
-                      <% @teams_silver.each do |team| %>
+                    <% if @league_surrey.active? %>
+                      <% @teams_surrey.each do |team| %>
                         <% games_played = 0 %>
                         <% games_won = 0 %>
                         <% games_lost = 0 %>
                         <% games_tied = 0 %>
                         <tr>
                           <td><%= team.team_name %></td>
-                          <% @league_gold.score_ids.each do |score_id| %>
+                          <% @league_surrey.score_ids.each do |score_id| %>
                             <% score = Score.find(score_id) %>
                             <% if score.approved_score? %>
                               <% if score.team_1_id == team.id %>
@@ -195,7 +195,7 @@
                 </table>
 
                 <table class="table table-striped table-condensed">
-                  <h4>Bronze League</h4>
+                  <h4>Richmond League</h4>
                   <thead>
                     <tr>
                       <th>Team</th>
@@ -208,15 +208,15 @@
                   </thead>
 
                   <tbody>
-                    <% if @league_bronze.active? %>
-                      <% @teams_bronze.each do |team| %>
+                    <% if @league_richmond.active? %>
+                      <% @teams_richmond.each do |team| %>
                         <% games_played = 0 %>
                         <% games_won = 0 %>
                         <% games_lost = 0 %>
                         <% games_tied = 0 %>
                         <tr>
                           <td><%= team.team_name %></td>
-                          <% @league_gold.score_ids.each do |score_id| %>
+                          <% @league_richmond.score_ids.each do |score_id| %>
                             <% score = Score.find(score_id) %>
                             <% if score.approved_score? %>
                               <% if score.team_1_id == team.id %>

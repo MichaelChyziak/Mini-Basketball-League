@@ -1,6 +1,9 @@
 class WelcomeController < ApplicationController
 
   # GET /welcome
+  def index
+
+  end
   def home
 
   end
@@ -15,32 +18,32 @@ class WelcomeController < ApplicationController
 
   def schedule
     @teams = Team.all
-    @teams_approved_gold = Team.where(:status =>1, :league =>"Gold")
-    @league_gold = League.where(name: "Gold").first
-    @scores = Score.where(league: "Gold").order('id ASC')
+    @teams_approved = Team.where(:status =>1, :league =>"Vancouver")
+    @league = League.where(name: "Vancouver").first
+    @scores = Score.where(league: "Vancouver").order('id ASC')
   end
 
   def schedule2
     @teams = Team.all
-    @teams_approved_silver = Team.where(:status =>1, :league =>"Silver")
-    @league_silver = League.where(name: "Silver").first
-    @scores = Score.where(league: "Silver").order('id ASC')
+    @teams_approved = Team.where(:status =>1, :league =>"Surrey")
+    @league = League.where(name: "Surrey").first
+    @scores = Score.where(league: "Surrey").order('id ASC')
   end
 
   def schedule3
     @teams = Team.all
-    @teams_approved_bronze = Team.where(:status =>1, :league =>"Bronze")
-    @league_bronze = League.where(name: "Bronze").first
-    @scores = Score.where(league: "Bronze").order('id ASC')
+    @teams_approved = Team.where(:status =>1, :league =>"Richmond")
+    @league = League.where(name: "Richmond").first
+    @scores = Score.where(league: "Richmond").order('id ASC')
   end
 
   def standings
-     @teams_gold = Team.where(:status =>1, :league =>"Gold")
-     @teams_silver = Team.where(:status =>1, :league =>"Silver")
-     @teams_bronze = Team.where(:status =>1, :league =>"Bronze")
-     @league_gold = League.where(name: "Gold").first
-     @league_silver = League.where(name: "Silver").first
-     @league_bronze = League.where(name: "Bronze").first
+     @teams_vancouver = Team.where(:status =>1, :league =>"Vancouver")
+     @teams_surrey = Team.where(:status =>1, :league =>"Surrey")
+     @teams_richmond = Team.where(:status =>1, :league =>"Richmond")
+     @league_vancouver = League.where(name: "Vancouver").first
+     @league_surrey = League.where(name: "Surrey").first
+     @league_richmond = League.where(name: "Richmond").first
   end
 
 end
