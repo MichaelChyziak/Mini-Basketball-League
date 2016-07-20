@@ -20,3 +20,6 @@
 
 # Ignore any images that are stored from the team's logos
 public/system/*
+
+# Ignore testing file
+/doNotRemove.txt
