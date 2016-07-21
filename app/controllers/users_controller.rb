@@ -75,19 +75,25 @@ class UsersController < ApplicationController
     Team.all.each do |team|
       if (params[:id].to_i == team.captain_id)
         found_team = true
-        if (team.status == "approved")
-          flash[:warning] = "Cannot delete user. This user is a captain of a team currenlty approved to play in a league."
-          redirect_to users_url
-        else
-          team.players_id.each do |player_id|
-            user = User.find(player_id)
-            user.update_attribute(:team_id, -1)
-          end
-          team.destroy
-          User.find(params[:id]).destroy
-          flash[:success] = "User and their team were deleted"
-          redirect_to users_url
+        team.players_id.each do |player_id|
+          user = User.find(player_id)
+          user.update_attribute(:team_id, -1)
         end
+        team.destroy
+        User.find(params[:id]).destroy
+        flash[:success] = "User and their team were deleted"
+        redirect_to users_url
+      elsif (team.players_id.include? params[:id].to_i)
+        found_team = true
+        team.players_id -= [params[:id].to_i]
+        team.save
+        user = User.find(params[:id])
+        user.destroy
+        flash[:success] = "User deleted"
+        redirect_to users_url
+      elsif (team.applied_user_ids.include? params[:id].to_i)
+        team.applied_user_ids -= [params[:id].to_i]
+        team.save
       end
     end
     if found_team == false
