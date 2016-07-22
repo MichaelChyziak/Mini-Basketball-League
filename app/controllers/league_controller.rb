@@ -108,10 +108,17 @@ class LeagueController < ApplicationController
 
   def back
     @league = League.where(:name => params[:league_name]).first
+
+    team = Team.where(:status =>1, :league =>params[:league_name])
+    team.each do |t|
+      t.update_attributes(:status => 0)
+    end
+    #Score.delete_all
+    #Score.reset_pk_sequence
     @league.active = false
     @league.save
-    teams = Team.where(:status =>1, :league =>params[:league_name])
-    teams.delete_all
+    
+    
 
     if URI(request.referer).path == "/schedule"
       redirect_to "/schedule"
