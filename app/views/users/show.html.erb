@@ -1,42 +1,65 @@
 <% provide(:title, @user.username) %>
 <body>
 
+  <table style="height: 100%;">
+    <tr>
+      <td style="width:30%; height: 100%;">
+  <div class="side-panel">
+
+    <%= gravatar_for @user %>
+    <br/>
+
+
+        <h1 class="page-header"><%= @user.username %>'s Profile</h1>
+
+
+            <p><strong style="color:#c45907">USERNAME:</strong> <%= @user.username %></p>
+
+            <p><strong style="color:#c45907">EMAIL:</strong> <%= @user.email %></p
+
+            <p><strong style="color:#c45907">HEIGHT:</strong> <%= @user.height %></p>
+
+            <p><strong style="color:#c45907">WEIGHT:</strong> <%= @user.weight %></p>
+
+          <%=
+            if @user.twitter.present?
+              link_to(image_tag("/logo/Twitter.png", :alt =>"twitterLogo", :style => "height:15%; width:15%"), "http://www.twitter.com/#{@user.twitter}", :target => "_blank")
+            end
+          %>
+
+          <%=
+            if current_user.id == @user.id
+              link_to '<button class="button button-glow button-rounded button-highlight"><span class="glyphicon glyphicon-pencil"></span>&nbsp Edit</button>'.html_safe, edit_user_path(current_user)
+            end
+          %>
+          <% if current_user.admin? && !current_user?(@user) && !@user.super_admin %>
+            <%= link_to "Delete", @user, method: :delete,
+                                          data: { confirm: "You sure?" } %>
+          <% end %>
+        </div>
+      </td>
+      <td>
+        <div class="about-side">
+          <p style="font-size: 25px; padding-left: 20px;"><strong style="color:#c45907">ABOUT:</strong></p>
+
+          <p style="font-size: 12px; padding-right: 20px; padding-left: 20px;"><%= @user.about %></p>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+
+<% if false %>
   <table>
     <tr>
       <td class="sidebar">
 
-        <%= gravatar_for @user %>
-        <br/>
+
         <h1>
 
         </h1>
 
-    <h1 class="page-header"><%= @user.username %>'s Profile</h1>
-
-
-        <p><strong style="color:#c45907">USERNAME:</strong> <%= @user.username %></p>
-
-        <p><strong style="color:#c45907">EMAIL:</strong> <%= @user.email %></p
-
-        <p><strong style="color:#c45907">HEIGHT:</strong> <%= @user.height %></p>
-
-        <p><strong style="color:#c45907">WEIGHT:</strong> <%= @user.weight %></p>
-
-      <%=
-        if @user.twitter.present?
-          link_to(image_tag("/logo/Twitter.png", :alt =>"twitterLogo", :style => "height:15%; width:15%"), "http://www.twitter.com/#{@user.twitter}", :target => "_blank")
-        end
-      %>
-
-      <%=
-        if current_user.id == @user.id
-          link_to '<button class="button button-glow button-rounded button-highlight"><span class="glyphicon glyphicon-pencil"></span>&nbsp Edit</button>'.html_safe, edit_user_path(current_user)
-        end
-      %>
-      <% if current_user.admin? && !current_user?(@user) && !@user.super_admin %>
-        <%= link_to "Delete", @user, method: :delete,
-                                      data: { confirm: "You sure?" } %>
-      <% end %>
     </br>
   </br>
 </td>
@@ -49,6 +72,8 @@
     <td></td>
     <td><div class="image"><img style="width: 20%; height: 20%; float: right;" src="/assets/basketball.png"></div></td>
 </table>
+<% end %>
+
 </body>
 
 
@@ -67,27 +92,59 @@
 <style>
   body {
     <%#background: url("/assets/ball.jpg") ;%>
-    background-color:white;
+    background-color: #DFE8EB;
     background-size:100%;
-  }
-
-
-
-  .sidebar {
-    width: 30%;
     height: 100%;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    padding-left: 20px;
   }
+
+  html {
+    height: 100%;
+  }
+
+  .side-panel {
+    height: 100%;
+    bottom: 0;
+    padding: 10px;
+    background-color: black;
+
+
+  }
+
+
+  .top-image {
+    background-image: url("/assets/basketball-court.png");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 0px;
+  }
+
+  .header {
+    background: #AFB9BD;
+  }
+
+  .content {
+    height: 500px;
+    background: white;
+  }
+
+.navbar {
+  margin-bottom: 0px !important;
+}
+
 
   h3 {
-    font-size: 12px;
+    font-size: 120px;
   }
 
   .about {
     border-left: 3px solid #DADCEB;
+  }
+
+  .gravatar_edit {
+    width: 500px;
+    height: 500px;
+    margin-left: 400px;
   }
 
 
