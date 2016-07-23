@@ -8,6 +8,8 @@
       <th>Team 2</th>
       <th>Team 1 Score Submission</th>
       <th>Team 2 Score Submission</th>
+      <th>Official Team 1 Score</th>
+      <th>Official Team 2 Score</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,10 +24,21 @@
           <td><%= team2.team_name %></td>
           <td><%= score.captain_1_team_1_score %> - <%= score.captain_1_team_2_score %></td>
           <td><%= score.captain_2_team_1_score %> - <%= score.captain_2_team_2_score %></td>
-          <td><%= link_to "Accept Team 1's Submission", :controller => "score", :id => score.id, :action => "team_1_score_accept",
-           :method => :put, :status => true, :class => "btn btn-sm btn-primary btn-block", role: "button"  %></td>
-          <td><%= link_to "Accept Team 2's Submission", :controller => "score", :id => score.id, :action => "team_2_score_accept",
-           :method => :put, :status => true, :class => "btn btn-sm btn-primary btn-block", role: "button"  %></td>
+
+          <%= form_for score, url: score_confirm_path do |f| %>
+            <td>
+              <%= f.number_field :official_team_1_score %>
+            </td>
+            <td>
+              <%= f.number_field :official_team_2_score %>
+            </td>
+            <%= hidden_field_tag :id, score.id %>
+            <td>
+              <%= f.submit %>
+            </td>
+
+          <% end %>
+
         </tr>
       <% end %>
     <% end %>

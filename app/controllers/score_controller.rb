@@ -42,24 +42,13 @@ class ScoreController < ApplicationController
     @scores = Score.all
   end
 
-  def team_1_score_accept
-    score = Score.find(params[:id])
-    score.update_attribute(:official_team_1_score, score.captain_1_team_1_score)
-    score.update_attribute(:official_team_2_score, score.captain_1_team_2_score)
-    score.update_attribute(:approved_score, true)
-    score.save
+  def confirm
+    @score = Score.find_by_id(params[:id])
+    @score.update_attributes(score_params)
+    @score.update_attribute(:approved_score, true)
+    @score.save
     redirect_to '/scores'
   end
-
-  def team_2_score_accept
-    score = Score.find(params[:id])
-    score.update_attribute(:official_team_1_score, score.captain_2_team_1_score)
-    score.update_attribute(:official_team_2_score, score.captain_2_team_2_score)
-    score.update_attribute(:approved_score, true)
-    score.save
-    redirect_to '/scores'
-  end
-
 
   private
 
