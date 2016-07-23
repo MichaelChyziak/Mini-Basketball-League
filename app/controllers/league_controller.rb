@@ -113,12 +113,16 @@ class LeagueController < ApplicationController
     team.each do |t|
       t.update_attributes(:status => 0)
     end
+
+    removeScores = Score.where(league: params[:league_name])
+    removeScores.delete_all
+    @league.score_ids = []
     #Score.delete_all
     #Score.reset_pk_sequence
     @league.active = false
     @league.save
-    
-    
+
+
 
     if URI(request.referer).path == "/schedule"
       redirect_to "/schedule"
