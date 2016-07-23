@@ -111,7 +111,8 @@ class LeagueController < ApplicationController
 
     team = Team.where(:status =>1, :league =>params[:league_name])
     team.each do |t|
-      t.update_attributes(:status => 0)
+      #t.update_attributes(:status => 0)
+      t.delete
     end
     #Score.delete_all
     #Score.reset_pk_sequence
