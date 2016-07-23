@@ -6,12 +6,12 @@
       <td class="side-table">
         <div class="side-panel">
 
-          <%= gravatar_for @user %>
-          <br/>
-
           <h1 style="text-align:center;">PROFILE</h1>
           </br>
           </br>
+
+          <%= gravatar_for @user %>
+          <br/>
 
           <div class="side-text">
               <p><strong style="color:#fd7400;">USERNAME:</strong> <%= @user.username %></p>
@@ -36,7 +36,7 @@
       <td>
         <div class="side-panel2">
 
-          <h2 style="color:#fd7400; padding-top:14%;"><strong>ABOUT</strong></h2>
+          <h2 style="color:#fd7400; padding-top:75px;"><strong>ABOUT</strong></h2>
           <br/>
 
           <div class="side-text">
@@ -77,11 +77,20 @@
   .side-panel {
     height: 100%;
     bottom: 0;
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
     background-color: #282c34;
     color: white;
     border-right: 7px solid #B6CAD1;
+
   }
+
+table {
+    padding: 0px;
+    top: 0;
+    bottom: 0;
+}
 
   .side-panel2 {
     height: 100%;
@@ -101,8 +110,7 @@
 
 
   img.gravatar {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-bottom: 25px;
     width: 100px;
     height: 100px;
   }
