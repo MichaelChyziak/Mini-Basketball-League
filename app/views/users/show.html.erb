@@ -3,97 +3,70 @@
 
   <table style="height: 100%;">
     <tr>
-      <td style="width:30%; height: 100%;">
-  <div class="side-panel">
+      <td class="side-table">
+        <div class="side-panel">
 
-    <%= gravatar_for @user %>
-    <br/>
+          <%= gravatar_for @user %>
+          <br/>
 
+          <h1 style="text-align:center;">PROFILE</h1>
+          </br>
+          </br>
 
-        <h1 class="page-header"><%= @user.username %>'s Profile</h1>
+          <div class="side-text">
+              <p><strong style="color:#fd7400;">USERNAME:</strong> <%= @user.username %></p>
 
+              <p><strong style="color:#fd7400">EMAIL:</strong> <%= @user.email %></p
 
-            <p><strong style="color:#c45907">USERNAME:</strong> <%= @user.username %></p>
+              <p><strong style="color:#fd7400">HEIGHT:</strong> <%= @user.height %></p>
 
-            <p><strong style="color:#c45907">EMAIL:</strong> <%= @user.email %></p
+              <p><strong style="color:#fd7400">WEIGHT:</strong> <%= @user.weight %></p>
+          </div>
 
-            <p><strong style="color:#c45907">HEIGHT:</strong> <%= @user.height %></p>
-
-            <p><strong style="color:#c45907">WEIGHT:</strong> <%= @user.weight %></p>
-
-          <%=
-            if @user.twitter.present?
-              link_to(image_tag("/logo/Twitter.png", :alt =>"twitterLogo", :style => "height:15%; width:15%"), "http://www.twitter.com/#{@user.twitter}", :target => "_blank")
-            end
-          %>
-
-          <%=
-            if current_user.id == @user.id
+          <%=if current_user.id == @user.id
               link_to '<button class="button button-glow button-rounded button-highlight"><span class="glyphicon glyphicon-pencil"></span>&nbsp Edit</button>'.html_safe, edit_user_path(current_user)
-            end
-          %>
+            end%>
           <% if current_user.admin? && !current_user?(@user) && !@user.super_admin %>
             <%= link_to "Delete", @user, method: :delete,
                                           data: { confirm: "You sure?" } %>
           <% end %>
+
         </div>
       </td>
       <td>
-        <div class="about-side">
-          <p style="font-size: 25px; padding-left: 20px;"><strong style="color:#c45907">ABOUT:</strong></p>
+        <div class="side-panel2">
 
-          <p style="font-size: 12px; padding-right: 20px; padding-left: 20px;"><%= @user.about %></p>
+          <h2 style="color:#fd7400; padding-top:14%;"><strong>ABOUT</strong></h2>
+          <br/>
+
+          <div class="side-text">
+              <%= @user.about %></p>
+            </div>
+
+          <%=if @user.twitter.present?
+              link_to(image_tag("/logo/Twitter.png", :alt =>"twitterLogo", :style => "height:15%; width:15%"), "http://www.twitter.com/#{@user.twitter}", :target => "_blank")
+          end%>
+
         </div>
       </td>
     </tr>
   </table>
 
-
-
-<% if false %>
-  <table>
-    <tr>
-      <td class="sidebar">
-
-
-        <h1>
-
-        </h1>
-
-    </br>
-  </br>
-</td>
-  <td class="about">
-      <p style="font-size: 25px; padding-left: 20px;"><strong style="color:#c45907">ABOUT:</strong></p>
-
-      <p style="font-size: 12px; padding-right: 20px; padding-left: 20px;"><%= @user.about %></p>
-  </td>
-  <tr>
-    <td></td>
-    <td><div class="image"><img style="width: 20%; height: 20%; float: right;" src="/assets/basketball.png"></div></td>
-</table>
-<% end %>
-
 </body>
 
 
-
-
-<%#
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-
-  </div>
-  </dibv>
-</body>
-%>
 
 <style>
   body {
     <%#background: url("/assets/ball.jpg") ;%>
-    background-color: #DFE8EB;
+    background-color: white;
     background-size:100%;
+    height: 100%;
+    font-family: Verdana, Sans-serif;
+  }
+
+  .side-table {
+    width:30%;
     height: 100%;
   }
 
@@ -104,28 +77,22 @@
   .side-panel {
     height: 100%;
     bottom: 0;
-    padding: 10px;
-    background-color: black;
-
-
+    padding: 20px;
+    background-color: #282c34;
+    color: white;
+    border-right: 7px solid #B6CAD1;
   }
 
-
-  .top-image {
-    background-image: url("/assets/basketball-court.png");
-    height: 500px;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: 0px;
+  .side-panel2 {
+    height: 100%;
+    bottom: 0;
+    padding: 20px;
+    background-color: white;
   }
 
-  .header {
-    background: #AFB9BD;
-  }
-
-  .content {
-    height: 500px;
-    background: white;
+  .side-text p {
+    text-align: left;
+    margin-bottom: 25px;
   }
 
 .navbar {
@@ -133,18 +100,11 @@
 }
 
 
-  h3 {
-    font-size: 120px;
-  }
-
-  .about {
-    border-left: 3px solid #DADCEB;
-  }
-
-  .gravatar_edit {
-    width: 500px;
-    height: 500px;
-    margin-left: 400px;
+  img.gravatar {
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 100px;
+    height: 100px;
   }
 
 
