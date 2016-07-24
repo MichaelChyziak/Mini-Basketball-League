@@ -87,46 +87,14 @@
 
                   <tbody>
                     <% if @league_vancouver.active? %>
-                      <% @teams_vancouver.each do |team| %>
-                        <% games_played = 0 %>
-                        <% games_won = 0 %>
-                        <% games_lost = 0 %>
-                        <% games_tied = 0 %>
+                      <% @vancouver_sort.each do |id, points, games_played, games_won, games_lost, games_tied| %>
                         <tr>
-                          <td><%= team.team_name %></td>
-                          <% @league_vancouver.score_ids.each do |score_id| %>
-                            <% score = Score.find(score_id) %>
-                            <% if score.approved_score? %>
-                              <% if score.team_1_id == team.id %>
-                                <% if score.official_team_1_score > score.official_team_2_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_won = games_won + 1 %>
-                                <% elsif score.official_team_2_score > score.official_team_1_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_lost = games_lost + 1 %>
-                                <% else %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_tied = games_tied + 1 %>
-                                <% end %>
-                              <% elsif score.team_2_id == team.id %>
-                                <% if score.official_team_2_score > score.official_team_1_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_won = games_won + 1 %>
-                                <% elsif score.official_team_1_score > score.official_team_2_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_lost = games_lost + 1 %>
-                                <% else %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_tied = games_tied + 1 %>
-                                <% end %>
-                              <% end %>
-                            <% end %>
-                          <% end %>
+                          <td><%= Team.find(id).team_name %></td>
                           <td><%= games_played %></td>
                           <td><%= games_won %></td>
                           <td><%= games_lost %></td>
                           <td><%= games_tied %></td>
-                          <td><%= (games_won*2) + (games_tied*1) %></td>
+                          <td><%= points %></td>
                         </tr>
                       <% end %>
                     <% end %>
@@ -148,46 +116,14 @@
 
                   <tbody>
                     <% if @league_surrey.active? %>
-                      <% @teams_surrey.each do |team| %>
-                        <% games_played = 0 %>
-                        <% games_won = 0 %>
-                        <% games_lost = 0 %>
-                        <% games_tied = 0 %>
+                      <% @surrey_sort.each do |id, points, games_played, games_won, games_lost, games_tied| %>
                         <tr>
-                          <td><%= team.team_name %></td>
-                          <% @league_surrey.score_ids.each do |score_id| %>
-                            <% score = Score.find(score_id) %>
-                            <% if score.approved_score? %>
-                              <% if score.team_1_id == team.id %>
-                                <% if score.official_team_1_score > score.official_team_2_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_won = games_won + 1 %>
-                                <% elsif score.official_team_2_score > score.official_team_1_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_lost = games_lost + 1 %>
-                                <% else %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_tied = games_tied + 1 %>
-                                <% end %>
-                              <% elsif score.team_2_id == team.id %>
-                                <% if score.official_team_2_score > score.official_team_1_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_won = games_won + 1 %>
-                                <% elsif score.official_team_1_score > score.official_team_2_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_lost = games_lost + 1 %>
-                                <% else %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_tied = games_tied + 1 %>
-                                <% end %>
-                              <% end %>
-                            <% end %>
-                          <% end %>
+                          <td><%= Team.find(id).team_name %></td>
                           <td><%= games_played %></td>
                           <td><%= games_won %></td>
                           <td><%= games_lost %></td>
                           <td><%= games_tied %></td>
-                          <td><%= (games_won*2) + (games_tied*1) %></td>
+                          <td><%= points %></td>
                         </tr>
                       <% end %>
                     <% end %>
@@ -209,46 +145,14 @@
 
                   <tbody>
                     <% if @league_richmond.active? %>
-                      <% @teams_richmond.each do |team| %>
-                        <% games_played = 0 %>
-                        <% games_won = 0 %>
-                        <% games_lost = 0 %>
-                        <% games_tied = 0 %>
+                      <% @richmond_sort.each do |id, points, games_played, games_won, games_lost, games_tied| %>
                         <tr>
-                          <td><%= team.team_name %></td>
-                          <% @league_richmond.score_ids.each do |score_id| %>
-                            <% score = Score.find(score_id) %>
-                            <% if score.approved_score? %>
-                              <% if score.team_1_id == team.id %>
-                                <% if score.official_team_1_score > score.official_team_2_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_won = games_won + 1 %>
-                                <% elsif score.official_team_2_score > score.official_team_1_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_lost = games_lost + 1 %>
-                                <% else %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_tied = games_tied + 1 %>
-                                <% end %>
-                              <% elsif score.team_2_id == team.id %>
-                                <% if score.official_team_2_score > score.official_team_1_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_won = games_won + 1 %>
-                                <% elsif score.official_team_1_score > score.official_team_2_score %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_lost = games_lost + 1 %>
-                                <% else %>
-                                  <% games_played = games_played + 1 %>
-                                  <% games_tied = games_tied + 1 %>
-                                <% end %>
-                              <% end %>
-                            <% end %>
-                          <% end %>
+                          <td><%= Team.find(id).team_name %></td>
                           <td><%= games_played %></td>
                           <td><%= games_won %></td>
                           <td><%= games_lost %></td>
                           <td><%= games_tied %></td>
-                          <td><%= (games_won*2) + (games_tied*1) %></td>
+                          <td><%= points %></td>
                         </tr>
                       <% end %>
                     <% end %>
