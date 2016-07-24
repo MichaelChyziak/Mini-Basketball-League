@@ -46,3 +46,14 @@ gem 'puma'
 # Used for ease of storing images and attachments into database
 # See https://github.com/thoughtbot/paperclip#quick-start for more information
 gem 'paperclip', '~> 4.3.6'
+
+
+# GOOGLE API and more
+# Underscore js
+gem 'underscore-rails'
+
+# Google Maps
+gem 'gmaps4rails'
+
+# Figaro
+gem "figaro"
