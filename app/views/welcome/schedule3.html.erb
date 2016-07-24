@@ -90,21 +90,7 @@
               <% end %>
               <% @scores.each_with_index do |score,index| %>
                 <tr>
-                    <%if index < 4 %>
-                    <td>2016/10/<%=index+1%></td>
-                    <%elsif index < 8 %>
-                    <td>2016/10/<%=index+5%></td>
-                    <%elsif index < 12 %>
-                    <td>2016/10/<%=index+9%></td>
-                    <%elsif index < 16 %>
-                    <td>2016/10/<%=index+13%></td>
-                    <%elsif index < 20 %>
-                    <td>2016/11/<%=index-13%></td>
-                    <%elsif index < 24 %>
-                    <td>2016/11/<%=index-9%></td>
-                    <%else %>
-                    <td>2016/11/<%=index-5%></td>
-                    <%end%>
+                   <td class="spanDate"></td>
 
 
                     <td>6:00 PM</td>
@@ -215,9 +201,23 @@
 </br>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+   var months = ['January','February','March','April','May','June','July',
+'August','September','October','November','December'];       
+  var startDate = new Date();
+  //start date will be 5 days from current date
+  startDate.setTime(startDate.getTime() + (1000*3600*24)*(4));       
+  var dateArray =  document.getElementsByClassName("spanDate");
+  for (i=0;i<dateArray.length;i++){
+  if ((i+1)%4==1 && i!=0){
+    //rest for 5 days for every round
+    startDate.setTime(startDate.getTime() + (1000*3600*24)*4);
+  }
+  startDate.setTime(startDate.getTime() + (1000*3600*24));
+  dateArray[i].innerHTML = months[startDate.getMonth()] + " " + startDate.getDate()+ ", " + startDate.getFullYear();
+  }
+</script>
+
   </body>
 </html>
