@@ -23,3 +23,6 @@ public/system/*
 
 # Ignore testing file
 /doNotRemove.txt
+
+# Ignore application configuration
+/config/application.yml
