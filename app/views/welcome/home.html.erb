@@ -27,38 +27,59 @@
 
   .row{
   	text-align: center;
+    margin-left: 0px;
   }
 
 
   body{
-  	background: url("/assets/legends2.jpg") ;
+  	background: url("/assets/home-pic.jpg") ;
 
 	  background-size:100%;
   }
 
+  .text-buttons {
+    width: 50%;
+    border: 5px solid black;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .backboard-box {
+    border: 5px solid #DB5C5C;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 170px;
+    height: 120px;
+  }
 
   </style>
-
-
-
 
   </head>
   <body >
 
 
-
     <div class= "container">
-    	<center><h1 style= "color:white">Welcome to the Mini Basketball Community!</h1></center></br></br>
+      <div class="text-buttons">
+    	<center><h1 style= "color:black"><strong>Welcome</strong> to the</h1></center>
+      <center><h1 style= "color:#4A4A4A;">Mini Basketball</h1></center>
+      <center><h1 style= "color:#4A4A4A">Community</h1></center></br>
+    </div>
+
+    </br>
+    </br>
 	    <div class="row">
-	    	<button type="button" class="btn btn-primary btn-lg box"  onclick="location.href='/teams/new'" >Create Team</button></br></br>
-	    	<button type="button" class="btn btn-primary btn-lg box" onclick="location.href='/teams/join'" >Join Team</button></br></br>
+	    	<button style="background: black" type="button" class="btn btn-primary btn-lg box"  onclick="location.href='/teams/new'" >Create Team</button></br></br>
+	    	<button style="background: black" type="button" class="btn btn-primary btn-lg box" onclick="location.href='/teams/join'" >Join Team</button></br></br>
         <% if current_user.admin? %>
           <button type="button" class="btn btn-primary btn-lg box" onclick="location.href='/teams'" >Manage Teams</button></br></br>
           <button type="button" class="btn btn-primary btn-lg box" onclick="location.href='/users'" >Manage Users</button></br></br>
           <button type="button" class="btn btn-primary btn-lg box" onclick="location.href='/scores'" >Manage Scores</button></br></br>
         <% end %>
 
-        <a class="twitter-timeline"  href="https://twitter.com/hashtag/mini_basketball_league" data-widget-id="747831419964035072">#mini_basketball_league Tweets</a>
+
+
+        <a style="text-align: center" class="twitter-timeline"  href="https://twitter.com/hashtag/mini_basketball_league" data-widget-id="747831419964035072">#mini_basketball_league Tweets</a>
         <script>
           !function(d,s,id){
             var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
@@ -71,7 +92,7 @@
           }
           (document,"script","twitter-wjs");
         </script>
-
+      </div>
 	    </div>
 	</div>
 
