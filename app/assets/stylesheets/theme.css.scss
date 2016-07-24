@@ -22,6 +22,7 @@ $brand-language: #B01302;
 
   .navbar + & {
     margin-top: -20px;
+    margin-bottom: 0px !important;
   }
 
   .lang-logo {
