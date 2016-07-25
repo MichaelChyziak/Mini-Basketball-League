@@ -1,8 +1,10 @@
+<body>
+
 <div class= "container">
-  <div class="col-md-5 col-md-offset-7">
-        <div class="panel-heading">
-          <h1 class="page-header">About This Team</h1>
-         </div>
+  <div class="box">
+      <div class="panel-heading">
+        <h1>ABOUT THIS <strong>TEAM</strong></h1>
+        </div>
 
 <!-- Images will be included into iteration 2 with AWS.
 Ignore in frontend for iteration 1.
@@ -40,6 +42,8 @@ Ignore in frontend for iteration 1.
     <% end %>
   </p>
 <% end %>
+</div>
+</div>
 
 <!-- Uploading/viewing images will be included into iteration 2 with AWS.
 Ignore in frontend for iteration 1.
@@ -51,45 +55,48 @@ Ignore in frontend for iteration 1.
 </p>
 -->
 
+</br>
 <% previous_url = url_for(:back) %>
 <div style= "font-size:18px">
 <% if previous_url.include? "/teams/new" %>
-  <%= link_to 'Continue', home_path, {:style=>"color:#fff;"} %>
+  <%= link_to 'Continue', home_path, {:style=>"color:black;"} %>
 <% else %>
 
-  <%= link_to 'Back', :back, {:style=>"color:#fff;"} %><br>
+  <%= link_to 'Back', :back, {:style=>"color:black;"} %><br>
 
   <% if @team.players_id.include? current_user.id %>
     <% if (@team.captain_id == current_user.id)%>
-      <%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" }, style: "color:#fff" %><br>
+      <%= link_to "Delete Team", team_path(@team), method: :delete, data: { confirm: "Are you sure?" }, style: "color:black" %><br>
     <% else %>
-      <%= link_to "Leave Team", leave_team_team_path, {:style=>"color:#fff;"} %><br>
+      <%= link_to "Leave Team", leave_team_team_path, {:style=>"color:black;"} %><br>
     <% end %>
   <% end %>
 
   <% if @team.captain_id == current_user.id %>
-    <%= link_to "Edit Team" , edit_team_path(@team), {:style=>"color:#fff;"} %><br>
-    <%= link_to "Manage Team", captain_team_team_path(@team), {:style=>"color:#fff;"} %><br>
+    <%= link_to "Edit Team" , edit_team_path(@team), {:style=>"color:black;"} %><br>
+    <%= link_to "Manage Team", captain_team_team_path(@team), {:style=>"color:black;"} %><br>
   <% end %>
 
 
   </div>
 <% end %>
+</br></br>
 </div>
-</div>
 
 
 
+</body>
 
 <style>
 
 body {
-  background: url("/assets/jordan6.jpg") no-repeat center center fixed;
+  background: url("/assets/teams-show-pic.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color:white;
+  color: black;
+  font-family: Verdana, Sans-serif;
 }
 
 .panel-default {
@@ -99,7 +106,18 @@ margin-top:30px;
 .form-group.last { margin-bottom:0px; }
 
  p{
-   font-size:20px;
+   font-size:px;
+ }
+
+ .container {
+   margin-left: 70px;
+   float: left;
+ }
+
+ .box {
+   margin-top: 100px;
+   border: 5px solid black;
+   width: 30%;
  }
 
 </style>

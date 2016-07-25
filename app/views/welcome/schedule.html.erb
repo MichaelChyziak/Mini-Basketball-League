@@ -17,6 +17,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   <style>
+
   th{
       text-align:center;
   }
@@ -85,7 +86,7 @@
               <tbody>
 
             <%if @league.active? %>
-        
+
                <% if current_user.admin? %>
                 <a href="/league/back?league_name=Vancouver" class="btn btn-sm btn-primary btn-block" role="button"  data-no-turbolink > Reset League</a>
 
@@ -215,10 +216,10 @@
 <script type="text/javascript">
 
    var months = ['January','February','March','April','May','June','July',
-'August','September','October','November','December'];       
+'August','September','October','November','December'];
   var startDate = new Date();
   //start date will be 5 days from current date
-  startDate.setTime(startDate.getTime() + (1000*3600*24)*(4));       
+  startDate.setTime(startDate.getTime() + (1000*3600*24)*(4));
   var dateArray =  document.getElementsByClassName("spanDate");
   for (i=0;i<dateArray.length;i++){
   if ((i+1)%4==1 && i!=0){

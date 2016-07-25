@@ -14,17 +14,17 @@
           <br/>
 
           <div class="side-text">
-              <p><strong style="color:#fd7400;">USERNAME:</strong> <%= @user.username %></p>
+              <p><strong style="color:#fd7400;">USERNAME:</strong></br><%= @user.username %></p>
 
-              <p><strong style="color:#fd7400">EMAIL:</strong> <%= @user.email %></p
+              <p><strong style="color:#fd7400">EMAIL:</strong></br><%= @user.email %></p
 
-              <p><strong style="color:#fd7400">HEIGHT:</strong> <%= @user.height %></p>
+              <p><strong style="color:#fd7400">HEIGHT:</strong></br><%= @user.height %></p>
 
-              <p><strong style="color:#fd7400">WEIGHT:</strong> <%= @user.weight %></p>
+              <p><strong style="color:#fd7400">WEIGHT:</strong></br><%= @user.weight %></p>
 
-              <p><strong style="color:#fd7400">PRIMARY COURT:</strong> <%= @user.primary_court %></p>
+              <p><strong style="color:#fd7400">PRIMARY COURT:</strong></br><%= @user.primary_court %></p>
 
-              <p><strong style="color:#fd7400">SECONDARY COURT:</strong> <%= @user.secondary_court %></p>
+              <p><strong style="color:#fd7400">SECONDARY COURT:</strong></br><%= @user.secondary_court %></p>
               <br>
 
               <%= link_to '<button class="button button-glow button-rounded button-highlight"><span class="glyphicon"></span>&nbsp View Courts</button>'.html_safe, maps_path %>
@@ -67,7 +67,6 @@
 
 <style>
   body {
-    <%#background: url("/assets/ball.jpg") ;%>
     background: url("/assets/profile-page-pic.png");
     background-size:100%;
     height: 100%;
