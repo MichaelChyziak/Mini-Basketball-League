@@ -21,6 +21,15 @@
               <p><strong style="color:#fd7400">HEIGHT:</strong> <%= @user.height %></p>
 
               <p><strong style="color:#fd7400">WEIGHT:</strong> <%= @user.weight %></p>
+
+              <p><strong style="color:#fd7400">PRIMARY COURT:</strong> <%= @user.primary_court %></p>
+
+              <p><strong style="color:#fd7400">SECONDARY COURT:</strong> <%= @user.secondary_court %></p>
+              <br>
+
+              <%= link_to '<button class="button button-glow button-rounded button-highlight"><span class="glyphicon"></span>&nbsp View Courts</button>'.html_safe, maps_path %>
+              <br>
+              <br>
           </div>
 
           <%=if current_user.id == @user.id
