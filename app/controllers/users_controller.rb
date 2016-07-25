@@ -109,7 +109,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password,
                                  :password_confirmation,
                                  :about, :height,:weight,
-                                 :twitter)
+                                 :twitter, :primary_court, :secondary_court)
   end
 
   # Confirms a logged-in user.
