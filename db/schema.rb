@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704150329) do
+ActiveRecord::Schema.define(version: 20160725184906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20160704150329) do
     t.integer  "official_team_2_score"
     t.boolean  "approved_score"
     t.string   "league"
+    t.string   "primary_court"
+    t.string   "secondary_court"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -70,6 +72,8 @@ ActiveRecord::Schema.define(version: 20160704150329) do
     t.string   "twitter"
     t.boolean  "super_admin",      default: false
     t.string   "username"
+    t.string   "primary_court"
+    t.string   "secondary_court"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
