@@ -1,0 +1,41 @@
+<div class="container">
+  <%= form_for(@map) do |f| %>
+
+  <table>
+    <tr>
+      <td></td>
+      <td><div id="title"><p id="title">Add new location in the Map!</p></div></td>
+    </tr>
+    <tr>
+      <td>
+          <div id="form">
+          	 <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+              </br>
+
+              <%= f.label :info %>
+              <%= f.text_field :info, class: 'form-control' %>
+              </br>
+
+              <%= f.label :lat %>
+              <%= f.number_field :lat , :class => 'text_field', :step => 0.0001 %>
+              </br>
+
+              <%= f.label :lng %>
+              <%= f.number_field :lng , :class => 'text_field', :step => 0.0001 %>
+              </br>
+
+              <%= f.label :league %>
+              <%= f.select :league, Map.leagues.map { |key, value| [key.humanize, key] } %>
+              </br>
+
+              <%= f.submit "Create location", class: "btn btn-primary" %>
+
+            <% end %>
+          </div>
+        </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

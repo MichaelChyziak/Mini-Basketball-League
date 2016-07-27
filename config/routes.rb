@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'maps/new'
+
   get 'maps', to: 'maps#index'
 
   get 'sessions/new' , to: 'sessions#new'
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :users
   resources :sessions
+  resources :maps
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
