@@ -4,8 +4,8 @@
   </div>
   <ul class="nav nav-tabs">
     <li class="active"><a class="theOption" id="vancouver" data-toggle="tab" href="#vancouver">Vancouver</a></li>
-    <li><a class="theOption" id="burnaby" data-toggle="tab" href="#burnaby">Burnaby</a></li>
     <li><a class="theOption" id="surrey" data-toggle="tab" href="#surrey">Surrey</a></li>
+    <li><a class="theOption" id="richmond" data-toggle="tab" href="#richmond">Richmond</a></li>
   </ul>
   <div class="tab-content">
     <div id="sidebar_container"> </div>
@@ -32,7 +32,7 @@
   };
 
   function createSidebar(json_array){
-      $('#sidebar_container').empty();
+    $('#sidebar_container').empty();
     _.each(json_array, function(json){
       var $li = $( createSidebarLi(json) );
       $li.appendTo('#sidebar_container');
@@ -51,9 +51,9 @@
           <% end %>
         <% end %>
       ];
-      var json_burnaby = [
+      var json_richmond = [
         <% @maps.each do |map| %>
-          <% if(map.burnaby?) %>
+          <% if(map.richmond?) %>
             { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
           <% end %>
         <% end %>
@@ -85,8 +85,8 @@
         if (whichClicked == "vancouver") {
           json_target = json_vancouver;
         }
-        else if (whichClicked == "burnaby") {
-          json_target = json_burnaby;
+        else if (whichClicked == "richmond") {
+          json_target = json_richmond;
         }
         else if (whichClicked == "surrey") {
           json_target = json_surrey;

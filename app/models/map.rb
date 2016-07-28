@@ -1,3 +1,3 @@
 class Map < ActiveRecord::Base
-  enum league: [ :vancouver, :burnaby, :surrey ]
+  enum league: [ :vancouver, :richmond, :surrey ]
 end
