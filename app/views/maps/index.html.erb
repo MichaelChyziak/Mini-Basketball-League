@@ -5,7 +5,7 @@
   <div id='sidebar_container'>
   </div>
   <% if current_user.admin? %>
-    <%= link_to '<span class="button-wrap"><button type="button" class="button button-pill button-longshadow-right"><i class="fa fa-plus"></i> Location </button><span>'.html_safe, new_map_path %> 
+    <%= link_to '<span class="button-wrap"><button type="button" class="button button-pill button-longshadow-right"><i class="fa fa-plus"></i> Location </button><span>'.html_safe, new_map_path %>
   <% end %>
 <div>
 <script src='//maps.google.com/maps/api/js?v=3.23&key=<%= ENV["GMAP_KEY"] %>'></script>
@@ -38,8 +38,14 @@
     handler = Gmaps.build('Google');
     handler.buildMap({ internal: {id: 'sidebar_builder'}}, function(){
       var json_array = [
-        { lat: 49.3017, lng: -123.1417, name: 'Stanley Park', infowindow: "Pokemon GO tri-spot 1" },
-        { lat: 49.2276, lng: -123.0076, name: 'Metrotown Fountain', infowindow: "Pokemon GO tri-spot 2" },
+        // TO DO:
+        // Seperate each of the league based on area, always delete markers based on which league is clicked
+        // - Fastest alg is probably by going thru the whole db once and put it in three seperate array, then
+        //   pop each of the array to create JSON
+        // - (O(n) for both storage and speed)
+        <% @maps.each do |map| %>
+          { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+        <% end %>
       ];
 
       var markers = handler.addMarkers(json_array);

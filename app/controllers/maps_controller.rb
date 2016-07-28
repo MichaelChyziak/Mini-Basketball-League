@@ -2,6 +2,7 @@ class MapsController < ApplicationController
   # TO DO: Make new & create only accessible by admin
   before_action :admin_user,     only: [:new, :create]
   def index
+    @maps = Map.all
   end
 
   def new
