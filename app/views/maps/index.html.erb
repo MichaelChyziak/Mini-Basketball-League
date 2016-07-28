@@ -32,6 +32,7 @@
   };
 
   function createSidebar(json_array){
+      $('#sidebar_container').empty();
     _.each(json_array, function(json){
       var $li = $( createSidebarLi(json) );
       $li.appendTo('#sidebar_container');
@@ -43,29 +44,67 @@
     // ref: http://stackoverflow.com/questions/20386782/google-maps-api-v3-marker-google-is-undefined
     handler = Gmaps.build('Google');
     handler.buildMap({ internal: {id: 'sidebar_builder'}}, function(){
-      var json_array = [
-        // TO DO:
-        // Seperate each of the league based on area, always delete markers based on which league is clicked
-        // - Fastest way is probably by going thru the whole db once and put it in three seperate array, then
-        //   pop each of the array to create JSON
-        // - (O(n) for both storage and speed)
-        // - !!! It's an object, is it possible to copy the whole class structure?
+      var json_vancouver = [
         <% @maps.each do |map| %>
-          { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+          <% if(map.vancouver?) %>
+            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+          <% end %>
         <% end %>
       ];
+      var json_burnaby = [
+        <% @maps.each do |map| %>
+          <% if(map.burnaby?) %>
+            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+          <% end %>
+        <% end %>
+      ];
+      var json_surrey = [
+        <% @maps.each do |map| %>
+          <% if(map.surrey?) %>
+            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+          <% end %>
+        <% end %>
+      ];
+      // Initial condition aka default
+      json_target = json_vancouver;
+      var markers = handler.addMarkers(json_target);
 
-      var markers = handler.addMarkers(json_array);
-      // To remove markers when clicked
-      // removeMarkers(markers);
-
-      _.each(json_array, function(json, index){
+      _.each(json_target, function(json, index){
         json.marker = markers[index];
       });
 
-      createSidebar(json_array);
+      createSidebar(json_target);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
+
+      // Clicked
+      $('.theOption').on('click', function(e) {
+        // To remove markers when clicked
+        handler.removeMarkers(markers);
+        whichClicked = this.id;
+        if (whichClicked == "vancouver") {
+          json_target = json_vancouver;
+        }
+        else if (whichClicked == "burnaby") {
+          json_target = json_burnaby;
+        }
+        else if (whichClicked == "surrey") {
+          json_target = json_surrey;
+        }
+        // Else ignore
+
+        // Need to map again
+        markers = handler.addMarkers(json_target);
+
+        _.each(json_target, function(json, index){
+          json.marker = markers[index];
+        });
+
+        createSidebar(json_target);
+        handler.bounds.extendWith(markers);
+        //handler.fitMapToBounds();
+
+      });
     });
   });
 
