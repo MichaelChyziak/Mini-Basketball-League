@@ -2,7 +2,13 @@
   <div style='width: 800px;'>
     <div id="sidebar_builder" style='width: 800px; height: 400px;'></div>
   </div>
-  <div id='sidebar_container'>
+  <ul class="nav nav-tabs">
+    <li class="active"><a class="theOption" id="vancouver" data-toggle="tab" href="#vancouver">Vancouver</a></li>
+    <li><a class="theOption" id="burnaby" data-toggle="tab" href="#burnaby">Burnaby</a></li>
+    <li><a class="theOption" id="surrey" data-toggle="tab" href="#surrey">Surrey</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="sidebar_container"> </div>
   </div>
   <% if current_user.admin? %>
     <%= link_to '<span class="button-wrap"><button type="button" class="button button-pill button-longshadow-right"><i class="fa fa-plus"></i> Location </button><span>'.html_safe, new_map_path %>
@@ -40,15 +46,18 @@
       var json_array = [
         // TO DO:
         // Seperate each of the league based on area, always delete markers based on which league is clicked
-        // - Fastest alg is probably by going thru the whole db once and put it in three seperate array, then
+        // - Fastest way is probably by going thru the whole db once and put it in three seperate array, then
         //   pop each of the array to create JSON
         // - (O(n) for both storage and speed)
+        // - !!! It's an object, is it possible to copy the whole class structure?
         <% @maps.each do |map| %>
           { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
         <% end %>
       ];
 
       var markers = handler.addMarkers(json_array);
+      // To remove markers when clicked
+      // removeMarkers(markers);
 
       _.each(json_array, function(json, index){
         json.marker = markers[index];
