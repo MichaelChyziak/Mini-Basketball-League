@@ -1,5 +1,6 @@
 class MapsController < ApplicationController
   # TO DO: Make new & create only accessible by admin
+  before_action :admin_user,     only: [:new, :create]
   def index
   end
 
@@ -21,6 +22,11 @@ class MapsController < ApplicationController
   def map_params
     params.require(:map).permit(:name, :info, :lat,
                                  :lng, :league)
+  end
+
+  # Confirms an admin user.
+  def admin_user
+    redirect_to(maps_path) unless current_user.admin?
   end
 
 end

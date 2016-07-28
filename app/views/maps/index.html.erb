@@ -4,6 +4,9 @@
   </div>
   <div id='sidebar_container'>
   </div>
+  <% if current_user.admin? %>
+    <%= link_to '<span class="button-wrap"><button type="button" class="button button-pill button-longshadow-right"><i class="fa fa-plus"></i> Location </button><span>'.html_safe, new_map_path %> 
+  <% end %>
 <div>
 <script src='//maps.google.com/maps/api/js?v=3.23&key=<%= ENV["GMAP_KEY"] %>'></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
