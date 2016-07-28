@@ -101,9 +101,9 @@
         });
 
         createSidebar(json_target);
+        handler.resetBounds(markers);
         handler.bounds.extendWith(markers);
-        //handler.fitMapToBounds();
-
+        handler.fitMapToBounds();
       });
     });
   });
