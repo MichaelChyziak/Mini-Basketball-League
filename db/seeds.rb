@@ -41,6 +41,25 @@ User.create(username: "user14", email: "user14@example.com", password: "useruser
 User.create(username: "user15", email: "user15@example.com", password: "useruser15", password_confirmation: "useruser15")
 User.create(username: "user16", email: "user16@example.com", password: "useruser16", password_confirmation: "useruser16")
 User.create(username: "admin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notadmin", admin: true, super_admin: true)
+
 League.create(name: "Vancouver")
 League.create(name: "Surrey")
 League.create(name: "Richmond")
+
+Map.create(name: "David Lam Park", info: "David Lam Park", lat: 49.272342, lng: -123.124583, league: 0)
+Map.create(name: "Sutcliffe Park", info: "Sutcliffe Park", lat: 49.268989, lng: -123.134834, league: 0)
+Map.create(name: "Garden Park", info: "Garden Park", lat: 49.268189, lng: -123.058892, league: 0)
+Map.create(name: "Oak Park", info: "Oak Park", lat: 49.215607, lng: -123.129056, league: 0)
+Map.create(name: "Queen Elizabeth Park", info: "Queen Elizabeth Park", lat: 49.241436, lng: -123.113533, league: 0)
+
+Map.create(name: "Garden City Park", info: "Garden City Park", lat: 49.165445, lng: -123.122790, league: 1)
+Map.create(name: "Hugh Boyd Community Park", info: "Hugh Boyd Community Park", lat: 49.146022, lng: -123.177731, league: 1)
+Map.create(name: "King George Community Park", info: "King George Community Park", lat: 49.183425, lng: -123.087645, league: 1)
+Map.create(name: "South Arm Courts", info: "South Arm Courts", lat: 49.140251, lng: -123.127766, league: 1)
+Map.create(name: "Thompson Courts", info: "Thompson Courts", lat: 49.163260, lng: -123.165560, league: 1)
+
+Map.create(name: "Bear Creek Park", info: "Bear Creek Park", lat: 49.160802, lng: -122.840934, league: 2)
+Map.create(name: "Bob Rutledge Court", info: "Bob Rutledge Court", lat: 49.100803, lng: -122.810683, league: 2)
+Map.create(name: "Fleetwood Park", info: "Fleetwood Park", lat: 49.146280, lng: -122.789638, league: 2)
+Map.create(name: "Goldstone Park", info: "Goldstone Park", lat: 49.109196, lng: -122.817557, league: 2)
+Map.create(name: "Tom Binnie Park", info: "Tom Binnie Park", lat: 49.196142, lng: -122.849728, league: 2)
