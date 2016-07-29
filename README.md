@@ -16,19 +16,19 @@ Now running "heroku local web" should work properly
 
 Regular users:
 
-username: "user1@example.com", password: "useruser1"<br>
-username: "user2@example.com", password: "useruser2"<br>
-username: "user3@example.com", password: "useruser3"<br>
-username: "user4@example.com", password: "useruser4"<br>
-username: "user5@example.com", password: "useruser5"<br>
-username: "user6@example.com", password: "useruser6"<br>
-username: "user7@example.com", password: "useruser7"<br>
-username: "user8@example.com", password: "useruser8"<br>
-username: "user9@example.com", password: "useruser9"<br>
+username: "user1", password: "useruser1"<br>
+username: "user2", password: "useruser2"<br>
+username: "user3", password: "useruser3"<br>
+username: "user4", password: "useruser4"<br>
+username: "user5", password: "useruser5"<br>
+username: "user6", password: "useruser6"<br>
+username: "user7", password: "useruser7"<br>
+username: "user8", password: "useruser8"<br>
+username: "user9", password: "useruser9"<br>
 
 Admin:
 
-username: "admin@xyz.com", password: "notadmin"
+username: "admin, password: "notadmin"
 
 
 #Iteration 1
