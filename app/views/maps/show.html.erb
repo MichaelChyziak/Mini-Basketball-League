@@ -1,0 +1,121 @@
+<div class ="container">
+  <div style='width: 800px;'>
+    <div id="sidebar_builder" style='width: 800px; height: 400px;'></div>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="active"><a class="theOption" id="vancouver" data-toggle="tab" href="#vancouver">Vancouver</a></li>
+    <li><a class="theOption" id="surrey" data-toggle="tab" href="#surrey">Surrey</a></li>
+    <li><a class="theOption" id="richmond" data-toggle="tab" href="#richmond">Richmond</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="sidebar_container"> </div>
+  </div>
+  <% if current_user.admin? %>
+    <%= link_to '<span class="button-wrap"><button type="button" class="button button-pill button-longshadow-right"><i class="fa fa-plus"></i> Location </button><span>'.html_safe, new_map_path %>
+  <% end %>
+<div>
+<script src='//maps.google.com/maps/api/js?v=3.23&key=<%= ENV["GMAP_KEY"] %>'></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
+<script>
+  function createSidebarLi(json){
+    return ("<li><a>" + json.name + "</a></li>");
+  };
+
+  function bindLiToMarker($li, marker){
+    $li.on('click', function(){
+      handler.getMap().setZoom(14);
+      marker.setMap(handler.getMap()); //because clusterer removes map property from marker
+      marker.panTo();
+      google.maps.event.trigger(marker.getServiceObject(), 'click');
+    })
+  };
+
+  function createSidebar(json_array){
+    $('#sidebar_container').empty();
+    _.each(json_array, function(json){
+      var $li = $( createSidebarLi(json) );
+      $li.appendTo('#sidebar_container');
+      bindLiToMarker($li, json.marker);
+    });
+  };
+  $(document).ready(function(){
+    // Gmaps has to load first before this
+    // ref: http://stackoverflow.com/questions/20386782/google-maps-api-v3-marker-google-is-undefined
+    handler = Gmaps.build('Google');
+    handler.buildMap({ internal: {id: 'sidebar_builder'}}, function(){
+      var json_vancouver = [
+        <% @maps.each do |map| %>
+          <% if(map.vancouver?) %>
+            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+          <% end %>
+        <% end %>
+      ];
+      var json_richmond = [
+        <% @maps.each do |map| %>
+          <% if(map.richmond?) %>
+            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+          <% end %>
+        <% end %>
+      ];
+      var json_surrey = [
+        <% @maps.each do |map| %>
+          <% if(map.surrey?) %>
+            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+          <% end %>
+        <% end %>
+      ];
+      // Initial condition aka default
+      json_target = json_vancouver;
+      var markers = handler.addMarkers(json_target);
+
+      _.each(json_target, function(json, index){
+        json.marker = markers[index];
+      });
+
+      createSidebar(json_target);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+
+      // Clicked
+      $('.theOption').on('click', function(e) {
+        // To remove markers when clicked
+        handler.removeMarkers(markers);
+        whichClicked = this.id;
+        if (whichClicked == "vancouver") {
+          json_target = json_vancouver;
+        }
+        else if (whichClicked == "richmond") {
+          json_target = json_richmond;
+        }
+        else if (whichClicked == "surrey") {
+          json_target = json_surrey;
+        }
+        // Else ignore
+
+        // Need to map again
+        markers = handler.addMarkers(json_target);
+
+        _.each(json_target, function(json, index){
+          json.marker = markers[index];
+        });
+
+        createSidebar(json_target);
+        handler.resetBounds(markers);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    });
+  });
+
+</script>
+
+<style>
+
+#map img {
+  max-width: none;
+}
+#map label {
+  width: auto; display:inline;
+}
+</style>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'maps/new'
 
+  get 'show', to: 'maps#show'
   get 'maps', to: 'maps#index'
 
   get 'sessions/new' , to: 'sessions#new'

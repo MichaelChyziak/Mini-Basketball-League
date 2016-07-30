@@ -18,6 +18,10 @@ class MapsController < ApplicationController
     end
   end
 
+  def show
+    @maps = Map.all
+  end
+
   private
 
   def map_params
