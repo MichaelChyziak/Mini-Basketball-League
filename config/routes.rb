@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/schedule2' , to: 'welcome#schedule2'
   get '/schedule3' , to: 'welcome#schedule3'
   get '/standings', to: 'welcome#standings'
+  get '/location', to: 'welcome#location'
 
   get 'signup'  => 'users#new'
 
