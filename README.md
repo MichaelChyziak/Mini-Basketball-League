@@ -28,7 +28,7 @@ username: "user9", password: "useruser9"<br>
 
 Admin:
 
-username: "admin, password: "notadmin"
+username: "admin", password: "notadmin"
 
 
 #Iteration 1

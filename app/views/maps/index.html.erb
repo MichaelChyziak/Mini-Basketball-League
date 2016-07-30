@@ -61,7 +61,12 @@
       var json_surrey = [
         <% @maps.each do |map| %>
           <% if(map.surrey?) %>
-            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+            { lat: <%= map.lat %>, lng: <%= map.lng %>, picture: {
+                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Basketball_Clipart.svg/35px-Basketball_Clipart.svg.png",
+                width:36,
+                height:36,
+            },
+              name: "<%= map.name %>", infowindow: "<%= map.info %>" },
           <% end %>
         <% end %>
       ];
