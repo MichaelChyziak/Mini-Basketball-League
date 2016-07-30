@@ -59,7 +59,13 @@
       var json_richmond = [
         <% @maps.each do |map| %>
           <% if(map.richmond?) %>
-            { lat: <%= map.lat %>, lng: <%= map.lng %>, name: "<%= map.name %>", infowindow: "<%= map.info %>" },
+            {
+              lat: <%= map.lat %>,
+              lng: <%= map.lng %>,
+              name: "<%= map.name %>",
+              infowindow: "<%= map.info %>",
+              marker_title: "<%= map.name %>"
+            },
           <% end %>
         <% end %>
       ];
