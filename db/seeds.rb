@@ -24,7 +24,7 @@ Team.create!(team_name: "User15's Van Team", team_message: "Test", league: "Vanc
 Team.create!(team_name: "User16's Van Team", team_message: "Test", league: "Vancouver", status: "pending", players_id: [16], captain_id: 16)
 
 
-User.create(username: "user1", email: "user1@example.com", password: "useruser1", password_confirmation: "useruser1", team_id: 1)
+User.create(username: "user1", email: "user1@example.com", password: "useruser1", password_confirmation: "useruser1", team_id: 1, primary_court: "Oak Park", secondary_court: "Garden Park")
 User.create(username: "user2", email: "user2@example.com", password: "useruser2", password_confirmation: "useruser2", team_id: 2)
 User.create(username: "user3", email: "user3@example.com", password: "useruser3", password_confirmation: "useruser3", team_id: 3)
 User.create(username: "user4", email: "user4@example.com", password: "useruser4", password_confirmation: "useruser4", team_id: 4)
