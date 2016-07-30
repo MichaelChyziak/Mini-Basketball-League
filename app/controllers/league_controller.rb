@@ -191,9 +191,20 @@ class LeagueController < ApplicationController
   private
 
   def calculate_courts(team1_ids, team2_ids)
-    vancouver_courts = { "Vancouver-1" => 0, "Vancouver-2" => 0, "Vancouver-3" => 0, "Vancouver-4" => 0, "Vancouver-5" => 0 } #Temporarily using this. Change later.
-    surrey_courts = { "Surrey-1" => 0, "Surrey-2" => 0, "Surrey-3" => 0, "Surrey-4" => 0, "Surrey-5" => 0 } #Temporarily using this. Change later.
-    richmond_courts = { "Richmond-1" => 0, "Richmond-2" => 0, "Richmond-3" => 0, "Richmond-4" => 0, "Richmond-5" => 0 } #Temporarily using this. Change later.
+    maps = Map.all
+    vancouver_courts = {}
+    surrey_courts = {}
+    richmond_courts = {}
+    maps.each do |map|
+      if(map.vancouver?)
+        vancouver_courts[map.name] = 0
+      elsif(map.surrey?)
+        surrey_courts[map.name] = 0
+      else
+        richmond_courts[map.name] = 0
+      end
+    end
+
     courts = {}
     if params[:league_name] == "Vancouver"
       courts = vancouver_courts
