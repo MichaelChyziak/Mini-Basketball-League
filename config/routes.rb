@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'show', to: 'maps#show'
   get 'maps', to: 'maps#index'
+  get 'show/save_primary', to: 'maps#save_primary'
+  get 'show/save_secondary', to: 'maps#save_secondary'
 
   get 'sessions/new' , to: 'sessions#new'
 

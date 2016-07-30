@@ -22,6 +22,18 @@ class MapsController < ApplicationController
     @maps = Map.all
   end
 
+  def save_primary
+    current_user.update_attribute(:primary_court, params[:court])
+    flash[:success] = "Successfully updated Primary Court"
+    redirect_to "/show"
+  end
+
+  def save_secondary
+    current_user.update_attribute(:secondary_court, params[:court])
+    flash[:success] = "Successfully updated Secondary Court"
+    redirect_to "/show"
+  end
+
   private
 
   def map_params
