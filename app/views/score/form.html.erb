@@ -1,3 +1,8 @@
+<body>
+  <table>
+    <tr>
+      <td>
+<div class="form">
 <%= form_for @score, url: score_submit_path do |f| %>
 
   <% team1 = Team.find(@score.team_1_id) %>
@@ -31,3 +36,31 @@
     <%= f.submit %>
   </p>
 <% end %>
+</div>
+    </td>
+  </tr>
+  <tr>
+    <td style="height: 500px">
+    </td>
+  </tr>
+</table>
+
+</body>
+
+<style>
+body {
+  background-image: url("/assets/van.png");
+  background-size: 100%;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
+
+.form {
+  margin-top: 40%;
+}
+
+</style>
