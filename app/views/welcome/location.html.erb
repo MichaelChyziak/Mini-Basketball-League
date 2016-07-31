@@ -37,7 +37,7 @@
   function createSidebarLi(json){
     return ("<li><a>" + json.name + "</a></li>");
   };
-
+  
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
       handler.getMap().setZoom(14);
@@ -110,6 +110,8 @@
       <%else%>
       json_target = json_richmond;
       <%end%>
+      
+      
       // Event Handler
       // Reference: https://github.com/apneadiving/Google-Maps-for-Rails/issues/474
       var markers = [];
@@ -128,7 +130,9 @@
       createSidebar(json_target);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-
+      
+      
+      
       // Clicked
       // Code is a mess, need to refactor in future
       $('.theOption').on('click', function(e) {
@@ -169,6 +173,7 @@
       });
     });
   });
+
 
 </script>
 
