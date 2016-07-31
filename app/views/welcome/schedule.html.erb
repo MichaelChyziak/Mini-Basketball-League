@@ -21,6 +21,7 @@
   body {
     background-image: url("/assets/van.png");
     background-size: 100%;
+    background-attachment: fixed;
   }
 
   th{
@@ -74,7 +75,7 @@
           <tr>
           <th>Date</th>
               <th>Time</th>
-              
+
               <th>Team A</th>
               <th>Team B</th>
               <th>Location</th>
@@ -100,7 +101,7 @@
 
 
                     <td>6:00 PM</td>
-                    
+
 
 
                     <%if Team.where(:id => score.team_1_id).first==nil && !(Team.where(:id => score.team_2_id).first==nil) %>
@@ -119,7 +120,7 @@
                           <%else%>
                           <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%end%>
-                          
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -151,7 +152,7 @@
                           <%else%>
                           <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%end%>
-                          
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -200,7 +201,7 @@
                           <td><%= team2.team_name  %></td>
 
 
-                          
+
                           <%if score.primary_court == "David Lam Park"%>
                           <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%elsif score.primary_court == "Sutcliffe Park"%>
@@ -212,7 +213,7 @@
                           <%else%>
                           <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%end%>
-            
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
