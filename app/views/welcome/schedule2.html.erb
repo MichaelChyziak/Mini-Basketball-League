@@ -18,6 +18,12 @@
     <![endif]-->
   <style>
 
+  body {
+    background-image: url("/assets/van.png");
+    background-size: 100%;
+    background-attachment: fixed;
+  }
+
   th{
       text-align:center;
   }
@@ -32,12 +38,6 @@
 
   .row{
     text-align: center;
-  }
-
-
-  body{
-  	background-image: url();
-	   background-size:100%;
   }
 
 
@@ -96,12 +96,12 @@
 
 
                     <td>6:00 PM</td>
-                    
+
                     <%if Team.where(:id => score.team_1_id).first==nil && !(Team.where(:id => score.team_2_id).first==nil) %>
                           <% team2 = Team.find(score.team_2_id) %>
                           <td>--</td>
                           <td><%= team2.team_name  %></td>
-                          
+
                           <%if score.primary_court == "Bear Creek Park"%>
                           <td><a href="/location?court=Bear Creek Park&league=2" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%elsif score.primary_court == "Bob Rutledge Court"%>
@@ -112,8 +112,8 @@
                           <td><a href="/location?court=Goldstone Park&league=2" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%else%>
                           <td><a href="/location?court=Tom Binnie Park&league=2" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
-                          <%end%>                          
-                          
+                          <%end%>
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -145,7 +145,7 @@
                           <%else%>
                           <td><a href="/location?court=Tom Binnie Park&league=2" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%end%>
-                          
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -175,7 +175,7 @@
                           <%else%>
                           <td><a href="/location?court=Tom Binnie Park&league=2" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%end%>
-                          
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -207,7 +207,7 @@
                           <%else%>
                           <td><a href="/location?court=Tom Binnie Park&league=2" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%end%>
-                          
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
