@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'maps/new'
+  get 'maps/new', to: 'maps#new'
 
   get 'show', to: 'maps#show'
   get 'maps', to: 'maps#index'
