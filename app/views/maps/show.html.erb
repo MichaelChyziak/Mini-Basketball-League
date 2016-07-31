@@ -112,10 +112,11 @@
       // Event Handler
       // Reference: https://github.com/apneadiving/Google-Maps-for-Rails/issues/474
       var markers = [];
+      var eventList = []
       for (var i = 0; i < json_target.length; i++){
         var marker = handler.addMarker(json_target[i]);
         markers.push(marker);
-        google.maps.event.addListener(marker.serviceObject, 'click', function(e) {
+        eventList[i] = google.maps.event.addListener(marker.serviceObject, 'click', function(e) {
           document.getElementById("selected_court").textContent=this.title;
         });
       }
@@ -132,7 +133,11 @@
       // Code is a mess, need to refactor in future
       $('.theOption').on('click', function(e) {
         // To remove markers when clicked
-        handler.removeMarkers(markers);
+        for (var i = 0; i < markers.length; i++){
+          google.maps.event.removeListener(eventList[i]);
+          marker = handler.removeMarker(markers[i]);
+        }
+        markers = [];
         whichClicked = this.id;
         if (whichClicked == "vancouver") {
           json_target = json_vancouver;
@@ -146,9 +151,8 @@
         // Else ignore
 
         // Need to map again
-        markers = handler.addMarkers(json_target);
 
-        var markers = [];
+        //var markers = [];
         for (var i = 0; i < json_target.length; i++){
           marker = handler.addMarker(json_target[i]);
           markers.push(marker);
