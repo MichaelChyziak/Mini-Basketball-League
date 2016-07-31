@@ -103,8 +103,13 @@
         <% end %>
       ];
       // Initial condition aka default
+      <%if @curleague == "0"%>
       json_target = json_vancouver;
-
+      <%elsif @curleague == "2"%> 
+      json_target = json_surrey;
+      <%else%>
+      json_target = json_richmond;
+      <%end%>
       // Event Handler
       // Reference: https://github.com/apneadiving/Google-Maps-for-Rails/issues/474
       var markers = [];
