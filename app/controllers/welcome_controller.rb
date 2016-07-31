@@ -17,10 +17,8 @@ class WelcomeController < ApplicationController
   end
   
   def location
-    @score = Score.find_by_id(params[:id])
     @courtloc = params[:court]
     @curleague = params[:league]
-    @maps = Map.all
     @curmap = Map.where(:league => @curleague)
   end
 

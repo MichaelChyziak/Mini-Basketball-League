@@ -107,7 +107,19 @@
                           <% team2 = Team.find(score.team_2_id) %>
                           <td>--</td>
                           <td><%= team2.team_name  %></td>
-                          <td><a href="/location" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>See On Map</a></td>
+
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%end%>
+                          
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -127,7 +139,19 @@
                           <% team1 = Team.find(score.team_1_id) %>
                           <td><%= team1.team_name  %></td>
                           <td>--</td>
-                          <td><a href="/location" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>See On Map</a></td>
+
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%end%>
+                          
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -145,7 +169,17 @@
                     <%elsif  Team.where(:id => score.team_1_id).first==nil && Team.where(:id => score.team_2_id).first==nil %>
                           <td>--</td>
                           <td>--</td>
-                          <td><a href="/location" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>See On Map</a></td>
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%end%>
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -167,10 +201,16 @@
 
 
                           
-                          <%if score.primary_court == "Vancouver-1"%>
-                          <td><a href="/location?court=Vancouver-1&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
-                          <%elsif score.primary_court == "Vancouver-2" %>
-                          <td><a href="/location?court=Vancouver-2&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
                           <%end%>
             
                           </td>
@@ -214,7 +254,7 @@
     </table>
 
 
-<p>Note: when clicking See On Map, it will lead to Google Maps/Calendar.(iteration 3)</p>
+
 </br>
 
 <script type="text/javascript">
