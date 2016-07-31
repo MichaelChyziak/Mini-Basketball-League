@@ -16,12 +16,6 @@
   <%= f.label :about %>
   <%= f.text_field :about, class: 'form-control' %>
 
-  <%= f.label :primary_court %>
-  <%= f.select(:primary_court, %w[ Vancouver-1 Vancouver-2 Vancouver-3 Vancouver-4 Vancouver-5 Surrey-1 Surrey-2 Surrey-3 Surrey-4 Surrey-5 Richmond-1 Richmond-2 Richmond-3 Richmond-4 Richmond-5], { :include_blank => "No Court"}, {:class => 'form-control'}) %>
-
-  <%= f.label :secondary_court %>
-  <%= f.select(:secondary_court, %w[ Vancouver-1 Vancouver-2 Vancouver-3 Vancouver-4 Vancouver-5 Surrey-1 Surrey-2 Surrey-3 Surrey-4 Surrey-5 Richmond-1 Richmond-2 Richmond-3 Richmond-4 Richmond-5], { :include_blank => "No Court"}, {:class => 'form-control'}) %>
-
   <div class="field">
     <%= f.label :height %><br>
     <%= f.number_field :height , :class => 'text_field', :step => 0.01 , :min => 1 %> cm

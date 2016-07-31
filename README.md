@@ -16,19 +16,19 @@ Now running "heroku local web" should work properly
 
 Regular users:
 
-email: "user1@example.com", password: "useruser1"<br>
-email: "user2@example.com", password: "useruser2"<br>
-email: "user3@example.com", password: "useruser3"<br>
-email: "user4@example.com", password: "useruser4"<br>
-email: "user5@example.com", password: "useruser5"<br>
-email: "user6@example.com", password: "useruser6"<br>
-email: "user7@example.com", password: "useruser7"<br>
-email: "user8@example.com", password: "useruser8"<br>
-email: "user9@example.com", password: "useruser9"<br>
+username: "user1", password: "useruser1"<br>
+username: "user2", password: "useruser2"<br>
+username: "user3", password: "useruser3"<br>
+username: "user4", password: "useruser4"<br>
+username: "user5", password: "useruser5"<br>
+username: "user6", password: "useruser6"<br>
+username: "user7", password: "useruser7"<br>
+username: "user8", password: "useruser8"<br>
+username: "user9", password: "useruser9"<br>
 
 Admin:
 
-email: "admin@xyz.com", password: "notadmin"
+username: "admin", password: "notadmin"
 
 
 #Iteration 1
@@ -37,16 +37,16 @@ Requirement Document Overview (Iteration 1)
 
 Document Header
 Mini Basketball League
-Requirements and Specification Document 
+Requirements and Specification Document
 06/20/2016, version 0.1
 
-Project Abstract 
+Project Abstract
 The webapp that our team will be creating is called, “Mini Basketball League” (MBL) and it targets basketball players of all ages and skill levels. Each player will have their own profile page where they can display their basketball-related information. Players can decide to create or join a team by clicking the appropriate button on the homepage. After forming a team, the captain can choose which league their team should be in based on the players’ skill levels. The software also allows teams to send invitations to each other and organize a time and location for their game with the help of Google Calendar and Google Map APIs. After each game, the database will be updated and users can post their recorded game highlights in the form of a link from Youtube. Added features may also include MVP (most valuable player) or championship trophies if time allows. A twitter-like social media platform (or an embedded Twitter stream) will be implemented. This  will allow players to post and view updates regarding their team, other teams and games.
 
-Customer 
+Customer
 The type of customer which would be expected for MBL would be mostly basketball players of all skill levels who are looking to play competitive games with others who are also at their skill level. Another type of customer would be the site administrators (which can also be players) who are willing to help maintain responsibilities of the site. Other customers may wish to create a team and manage the team.
 
-Competitive Analysis 
+Competitive Analysis
 This app is a combination of NBA fantasy league game and real-time event organizer, which gathers people within a community to play real sport. There are currently little to none competitors that is doing this so MBL is in a niche market. The closest alternative would be organized team leagues in which a fee is required to play. The key attraction for MBL is to provide users with the similar experience to what professional basketball players may have. The ability to showcase oneself and play for a team in a well-organized league is the dream of every competitive basketball fan.
 
 User Stories  
@@ -63,19 +63,19 @@ A registered user will be able to log in from the login page as either an admin 
 
 When a user views their profile from the dropdown in the menu bar they will be brought to a page showing their username and their email.
 
-When a user has joined a team and selects “My Team” in the menu bar under “My Account” they will be taken to their team page. If the users team were to be deleted then the “My Team” option would not appear on the dropdown list. 
+When a user has joined a team and selects “My Team” in the menu bar under “My Account” they will be taken to their team page. If the users team were to be deleted then the “My Team” option would not appear on the dropdown list.
 
 All users can view any team’s page which will show the name of the team, the league of the team, the number of users, and the users’ names. Under that is a link labeled “Back” that will return the user to the previous page that they were on. However, if the user that is viewing the page is part of the team another link will be available labeled “Leave Team” which will allow the user to leave the team. Doing so will redirect the user to the same page but with a few changes. The “My Team” in the “My Account” dropdown will be gone for the user as well as a warning message will show that the user has left the team. Also the number of users on a team will decrease as well as the name of the user who left will be removed from the users list. If there are no users part of the team, the “User” label will not be displayed.
 
 A user can create a team by pressing the “Create Team” button on the home page and be redirected to a page asking for the team name and the team league the user wants to be in. The team name must be equal to or less than 30 characters and the team league can be selected from the dropdown menu. The user can press the “Create Team” button to create the team or “Back” to return to the home page. If the user is part of a team they will redirected to the home page after pressing “Create Team” and will be given message as to why. Otherwise the user will go to their new team’s page but instead of a “Back” and “Leave Team” link there will only be a “Continue” link which will bring the user back to the home page.
 
-If a user presses the “Join Team” button on the home page they will be brought to a table of Approved/Pending/Declined Teams which they can either press “Join” to join the team and be added to the team or to press “Details”. Both options will redirect the user to the team’s page. 
+If a user presses the “Join Team” button on the home page they will be brought to a table of Approved/Pending/Declined Teams which they can either press “Join” to join the team and be added to the team or to press “Details”. Both options will redirect the user to the team’s page.
 
 If an admin presses the “Manage Teams” button on the home page (which is only visible to the admin) then they are brought to a similar table as the one seen when “Join Team” is pressed. However this time instead the links available are “Details” (which does the same thing that it does in the join team page), “Edit”, “Delete” and also “Approve” and “Decline” if the team is in the pending teams table. Pressing edit will bring the admin to a page allowing them to edit the team’s name or league and to update it or to view the team again or return back to the previous page. If the admin updates the team then they will be redirected to the new team’s page after doing so. If the admin presses “Delete” then simply the team will be deleted and all users who were part of the team will no longer be part of it and can freely join or create another team. If the admin selects “Approve” then the team will move to the approved teams table and the same happens if the admin selects “Decline”. Once a team is approved or declined it cannot be switched back.
 </p>
 Future Iteration Stories
 Below are some point form stories which might possibly be developed.
-A non-registered user would be able to sign up directly from the web interface, and confirm their email right away 
+A non-registered user would be able to sign up directly from the web interface, and confirm their email right away
 A registered user would be able to edit their profile
 An admin user would be able to delete, and edit registered users’ profile
 The user who creates the team is designated as team manager and can edit the team’s attributes
@@ -102,4 +102,3 @@ When a team is formed, three types of basketball leagues will be available to ch
 ## First Iteration
 
 One of the requirements going forward for the first iteration is to implement a login or sign up screen when the user goes onto our web application. Another requirement is that after the login, there will be the main page that allows the user to edit his/her profile. The last requirement is to implement a feature to allow a user to create a team or to join an existing team.
-

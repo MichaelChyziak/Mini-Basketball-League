@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get 'maps/new'
+
+  get 'show', to: 'maps#show'
   get 'maps', to: 'maps#index'
+  get 'show/save_primary', to: 'maps#save_primary'
+  get 'show/save_secondary', to: 'maps#save_secondary'
 
   get 'sessions/new' , to: 'sessions#new'
 
@@ -12,6 +17,7 @@ Rails.application.routes.draw do
   get '/schedule2' , to: 'welcome#schedule2'
   get '/schedule3' , to: 'welcome#schedule3'
   get '/standings', to: 'welcome#standings'
+  get '/location', to: 'welcome#location'
 
   get 'signup'  => 'users#new'
 
@@ -30,6 +36,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :users
   resources :sessions
+  resources :maps
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
