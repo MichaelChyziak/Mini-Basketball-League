@@ -18,6 +18,12 @@
     <![endif]-->
   <style>
 
+  body {
+    background-image: url("/assets/van.png");
+    background-size: 100%;
+    background-attachment: fixed;
+  }
+
   th{
       text-align:center;
   }
@@ -34,11 +40,6 @@
     text-align: center;
   }
 
-
-  body{
-  	background-image: url();
-	   background-size:100%;
-  }
 
 
   #schedule{
@@ -74,10 +75,10 @@
           <tr>
           <th>Date</th>
               <th>Time</th>
-              <th>Location</th>
+
               <th>Team A</th>
               <th>Team B</th>
-              <th>Details</th>
+              <th>Location</th>
               <th>Score</th>
               <th>Submit</th>
            </tr>
@@ -100,16 +101,26 @@
 
 
                     <td>6:00 PM</td>
-                    <td>N/A</td>
 
-    <!-- The current Submit Score form page will not work for deleted or quitted teams so will need to make changes on that
-    -->
+
 
                     <%if Team.where(:id => score.team_1_id).first==nil && !(Team.where(:id => score.team_2_id).first==nil) %>
                           <% team2 = Team.find(score.team_2_id) %>
                           <td>--</td>
                           <td><%= team2.team_name  %></td>
-                          <td><a href="" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Details</a></td>
+
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%end%>
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -129,7 +140,19 @@
                           <% team1 = Team.find(score.team_1_id) %>
                           <td><%= team1.team_name  %></td>
                           <td>--</td>
-                          <td><a href="" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Details</a></td>
+
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%end%>
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -147,7 +170,17 @@
                     <%elsif  Team.where(:id => score.team_1_id).first==nil && Team.where(:id => score.team_2_id).first==nil %>
                           <td>--</td>
                           <td>--</td>
-                          <td><a href="" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink>Details</a></td>
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%end%>
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -168,7 +201,19 @@
                           <td><%= team2.team_name  %></td>
 
 
-                          <td><a href="" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > Details</a></td>
+
+                          <%if score.primary_court == "David Lam Park"%>
+                          <td><a href="/location?court=David Lam Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Sutcliffe Park"%>
+                          <td><a href="/location?court=Sutcliffe Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Garden Park"%>
+                          <td><a href="/location?court=Garden Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%elsif score.primary_court == "Oak Park"%>
+                          <td><a href="/location?court=Oak Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%else%>
+                          <td><a href="/location?court=Queen Elizabeth Park&league=0" class="btn btn-sm btn-primary btn-block" role="button" data-no-turbolink  > See On Map</a></td>
+                          <%end%>
+
                           </td>
                           <% if score.approved_score %>
                             <td><%= score.official_team_1_score %> - <%= score.official_team_2_score %></td>
@@ -210,7 +255,7 @@
     </table>
 
 
-<p>Note: when clicking Details, it will lead to Google Maps/Calendar.(iteration 3)</p>
+
 </br>
 
 <script type="text/javascript">

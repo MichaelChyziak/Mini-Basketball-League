@@ -15,6 +15,12 @@ class WelcomeController < ApplicationController
   def about
 
   end
+  
+  def location
+    @courtloc = params[:court]
+    @curleague = params[:league]
+    @curmap = Map.where(:league => @curleague)
+  end
 
   def schedule
     @teams = Team.all
