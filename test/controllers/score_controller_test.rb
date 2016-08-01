@@ -54,29 +54,15 @@ class ScoreControllerTest < ActionController::TestCase
     assert(flash[:warning] == "A Problem occured")
   end
 
-  # test "If values change, make sure the score updates to those new values" do
-  #   #TODO
-  # end
-
   test "should get index" do
     session[:user_id] = @user.id
     get :index
     assert_response :success
   end
 
-  test "accepting the score from team 1 should update the official score values and redirect properly" do
+  test "should test that when admin confirms the score it is properly redirected" do
     session[:user_id] = @user.id
-    get :team_1_score_accept, id: @score.id
-    assert(@score.official_team_1_score == @score.captain_1_team_1_score)
-    assert(@score.official_team_2_score == @score.captain_1_team_2_score)
-    assert_redirected_to "/scores"
-  end
-
-  test "accepting the score from team 2 should update the official score values and redirect properly" do
-    session[:user_id] = @user.id
-    get :team_1_score_accept, id: @score.id
-    assert(@score.official_team_1_score == @score.captain_2_team_1_score)
-    assert(@score.official_team_2_score == @score.captain_2_team_2_score)
+    patch :confirm, id: @score.id, score: {official_team_1_score: 1, official_team_2_score: 2}
     assert_redirected_to "/scores"
   end
 
