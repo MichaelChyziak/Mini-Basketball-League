@@ -54,10 +54,6 @@ class ScoreControllerTest < ActionController::TestCase
     assert(flash[:warning] == "A Problem occured")
   end
 
-  # test "If values change, make sure the score updates to those new values" do
-  #   #TODO
-  # end
-
   test "should get index" do
     session[:user_id] = @user.id
     get :index

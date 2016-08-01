@@ -51,14 +51,6 @@ class TeamsControllerTest < ActionController::TestCase
    assert(team_made.captain_id == @user.id)
   end
 
-  # #user.team_id is saved in the action but does not persist later on in the assert. Why?
-  # test "user adds the team they create to their team list" do
-  #   session[:user_id] = @user.id
-  #   post :create, team: {team_name: "tester"}
-  #   team_made = Team.where(:team_name => "tester").first
-  #   assert(@user.team_id == team_made.id)
-  # end
-
   test "after creating team user is redirected to the teams page" do
     session[:user_id] = @user.id
     post :create, team: {team_name: "tester" }
