@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Team.create!(team_name: "User1's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [1], captain_id: 1)
+Team.create!(team_name: "User1's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [1, 17], captain_id: 17)
 Team.create!(team_name: "User2's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [2], captain_id: 2)
 Team.create!(team_name: "User3's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [3], captain_id: 3)
 Team.create!(team_name: "User4's Van Team", team_message: "Test", league: "Vancouver", status: "approved", players_id: [4], captain_id: 4)
@@ -40,7 +40,7 @@ User.create(username: "user13", email: "user13@example.com", password: "useruser
 User.create(username: "user14", email: "user14@example.com", password: "useruser14", password_confirmation: "useruser14")
 User.create(username: "user15", email: "user15@example.com", password: "useruser15", password_confirmation: "useruser15")
 User.create(username: "user16", email: "user16@example.com", password: "useruser16", password_confirmation: "useruser16")
-User.create(username: "admin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notadmin", admin: true, super_admin: true)
+User.create(username: "admin", email: "admin@xyz.com", password: "notadmin", password_confirmation: "notadmin", team_id: 1, admin: true, super_admin: true) #id = 17
 
 League.create(name: "Vancouver")
 League.create(name: "Surrey")
