@@ -51,14 +51,6 @@ class TeamsControllerTest < ActionController::TestCase
    assert(team_made.captain_id == @user.id)
   end
 
-  # #user.team_id is saved in the action but does not persist later on in the assert. Why?
-  # test "user adds the team they create to their team list" do
-  #   session[:user_id] = @user.id
-  #   post :create, team: {team_name: "tester"}
-  #   team_made = Team.where(:team_name => "tester").first
-  #   assert(@user.team_id == team_made.id)
-  # end
-
   test "after creating team user is redirected to the teams page" do
     session[:user_id] = @user.id
     post :create, team: {team_name: "tester" }
@@ -109,7 +101,6 @@ class TeamsControllerTest < ActionController::TestCase
     assert(@team.players_id[0] == @user.id)
     get :leave_team, id: @team.id
     assert_redirected_to "/teams/#{@team.id}"
-    #assert(@team.players_id.empty?) #Not working because database reset back to pre-action call
   end
 
   test "user leaves their team and remove the team from their database" do
@@ -119,14 +110,12 @@ class TeamsControllerTest < ActionController::TestCase
     @user.update_attribute(:team_id, @team.id)
     get :leave_team, id: @team.id
     assert_redirected_to "/teams/#{@team.id}"
-    #assert(@user.team_id == -1) #Not working because database reset back to pre-action call
   end
 
   test "Admin approves a pending team with less than 8 approved teams(in that league), it becomes approved and redirects back to the teams page" do
     session[:user_id] = @admin.id
     get :approve, id: @mavs.id
     assert_redirected_to "/teams"
-    #assert @mavs.status == "approved" #change does not persist coming back to test
   end
 
   test "Admin approves pending team but 8 or more teams in that league are already approved, redirect to teams page with message" do
@@ -155,7 +144,6 @@ class TeamsControllerTest < ActionController::TestCase
     session[:user_id] = @admin.id
     get :decline, id: @mavs.id
     assert_redirected_to "/teams"
-    #assert @mavs.status == "approved" #change does not persist coming back to test
   end
 
   test "User tries to decline a team, get redirected to home page with error message" do
@@ -213,37 +201,37 @@ class TeamsControllerTest < ActionController::TestCase
     assert(flash[:warning] == "Only team captains can access that page.")
   end
 
-  # test "let the captain assign a new player to be captain" do
-  #   session[:user_id] = @user.id
-  #   @team.captain_id = @user.id
-  #   @team.save
-  #   get :appoint_captain, params: {team_id: @team.id, player_id: @admin.id}
-  #   assert_redirected_to "/teams/#{@team.id}/captain_team"
-  #   assert(flash[:warning] == "Successfully appointed another user as the team captain. You are no longer the team captain.")
-  # end
-  #
-  # test "Don't let anybody but the team captain assign a new captain to the team" do
-  #   session[:user_id] = @user.id
-  #   get :appoint_captain, params: {team_id: @team.id, player_id: @admin.id}
-  #   assert_redirected_to "home"
-  #   assert(flash[:warning] == "Only the team's captain can do that action.")
-  # end
+  test "let the captain assign a new player to be captain" do
+    session[:user_id] = @user.id
+    @team.captain_id = @user.id
+    @team.save
+    get :appoint_captain, { id: @team.id, team_id: @team.id, player_id: @admin.id}
+    assert_redirected_to "/teams/#{@team.id}"
+    assert(flash[:warning] == "Successfully appointed another user as the team captain. You are no longer the team captain.")
+  end
 
-  # test "let the captain remove a player from the team" do
-  #   session[:user_id] = @user.id
-  #   @team.captain_id = @user.id
-  #   @team.save
-  #   get :remove_user, params: {player_id: @admin.id}
-  #   assert_redirected_to "/teams/#{@team.id}/captain_team"
-  #   assert(flash[:warning] == "Successfully removed user from team.")
-  # end
-  #
-  # test "Don't let anybody but the team captain remove a player from the team" do
-  #   session[:user_id] = @user.id
-  #   get :remove_user, params: {player_id: @admin.id}
-  #   assert_redirected_to "/home"
-  #   assert(flash[:warning] == "Only the team's captain can do that action.")
-  # end
+  test "Don't let anybody but the team captain assign a new captain to the team" do
+    session[:user_id] = @user.id
+    get :appoint_captain, { id: @team.id, team_id: @team.id, player_id: @admin.id}
+    assert_redirected_to "/home"
+    assert(flash[:warning] == "Only the team's captain can do that action.")
+  end
+
+  test "let the captain remove a player from the team" do
+    session[:user_id] = @user.id
+    @team.captain_id = @user.id
+    @team.save
+    get :remove_user, {id: @team.id, team_id: @team.id, player_id: @admin.id}
+    assert_redirected_to "/teams/#{@team.id}/captain_team"
+    assert(flash[:warning] == "Successfully removed user from team.")
+  end
+
+  test "Don't let anybody but the team captain remove a player from the team" do
+    session[:user_id] = @user.id
+    get :remove_user, {id: @team.id, team_id: @team.id, player_id: @admin.id}
+    assert_redirected_to "/home"
+    assert(flash[:warning] == "Only the team's captain can do that action.")
+  end
 
   test "Team captain can accept a pending user if they are not currently in a team" do
     @user2 = users(:two)
@@ -255,30 +243,14 @@ class TeamsControllerTest < ActionController::TestCase
     assert(flash[:warning] == "Accepted user to team.")
   end
 
-  # test "Team captain cannot accept a pending user if they are already in a team" do
-  #   @user2 = users(:two)
-  #   @user2.team_id = 1
-  #   @user2.save
-  #   #users team id is not updated in :accept_user
-  #   session[:user_id] = @user.id
-  #   @team.captain_id = @user.id
-  #   @team.save
-  #   get :accept_user, id: @team.id, player_id: @user2.id
-  #   assert_redirected_to "/teams/#{@team.id}"
-  #   assert(flash[:warning] == "User has already joined a team. Could not add user to team.")
-  # end
-
-  # test "No other users but the captain can accept pending users to the team" do
-  #   @user2 = users(:another)
-  #   #only works when I create the session user is the same as the captain user
-  #   #cannot find route otherwise for some reason
-  #   @team.captain_id = @user2.id #@team.captain_id = @user.id causes the error
-  #   @team.save
-  #   session[:user_id] = @user2.id
-  #   get :accept_user, id: @team.id, player_id: @user2.id
-  #   assert_redirected_to "/home"
-  #   assert(flash[:warning] == "Only the team captains can perform that action.")
-  # end
+  test "No other users but the captain can accept pending users to the team" do
+    @user2 = users(:another)
+    @team.captain_id = @user2.id
+    @team.save
+    session[:user_id] = @user2.id
+    get :accept_user, {id: @team.id, player_id: @user2.id}
+    assert_redirected_to "/teams/#{@team.id}"
+  end
 
   test "Team captain can decline a pending user" do
     @user2 = users(:another)
@@ -291,31 +263,17 @@ class TeamsControllerTest < ActionController::TestCase
     assert(flash[:warning] == "Declined user from team.")
   end
 
-  # test "No other users but the captain can decline pending users to the team" do
-  #   #same error seen as the previous one with unable to route if user for session!=captain
-  #   @user2 = users(:another)
-  #   session[:user_id] = @user2.id
-  #   @team.captain_id = @user.id
-  #   @team.applied_user_ids << @user2.id
-  #   @team.save
-  #   get :decline_user, id: @team.id, player_id: @user2.id
-  #   assert_redirected_to "/teams/#{@team.id}"
-  #   assert(flash[:warning] == "Declined user from team.")
-  # end
-
   test "join action should properly route" do
     session[:user_id] = @user.id
     get :join
     assert_response :success
   end
 
-  # test "should update team" do
-  #   #unable to fix below error:
-  #   # => ActionController::UrlGenerationError: No route matches
-  #   # =>  {:action=>"show", :controller=>"teams", :id=>nil} missing required keys: [:id]
-  #   patch :update, :id => @user.id, team: {team_name: "New One"}
-  #   assert_redirected_to team_path(assigns(:team))
-  # end
+  test "should update team" do
+    session[:user_id] = @user.id
+    patch :update, :id => @team.id, team: {team_name: "New One"}
+    assert_redirected_to team_path(assigns(:team))
+  end
 
   test "admin should destroy team" do
     pre_create_team_count = Team.all.count
