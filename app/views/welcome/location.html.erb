@@ -23,9 +23,7 @@
   <div class="tab-content">
     <div id="sidebar_container"> </div>
   </div>
-  <% if current_user.admin? %>
-    <%= link_to '<span class="button-wrap"><button type="button" class="button button-pill button-longshadow-right"><i class="fa fa-plus"></i> Location </button><span>'.html_safe, new_map_path %>
-  <% end %>
+  
 <div>
 <script src='//maps.google.com/maps/api/js?v=3.23&key=<%= ENV["GMAP_KEY"] %>'></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
@@ -37,7 +35,7 @@
   function createSidebarLi(json){
     return ("<li><a>" + json.name + "</a></li>");
   };
-
+  
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
       handler.getMap().setZoom(14);
@@ -110,6 +108,8 @@
       <%else%>
       json_target = json_richmond;
       <%end%>
+      
+      
       // Event Handler
       // Reference: https://github.com/apneadiving/Google-Maps-for-Rails/issues/474
       var markers = [];
@@ -128,7 +128,9 @@
       createSidebar(json_target);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-
+      
+      
+      
       // Clicked
       // Code is a mess, need to refactor in future
       $('.theOption').on('click', function(e) {
@@ -169,6 +171,7 @@
       });
     });
   });
+
 
 </script>
 

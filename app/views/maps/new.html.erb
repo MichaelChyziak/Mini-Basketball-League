@@ -1,12 +1,10 @@
+<body>
 <div class="container">
   <%= form_for(@map) do |f| %>
   <table>
     <tr>
-      <td></td>
-      <td><div id="title"><p id="title">Add new location in the Map!</p></div></td>
-    </tr>
-    <tr>
       <td>
+          <h2>Add new location in the Map!</h2>
           <div id="form">
           	 <%= f.label :name %>
               <%= f.text_field :name, class: 'form-control' %>
@@ -18,15 +16,15 @@
 
               <%= f.label :lat %>
               <%= f.number_field :lat , :class => 'text_field', :step => 0.0001 %>
-              </br>
+              </br></br>
 
               <%= f.label :lng %>
               <%= f.number_field :lng , :class => 'text_field', :step => 0.0001 %>
-              </br>
+              </br></br>
 
               <%= f.label :league %>
               <%= f.select :league, Map.leagues.map { |key, value| [key.humanize, key] } %>
-              </br>
+              </br></br>
 
               <%= f.submit "Create location", class: "btn btn-primary" %>
 
@@ -38,3 +36,21 @@
     </tr>
   </table>
 </div>
+</body>
+
+<style>
+body {
+  background-image: url("/assets/van2.png");
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+table {
+  margin-left: 40%
+}
+
+td {
+  width: 400px;
+}
+
+</style>

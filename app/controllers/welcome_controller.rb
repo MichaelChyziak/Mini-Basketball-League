@@ -17,6 +17,7 @@ class WelcomeController < ApplicationController
   end
   
   def location
+    @maps = Map.all
     @courtloc = params[:court]
     @curleague = params[:league]
     @curmap = Map.where(:league => @curleague)
