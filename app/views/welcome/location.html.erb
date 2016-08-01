@@ -128,7 +128,8 @@
       createSidebar(json_target);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      
+      //this line is used for default zoom in
+      handler.getMap().setZoom(14);
       
       
       // Clicked
