@@ -15,21 +15,21 @@
   <% end %>
 
   <div class="field">
-    <div style="color:white; font-size:25px" ><%= f.label :team_name %></div><br>
+    <div style="color:black; font-size:25px" ><%= f.label :team_name %></div><br>
     <%= f.text_field :team_name, :maxlength => 30, :required => true %>
   </div><br>
 
   <div class="field">
-    <div style="color:white; font-size:25px" ><%= f.label :team_message %>Team Message</div><br>
+    <div style="color:black; font-size:25px" ><%= f.label :team_message %></div><br>
     <%= f.text_area :team_message, :maxlength => 1028 %>
   </div><br>
 
 
   <div class="field">
-    <div style="color:white; font-size:25px" > <%= f.label :league %></div><br>
+    <div style="color:black; font-size:25px" > <%= f.label :league %></div><br>
     <% if @team.status == "approved" %>
       <%= f.select(:league, %w[Vancouver Surrey Richmond], {}, :disabled => true) %>
-      <p style="color:white">Cannot edit the team's league once the team is approved</p>
+      <p style="color:black">Cannot edit the team's league once the team is approved</p>
     <% else %>
       <%= f.select(:league, %w[Vancouver Surrey Richmond]) %>
     <% end %>
