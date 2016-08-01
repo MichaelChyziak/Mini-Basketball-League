@@ -28,4 +28,24 @@ class MapsControllerTest < ActionController::TestCase
     assert_redirected_to maps_path
   end
 
+  test "should get show map" do
+    session[:user_id] = @admin.id
+    get :show
+    assert_response :success
+  end
+
+  test "should save primary court with message" do
+    session[:user_id] = @admin.id
+    get :save_primary
+    assert_redirected_to show_path
+    assert(flash[:success] == "Successfully updated Primary Court")
+  end
+
+  test "should save secondary court with message" do
+    session[:user_id] = @admin.id
+    get :save_secondary
+    assert_redirected_to show_path
+    assert(flash[:success] == "Successfully updated Secondary Court")
+  end
+
 end
