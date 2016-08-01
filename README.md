@@ -35,27 +35,39 @@ username: "admin", password: "notadmin"
 Requirement Document Overview (Iteration 3)
 
 Document Header
+
 Mini Basketball League
+
 Requirements and Specification Document
+
 06/20/2016, version 0.1
+
 07/11/2016, version 0.2
+
 07/11/2016, version 0.2.1 (Bug Fix)
+
 08/01/2016, version 1.0
 
 Project Abstract
+
 The webapp that our team will be creating is called, “Mini Basketball League” (MBL) and it targets basketball players of all ages and skill levels. Each player will have their own profile page where they can display their basketball-related information. Players can decide to create or join a team by clicking the appropriate button on the homepage. After forming a team, the captain can choose which league their team should be in based on the players’ skill levels. The software also allows teams to send invitations to each other and organize a time and location for their game with the help of Google Calendar and Google Map APIs. After each game, the database will be updated and users can post their recorded game highlights in the form of a link from Youtube. Added features may also include MVP (most valuable player) or championship trophies if time allows. A twitter-like social media platform (or an embedded Twitter stream) will be implemented. This  will allow players to post and view updates regarding their team, other teams and games.
 
 Customer
+
 The type of customer which would be expected for MBL would be mostly basketball players of all skill levels who are looking to play competitive games with others who are also at their skill level. Another type of customer would be the site administrators (which can also be players) who are willing to help maintain responsibilities of the site. Other customers may wish to create a team and manage the team.
 
 Competitive Analysis
+
 This app is a combination of NBA fantasy league game and real-time event organizer, which gathers people within a community to play real sport. There are currently little to none competitors that is doing this so MBL is in a niche market. The closest alternative would be organized team leagues in which a fee is required to play. The key attraction for MBL is to provide users with the similar experience to what professional basketball players may have. The ability to showcase oneself and play for a team in a well-organized league is the dream of every competitive basketball fan.
 
 User Stories  
+
 The actors for this app are administrators and regular users. In order to increase the amount of code and because of our unfamiliarity with Ruby on Rails, we decided to not write tests before writing code (as is the case in extreme programming) and instead focused on manually testing (with other group members) for working code for the first iteration. The second iteration includes tests, although things that we had trouble testing we did manually again. However, all of the stories below have been tested through very detailed named tests or manual tests. The manual testing uses a similar principle to pair programming (but instead with 5 members) to ensure that code is error proof. Regular and administrative users have been created for the first iteration and users which are captains of teams have special privileges in some areas (which was added in the second iteration). The login information can be found in the README file. The first iteration was calculated as 14 points (all of the blue stories) over the span of 17 days which meant a velocity of approximately 5.76/week. For iteration 2 we had a span 21 days to cover all of the stories (in red) which was calculated as 18 which gives us a new velocity of approximately 6/week. While this only seems like a small improvement, what is not so clear is that a lot more time was spent on actually creating tests to cover both iteration 1 and 2 during these last 21 days. Therefore if the effort to write the tests was included as part of the velocity calculation it would be much higher. For iteration 3 the goal is to reach at least a velocity of 7/week. For iteration 3 we were able to do 18 points worth over the 21 day period, giving a velocity of 6/week, just exactly the same as in iteration 2. For both iterations we wrote tests but the only reason for the stagnant velocities over those two iterations is that for iteration 2 we could leave some stories as half complete and to be improved later on but for iteration 3 we needed all stories fully complete and tested. The app uses two API’s which are the Twitter and Google Maps API’s. The Twitter API is just for the home page to display any relevant tweets with the specific hashtag. The Google Maps API is used multiple times in order to show users what location their games will be played at.
 
 Blue = Iteration 1
+
 Red = Iteration 2
+
 Purple = Iteration 3
 
 A non-registered user can sign up directly from the web interface. They can click on the “Sign up” link on the login page to be redirected to the signup form. The form prompts the user to enter their username, email, password and a password confirmation. If the user signs up successfully, they will be signed in and redirected to their profile page where they will be greeted with a welcome message. If the user submits an invalid signup form, error messages will appear near the top of the page where the user can see them and attempt to sign up again. Users cannot create an account with a username or email that have already been used before. The password must also be a minimum of six characters long.
@@ -92,6 +104,7 @@ Teams are sorted from most to least number of points.
 Maps page will allow registered user to see league’s location on a map that are generated using Google Maps API (wrapped in gmaps4rails). The user would be able to navigate through different tabs of league (Vancouver, Surrey, Richmond) which would update the links under the map with the location respect to the leagues. At the same time,  markers on the map would get updated depending on the selected tab. User would be able to click on the markers on the map, then the map would pan to that marker, and infobox with the location name would appear on the map itself. The same thing would occur when they clicked on the links under the maps. An admin user would be able to add more locations to the league.
 
 Future Iteration Stories
+
 Below are some point form stories which might possibly be developed.
 Admins will be able to write a message to all users on the home page
 After teams are matched up, team manager will be able to select where the matchup will take place from the available basketball courts
@@ -102,7 +115,6 @@ Users (including admin) will be able to edit/update their profile information wi
 After a user signs up, a confirmation message will be sent to their email
 Users can reset their password if they forget it
 A user can save their address. Doing so the courts could also be calculated by taking the nearest court as the primary court for each user and the 2nd nearest as the secondary court for each user and then those can be used to calculate the location of the court for each game.
-
 
 
 #Iteration 1
