@@ -1,47 +1,49 @@
 <body>
+  <table>
+    <tr>
+      <td>
+        <div class="form">
+        <%= form_for @score, url: score_submit_path do |f| %>
 
-<div class="form">
-<%= form_for @score, url: score_submit_path do |f| %>
+          <% team1 = Team.find(@score.team_1_id) %>
+          <% team2 = Team.find(@score.team_2_id) %>
 
-  <% team1 = Team.find(@score.team_1_id) %>
-  <% team2 = Team.find(@score.team_2_id) %>
+          <% if current_user.id == team1.captain_id %>
+            <p>
+              <%= f.label :team_1_score %><br>
+              <%= f.number_field :captain_1_team_1_score %>
+            </p>
 
-  <% if current_user.id == team1.captain_id %>
-    <p>
-      <%= f.label :captain_1_team_1_score %><br>
-      <%= f.number_field :captain_1_team_1_score %>
-    </p>
+            <p>
+              <%= f.label :team_2_score %><br>
+              <%= f.number_field :captain_1_team_2_score %>
+            </p>
+          <% elsif current_user.id == team2.captain_id %>
+            <p>
+              <%= f.label :team_1_score %><br>
+              <%= f.number_field :captain_2_team_1_score %>
+            </p>
 
-    <p>
-      <%= f.label :captain_1_team_2_score %><br>
-      <%= f.number_field :captain_1_team_2_score %>
-    </p>
-  <% elsif current_user.id == team2.captain_id %>
-    <p>
-      <%= f.label :captain_2_team_1_score %><br>
-      <%= f.number_field :captain_2_team_1_score %>
-    </p>
+            <p>
+              <%= f.label :team_2_score %><br>
+              <%= f.number_field :captain_2_team_2_score %>
+            </p>
+          <% end %>
 
-    <p>
-      <%= f.label :captain_2_team_2_score %><br>
-      <%= f.number_field :captain_2_team_2_score %>
-    </p>
-  <% end %>
+          <%= hidden_field_tag :id, @score.id %>
 
-  <%= hidden_field_tag :id, @score.id %>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-</div>
-    </td>
-  </tr>
-  <tr>
-    <td style="height: 500px">
-    </td>
-  </tr>
-</table>
+          <p>
+            <%= f.submit %>
+          </p>
+        <% end %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="height: 500px">
+      </td>
+    </tr>
+  </table>
 
 </body>
 
@@ -53,6 +55,11 @@ body {
   background-attachment: fixed;
 }
 
+table {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
 
 .form {
   margin-top: 40%;
