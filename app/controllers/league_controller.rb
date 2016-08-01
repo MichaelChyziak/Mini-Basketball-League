@@ -217,10 +217,10 @@ class LeagueController < ApplicationController
     team1_ids.each do |id|
       primary = User.find(id).primary_court
       secondary = User.find(id).secondary_court
-      if primary
+      if courts.include? primary
         courts[primary] += 2
       end
-      if secondary
+      if courts.include? secondary
         courts[secondary] += 1
       end
     end
@@ -228,10 +228,10 @@ class LeagueController < ApplicationController
     team2_ids.each do |id|
       primary = User.find(id).primary_court
       secondary = User.find(id).secondary_court
-      if primary
+      if courts.include? primary
         courts[primary] += 2
       end
-      if secondary
+      if courts.include? secondary
         courts[secondary] += 1
       end
     end
