@@ -1,10 +1,21 @@
+# Mini Basketball League
+Mini Basketball League is a web application that provides community for basketball lovers to engage with, communicate with and compete against each other. After signing in, you are encouraged to actively seek and join a team. Then you and your teammate will play and rise together to start the season and compete against other teams.
 
+Link of webapp: https://radiant-wildwood-37978.herokuapp.com/
+
+Technologies used:
+- Ruby on Rails
+- postgresql
+- Google Map API using [Gmap4Rails](https://github.com/apneadiving/Google-Maps-for-Rails)
 
 ## Running Locally
 
+Install package needed to run locally
+```
+$ bundle install
+```
 To create a database:
 Follow the steps provided in Bobby's "Local setup - databases" (option 2) pdf on his site [link](http://www.cs.sfu.ca/CourseCentral/276/bobbyc/n/tutorials/database-for-local-development.pdf)
-
 To migrate databases:
 ```
 $ rake db:migrate
