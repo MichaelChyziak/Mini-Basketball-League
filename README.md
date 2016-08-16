@@ -16,6 +16,7 @@ $ bundle install
 ```
 To create a database:
 Follow the steps provided in Bobby's "Local setup - databases" (option 2) pdf on his site [link](http://www.cs.sfu.ca/CourseCentral/276/bobbyc/n/tutorials/database-for-local-development.pdf)
+
 To migrate databases:
 ```
 $ rake db:migrate
