@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  #skip_before_filter :require_login, only: [:new]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # Make the user not an admin
+  # Reverse the action of making a user an admin
   def disable_admin
     if current_user.admin?
       user = User.find(params[:id])
@@ -63,7 +62,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Profile has been successfully updated."
       redirect_to @user
     else
       render 'edit'
@@ -112,7 +111,7 @@ class UsersController < ApplicationController
                                  :twitter, :primary_court, :secondary_court)
   end
 
-  # Confirms a logged-in user.
+  # Ensures user is logged in
   def logged_in_user
     unless logged_in?
       store_location
@@ -121,13 +120,13 @@ class UsersController < ApplicationController
     end
   end
 
-  # Confirms the correct user.
+  # Ensures user is correct
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_url) unless @user == current_user
   end
 
-  # Confirms an admin user.
+  # Ensures user is an admin
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end

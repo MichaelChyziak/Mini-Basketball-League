@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
 #Skips having to login before going to the root url
 skip_before_filter :require_login
 
@@ -9,7 +10,6 @@ skip_before_filter :require_login
     user = User.find_by(username: params[:session][:username].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to home_path
     else
       flash.now[:danger] = 'Incorrect username/password. Please try again.'

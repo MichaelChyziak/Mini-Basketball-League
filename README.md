@@ -200,3 +200,18 @@ When a team is formed, three types of basketball leagues will be available to ch
 ## First Iteration
 
 One of the requirements going forward for the first iteration is to implement a login or sign up screen when the user goes onto our web application. Another requirement is that after the login, there will be the main page that allows the user to edit his/her profile. The last requirement is to implement a feature to allow a user to create a team or to join an existing team.
+
+##Citation
+
+    https://pixabay.com/en/the-pitch-basket-255022/
+    https://pixabay.com/en/basket-ball-game-equipment-801708/
+    https://pixabay.com/en/wood-floor-pine-basketball-court-677054/
+    https://pixabay.com/en/vancouver-british-columbia-canada-216595/
+    https://pixabay.com/en/city-vancouver-canada-948984/
+    https://pixabay.com/en/basketball-court-sport-landscape-611572/
+    http://www.hoopswallpapers.com/wallpapers/2016/steph-curry-winning3-wallpaper.jpg
+    https://www.railstutorial.org/book/
+    https://web.stanford.edu/dept/pe/cgi-bin/downloads/intramural/LeagueSportRules/5v5%20Basketball%20Rules%20_revised%201_11_.pdf
+    Google Maps API
+
+
